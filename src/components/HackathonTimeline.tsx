@@ -2,50 +2,22 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-
-// Timeline data with events, results, and representative images
-const timelineEvents = [
-  {
-    date: 'September 2023',
-    event: 'HopHacks',
-    location: 'Johns Hopkins University',
-    achievement: '3rd Place Overall',
-    description: 'Our first hackathon as a team. We created a language learning app that won third place.',
-    image: '/team/hophacks_2024_team_third_prize_pic.jpg'
-  },
-  {
-    date: 'November 2023',
-    event: 'HackUTD',
-    location: 'University of Texas at Dallas',
-    achievement: 'Finalist',
-    description: 'Developed a healthcare analytics platform that made it to the finalist round.',
-    image: '/team/hackutd_2024_team_at_introduction_ceremony.jpg'
-  },
-  {
-    date: 'February 2024',
-    event: 'CalHacks',
-    location: 'UC Berkeley',
-    achievement: 'VAPI API Prize & People\'s Choice Award',
-    description: 'Double winners! Our AI-powered study tool impressed both judges and attendees.',
-    image: '/team/calhacks_2024_team_people_choice_award_pic.jpg'
-  },
-  {
-    date: 'April 2024',
-    event: 'Bitcamp',
-    location: 'University of Maryland',
-    achievement: 'Best Use of Cloud Technology',
-    description: 'Created a distributed computing solution that earned recognition for innovative cloud architecture.',
-    image: '/team/bitcamp_2025_demo_team_pic.jpg'
-  }
-];
+import { getHackathonsByDate, Hackathon } from '@/utils/dataUtils';
 
 export default function HackathonTimeline() {
   const [activeEvent, setActiveEvent] = useState(0);
+  const [timelineEvents, setTimelineEvents] = useState<Hackathon[]>([]);
   const timelineRef = useRef<HTMLDivElement>(null);
+  
+  // Load hackathon data
+  useEffect(() => {
+    const hackathons = getHackathonsByDate();
+    setTimelineEvents(hackathons);
+  }, []);
   
   // Auto-scroll the timeline to active event
   useEffect(() => {
-    if (timelineRef.current) {
+    if (timelineRef.current && timelineEvents.length > 0) {
       const timelineElement = timelineRef.current;
       const activeElement = timelineElement.querySelector(`[data-index="${activeEvent}"]`);
       
@@ -57,7 +29,12 @@ export default function HackathonTimeline() {
         });
       }
     }
-  }, [activeEvent]);
+  }, [activeEvent, timelineEvents]);
+
+  // If data isn't loaded yet, show a loading state
+  if (timelineEvents.length === 0) {
+    return <div className="text-center py-8">Loading hackathon timeline...</div>;
+  }
 
   return (
     <div className="w-full">
@@ -65,8 +42,8 @@ export default function HackathonTimeline() {
       <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div className="relative h-80 rounded-lg overflow-hidden">
           <Image
-            src={timelineEvents[activeEvent].image}
-            alt={timelineEvents[activeEvent].event}
+            src={timelineEvents[activeEvent].mainImage}
+            alt={timelineEvents[activeEvent].name}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -81,7 +58,7 @@ export default function HackathonTimeline() {
         
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <h3 className="text-2xl font-bold">{timelineEvents[activeEvent].event}</h3>
+            <h3 className="text-2xl font-bold">{timelineEvents[activeEvent].name}</h3>
             <span className="text-[var(--foreground-secondary)]">•</span>
             <span className="text-[var(--accent-red)]">{timelineEvents[activeEvent].date}</span>
           </div>
@@ -120,7 +97,7 @@ export default function HackathonTimeline() {
         <div className="inline-flex gap-16 px-8 relative">
           {timelineEvents.map((event, index) => (
             <div 
-              key={index}
+              key={event.id}
               data-index={index}
               className={`relative cursor-pointer pt-8 ${index === activeEvent ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
               onClick={() => setActiveEvent(index)}
@@ -131,7 +108,7 @@ export default function HackathonTimeline() {
                 }`}
               ></div>
               <div className="text-center min-w-[120px]">
-                <p className="font-medium">{event.event}</p>
+                <p className="font-medium">{event.name}</p>
                 <p className="text-sm text-[var(--foreground-secondary)]">{event.date}</p>
               </div>
             </div>

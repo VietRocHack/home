@@ -1,0 +1,65 @@
+{
+  "team": [
+    {
+      "id": "vuong",
+      "name": "Vuong Nguyen",
+      "role": "Full-stack Developer",
+      "school": "University of Rochester",
+      "major": "Computer Science",
+      "graduation": 2025,
+      "bio": "Core team member specializing in backend architecture and AI integration. Usually found debugging via prayer.",
+      "photo": "/team/vuong.jpg",
+      "socialLinks": {
+        "github": "https://github.com/vuongnguyen",
+        "linkedin": "https://linkedin.com/in/vuongnguyen",
+        "twitter": "https://twitter.com/vuongnguyen"
+      },
+      "skills": ["JavaScript", "Python", "React", "TensorFlow", "Node.js", "AWS"]
+    },
+    {
+      "id": "minh",
+      "name": "Minh Tran",
+      "role": "Frontend Developer",
+      "school": "University of Rochester",
+      "major": "Computer Science",
+      "graduation": 2025,
+      "bio": "UI/UX specialist who creates beautiful, responsive interfaces. Often seen one hour before the demo crash.",
+      "photo": "/team/minh.jpg",
+      "socialLinks": {
+        "github": "https://github.com/minhtran",
+        "linkedin": "https://linkedin.com/in/minhtran"
+      },
+      "skills": ["React", "TypeScript", "Tailwind CSS", "Figma", "Next.js", "Flutter"]
+    },
+    {
+      "id": "linh",
+      "name": "Linh Pham",
+      "role": "Backend Developer",
+      "school": "University of Rochester",
+      "major": "Data Science",
+      "graduation": 2024,
+      "bio": "Database and API wizard who makes everything run smoothly. Occasionally caught trying to center a div at 3 AM.",
+      "photo": "/team/linh.jpg",
+      "socialLinks": {
+        "github": "https://github.com/linhpham",
+        "linkedin": "https://linkedin.com/in/linhpham"
+      },
+      "skills": ["Python", "Django", "PostgreSQL", "MongoDB", "Docker", "FastAPI"]
+    },
+    {
+      "id": "trung",
+      "name": "Trung Le",
+      "role": "Machine Learning Engineer",
+      "school": "University of Rochester",
+      "major": "Computer Science & Mathematics",
+      "graduation": 2023,
+      "bio": "AI/ML specialist who builds the smart parts of our projects. Known for making code work without knowing why.",
+      "photo": "/team/trung.jpg",
+      "socialLinks": {
+        "github": "https://github.com/trung",
+        "linkedin": "https://linkedin.com/in/trung"
+      },
+      "skills": ["Python", "PyTorch", "TensorFlow", "Computer Vision", "NLP", "Data Analysis"]
+    }
+  ]
+} 

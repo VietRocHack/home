@@ -1,95 +1,45 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { getAllPhotos, getAllHackathons, Hackathon, Photo } from '@/utils/dataUtils';
 
-// Photo gallery data with captions and hackathon details
-const galleryPhotos = [
-  {
-    src: '/team/hophacks_2024_demo_team_pic.jpg',
-    caption: 'Demoing our project at HopHacks 2024',
-    event: 'HopHacks 2024',
-    location: 'Johns Hopkins University'
-  },
-  {
-    src: '/team/hophacks_2024_team_find_out_we_win.png',
-    caption: 'The moment we found out we won!',
-    event: 'HopHacks 2024',
-    location: 'Johns Hopkins University'
-  },
-  {
-    src: '/team/hophacks_2024_team_third_prize_pic.jpg',
-    caption: 'Accepting our 3rd place prize at HopHacks',
-    event: 'HopHacks 2024',
-    location: 'Johns Hopkins University'
-  },
-  {
-    src: '/team/calhacks_2024_team_at_apple_hq.jpg',
-    caption: 'Visit to Apple HQ during CalHacks',
-    event: 'CalHacks 2024',
-    location: 'Berkeley, CA'
-  },
-  {
-    src: '/team/calhacks_2024_team_with_lananh_in_sanfrancisco.jpg',
-    caption: 'Team exploring San Francisco',
-    event: 'CalHacks 2024',
-    location: 'San Francisco, CA'
-  },
-  {
-    src: '/team/calhacks_2024_team_berkeley_backdrop_with_bear.jpg',
-    caption: 'Posing with the Berkeley Bear',
-    event: 'CalHacks 2024',
-    location: 'UC Berkeley'
-  },
-  {
-    src: '/team/calhacks_2024_demo_team_pic.jpg',
-    caption: 'Team demo at CalHacks',
-    event: 'CalHacks 2024',
-    location: 'Berkeley, CA'
-  },
-  {
-    src: '/team/calhacks_2024_team_at_google_hq.jpg',
-    caption: 'Visit to Google campus',
-    event: 'CalHacks 2024',
-    location: 'Mountain View, CA'
-  },
-  {
-    src: '/team/calhacks_2024_team_vapi_award_pic.jpg',
-    caption: 'Winner of the VAPI API prize',
-    event: 'CalHacks 2024',
-    location: 'UC Berkeley'
-  },
-  {
-    src: '/team/calhacks_2024_team_people_choice_award_pic.jpg',
-    caption: 'People\'s Choice Award winners',
-    event: 'CalHacks 2024',
-    location: 'UC Berkeley'
-  },
-  {
-    src: '/team/hackutd_2024_team_at_introduction_ceremony.jpg',
-    caption: 'At the HackUTD opening ceremony',
-    event: 'HackUTD 2024',
-    location: 'University of Texas at Dallas'
-  },
-  {
-    src: '/team/bitcamp_2025_demo_team_pic.jpg',
-    caption: 'Presenting at Bitcamp',
-    event: 'Bitcamp 2025',
-    location: 'University of Maryland'
-  }
-];
+interface GalleryPhoto {
+  photo: Photo;
+  hackathon: Hackathon;
+}
 
 export default function PhotoGallery() {
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
   const [filter, setFilter] = useState<string | null>(null);
+  const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
+  const [hackathons, setHackathons] = useState<Hackathon[]>([]);
 
-  // Extract unique events for filtering
-  const events = Array.from(new Set(galleryPhotos.map(photo => photo.event)));
+  // Load data
+  useEffect(() => {
+    const photos = getAllPhotos();
+    const hackathons = getAllHackathons();
+    setGalleryPhotos(photos);
+    setHackathons(hackathons);
+  }, []);
 
-  // Filter photos based on selected event
+  // Extract unique hackathon IDs for filtering
+  const hackathonIds = Array.from(new Set(galleryPhotos.map(item => item.hackathon.id)));
+
+  // Filter photos based on selected hackathon
   const filteredPhotos = filter 
-    ? galleryPhotos.filter(photo => photo.event === filter)
+    ? galleryPhotos.filter(item => item.hackathon.id === filter)
     : galleryPhotos;
+
+  // Helper function to get hackathon by ID
+  const getHackathonName = (id: string): string => {
+    const hackathon = hackathons.find(h => h.id === id);
+    return hackathon ? hackathon.name : id;
+  };
+
+  if (galleryPhotos.length === 0) {
+    return <div className="text-center py-8">Loading photo gallery...</div>;
+  }
 
   return (
     <div className="w-full">
@@ -101,35 +51,35 @@ export default function PhotoGallery() {
         >
           All Events
         </button>
-        {events.map((event, i) => (
+        {hackathonIds.map((id) => (
           <button 
-            key={i}
-            className={`px-4 py-2 rounded-md ${filter === event ? 'bg-[var(--accent-cyan)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
-            onClick={() => setFilter(event)}
+            key={id}
+            className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-cyan)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
+            onClick={() => setFilter(id)}
           >
-            {event}
+            {getHackathonName(id)}
           </button>
         ))}
       </div>
       
       {/* Photo grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredPhotos.map((photo, index) => (
+        {filteredPhotos.map((item, index) => (
           <div 
-            key={index} 
+            key={`${item.hackathon.id}-${index}`}
             className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
             onClick={() => setActivePhoto(index)}
           >
             <Image
-              src={photo.src}
-              alt={photo.caption}
+              src={item.photo.src}
+              alt={item.photo.caption}
               fill
               className="object-cover transition-all duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p className="text-white font-medium">{photo.caption}</p>
-              <p className="text-gray-300 text-sm">{photo.event} • {photo.location}</p>
+              <p className="text-white font-medium">{item.photo.caption}</p>
+              <p className="text-gray-300 text-sm">{item.hackathon.name} • {item.hackathon.location}</p>
             </div>
           </div>
         ))}
@@ -147,17 +97,17 @@ export default function PhotoGallery() {
           >
             <div className="relative w-full h-[70vh]">
               <Image
-                src={filteredPhotos[activePhoto].src}
-                alt={filteredPhotos[activePhoto].caption}
+                src={filteredPhotos[activePhoto].photo.src}
+                alt={filteredPhotos[activePhoto].photo.caption}
                 fill
                 className="object-contain"
                 sizes="100vw"
               />
             </div>
             <div className="bg-gray-900 p-4 rounded-b-lg">
-              <h3 className="text-xl font-medium">{filteredPhotos[activePhoto].caption}</h3>
+              <h3 className="text-xl font-medium">{filteredPhotos[activePhoto].photo.caption}</h3>
               <p className="text-[var(--foreground-secondary)]">
-                {filteredPhotos[activePhoto].event} • {filteredPhotos[activePhoto].location}
+                {filteredPhotos[activePhoto].hackathon.name} • {filteredPhotos[activePhoto].hackathon.location}
               </p>
             </div>
             

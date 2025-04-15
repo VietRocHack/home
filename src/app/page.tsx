@@ -9,23 +9,7 @@ import PhotoGallery from '@/components/PhotoGallery';
 import HackathonTimeline from '@/components/HackathonTimeline';
 import Link from 'next/link';
 import Image from 'next/image';
-
-const featuredProjects = [
-  {
-    title: "ChattR",
-    description: "A chat app that runs even when our team doesn't.",
-    tags: ["React", "Firebase", "Node.js"],
-    github: "https://github.com/vietrochack/chattr",
-    demo: "https://chattr.vietrochack.com"
-  },
-  {
-    title: "StudyBuddy",
-    description: "Like having a friend who actually does the reading.",
-    tags: ["Next.js", "Tailwind", "OpenAI"],
-    github: "https://github.com/vietrochack/studybuddy",
-    demo: "https://studybuddy.vietrochack.com"
-  }
-];
+import { getFeaturedProjects, getSummaryStatistics } from '@/utils/dataUtils';
 
 const teamMembers = [
   {
@@ -50,30 +34,13 @@ const teamMembers = [
   }
 ];
 
-const stats = [
-  {
-    title: "Hackathons Entered",
-    value: 7,
-    subtext: "And survived most of them"
-  },
-  {
-    title: "Bugs Denied",
-    value: "All",
-    subtext: "They're features"
-  },
-  {
-    title: "Sleep Debt",
-    value: "∞",
-    subtext: "Hours and counting"
-  },
-  {
-    title: "Coffee Consumed",
-    value: 283,
-    subtext: "Cups since our last commit"
-  }
-];
-
 export default function Home() {
+  // Get featured projects
+  const featuredProjects = getFeaturedProjects(2);
+  
+  // Get statistics
+  const stats = getSummaryStatistics();
+
   return (
     <Layout>
       {/* 1. Splash / Rotating Logo Section */}
@@ -126,24 +93,24 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project, index) => (
-              <Card variant="project" key={index}>
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+            {featuredProjects.map((project) => (
+              <Card variant="project" key={project.id}>
+                <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
                 <p className="text-[var(--foreground-secondary)] mb-4">
-                  {project.description}
+                  {project.tagline}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
+                  {project.techStack.slice(0, 3).map((tag, i) => (
                     <span key={i} className="px-3 py-1 bg-gray-800 rounded-full text-sm">
                       {tag}
                     </span>
                   ))}
                 </div>
                 <div className="flex gap-3 mt-auto">
-                  <Link href={project.github}>
+                  <Link href={project.githubLink}>
                     <Button variant="secondary" size="sm">GitHub</Button>
                   </Link>
-                  <Link href={project.demo}>
+                  <Link href={project.demoLink}>
                     <Button variant="ghost" size="sm">Demo</Button>
                   </Link>
                 </div>
@@ -209,14 +176,30 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {stats.map((stat, index) => (
-              <AnimatedStat
-                key={index}
-                title={stat.title}
-                value={stat.value}
-                subtext={stat.subtext}
-              />
-            ))}
+            <AnimatedStat
+              key="hackathons"
+              title="Hackathons Entered"
+              value={stats.hackathonsEntered}
+              subtext="And survived most of them"
+            />
+            <AnimatedStat
+              key="prizes"
+              title="Prizes Won"
+              value={stats.prizesWon}
+              subtext="But who's counting?"
+            />
+            <AnimatedStat
+              key="sleep"
+              title="Sleep Debt"
+              value={stats.sleepLost}
+              subtext="Hours and counting"
+            />
+            <AnimatedStat
+              key="coffee"
+              title="Coffee Consumed"
+              value={stats.coffeeConsumed}
+              subtext="Cups since our last commit"
+            />
           </div>
         </Container>
       </section>

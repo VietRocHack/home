@@ -9,14 +9,39 @@ interface AnimatedStatProps {
 }
 
 export default function AnimatedStat({ title, value, subtext }: AnimatedStatProps) {
-  const [displayValue, setDisplayValue] = useState(0);
-  const [isAnimated, setIsAnimated] = useState(false);
+  const [displayValue, setDisplayValue] = useState<number | string>(typeof value === 'number' ? 0 : value);
+  const [isVisible, setIsVisible] = useState(false);
   
+  // Animation to count up to the target value
+  useEffect(() => {
+    if (typeof value !== 'number' || !isVisible) return;
+    
+    let start = 0;
+    const end = parseInt(value.toString(), 10);
+    const duration = 2000;
+    const increment = end / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      setDisplayValue(Math.floor(start));
+      
+      if (start >= end) {
+        setDisplayValue(end);
+        clearInterval(timer);
+      }
+    }, 16);
+    
+    return () => {
+      clearInterval(timer);
+    };
+  }, [value, isVisible]);
+  
+  // Intersection observer to trigger animation when visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsAnimated(true);
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -24,39 +49,12 @@ export default function AnimatedStat({ title, value, subtext }: AnimatedStatProp
     );
     
     const element = document.getElementById(`stat-${title.replace(/\s+/g, '-').toLowerCase()}`);
-    if (element) {
-      observer.observe(element);
-    }
+    if (element) observer.observe(element);
     
     return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      observer.disconnect();
     };
   }, [title]);
-  
-  useEffect(() => {
-    if (!isAnimated || typeof value !== 'number') return;
-    
-    let start = 0;
-    const end = value;
-    const duration = 2000;
-    const startTime = performance.now();
-    
-    const animateCount = (currentTime: number) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const currentCount = Math.floor(progress * (end - start) + start);
-      
-      setDisplayValue(currentCount);
-      
-      if (progress < 1) {
-        requestAnimationFrame(animateCount);
-      }
-    };
-    
-    requestAnimationFrame(animateCount);
-  }, [isAnimated, value]);
   
   return (
     <div 
@@ -64,8 +62,8 @@ export default function AnimatedStat({ title, value, subtext }: AnimatedStatProp
       className="bg-[var(--background-secondary)] p-8 rounded-lg text-center"
     >
       <h3 className="text-2xl font-bold mb-1">{title}</h3>
-      <p className="text-5xl font-bold text-[var(--accent-cyan)] my-3">
-        {typeof value === 'number' ? displayValue : value}
+      <p className="text-5xl font-bold text-[var(--accent-yellow)] my-3">
+        {displayValue}
       </p>
       <p className="text-[var(--foreground-secondary)]">{subtext}</p>
     </div>

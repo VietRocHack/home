@@ -62,7 +62,7 @@ export default function PhotoGallery() {
           {hackathonIds.map((id) => (
             <button 
               key={id}
-              className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-cyan)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
+              className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-yellow)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
               onClick={() => setFilter(id)}
             >
               {getHackathonName(id)}
@@ -73,7 +73,7 @@ export default function PhotoGallery() {
         <div className="text-center py-8">
           No photos found for {getHackathonName(filter)}. 
           <button 
-            className="ml-2 text-[var(--accent-cyan)] underline"
+            className="ml-2 text-[var(--accent-yellow)] underline"
             onClick={() => setFilter(null)}
           >
             View all photos
@@ -96,7 +96,7 @@ export default function PhotoGallery() {
         {hackathonIds.map((id) => (
           <button 
             key={id}
-            className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-cyan)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
+            className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-yellow)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
             onClick={() => setFilter(id)}
           >
             {getHackathonName(id)}

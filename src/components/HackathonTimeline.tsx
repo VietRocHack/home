@@ -67,7 +67,7 @@ export default function HackathonTimeline() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
           <div className="absolute bottom-0 left-0 right-0 p-4">
-            <span className="bg-[var(--accent-cyan)] text-black px-3 py-1 rounded-full text-sm font-medium">
+            <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
               {timelineEvents[activeEvent].achievement}
             </span>
           </div>

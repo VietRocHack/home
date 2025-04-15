@@ -8,46 +8,28 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">VietRocHack</h3>
-            <p className="text-[var(--foreground-secondary)]">
-              A Vietnamese hackathon team from the University of Rochester dedicated to creativity and innovation.
-            </p>
+            <h3 className="text-xl font-bold mb-4">About</h3>
+            <p className="text-[var(--foreground-secondary)] mb-2">Team of Vietnamese students from University of Rochester who build cool things in hackathons.</p>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Home</Link>
-              </li>
-              <li>
-                <Link href="/team" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Team</Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Projects</Link>
-              </li>
-              <li>
-                <Link href="/vision" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Vision</Link>
-              </li>
-            </ul>
+            <h3 className="text-xl font-bold mb-4">Pages</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Home</Link>
+              <Link href="/team" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Team</Link>
+              <Link href="/projects" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Projects</Link>
+              <Link href="/vision" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Vision</Link>
+            </div>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Email</a>
-              </li>
-              <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">GitHub</a>
-              </li>
-              <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">LinkedIn</a>
-              </li>
-              <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Instagram</a>
-              </li>
-            </ul>
+            <h3 className="text-xl font-bold mb-4">Connect</h3>
+            <div className="flex flex-col gap-2">
+              <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Email</a>
+              <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">GitHub</a>
+              <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">LinkedIn</a>
+              <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Instagram</a>
+            </div>
           </div>
           
           <div>

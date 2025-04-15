@@ -30,7 +30,7 @@ The VietRocHack website uses a set of reusable UI components that share a consis
 - Visual style: Rounded corners, clear hover effects
 - Variants:
   - Primary: Red background with white text, pulsing glow on hover
-  - Secondary: Cyan background with dark text, cyan glow on hover
+  - Secondary: Yellow background with dark text, yellow glow on hover
   - Ghost: Transparent with border, shimmering highlight on hover
 - States: Default, hover (lifted), active (pressed), disabled (dimmed)
 - Sizes: Small, medium, large

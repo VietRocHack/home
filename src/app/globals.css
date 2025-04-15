@@ -47,13 +47,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 5px rgba(255, 220, 0, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+    box-shadow: 0 0 20px rgba(255, 220, 0, 0.8);
   }
   100% {
-    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 5px rgba(255, 220, 0, 0.5);
   }
 }
 

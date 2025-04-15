@@ -76,7 +76,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
             {/* Project details */}
             <div>
               <h3 className="text-2xl font-bold mb-2">{projects[activeProject].name}</h3>
-              <p className="text-[var(--accent-cyan)] mb-2">{projects[activeProject].tagline}</p>
+              <p className="text-[var(--accent-yellow)] mb-2">{projects[activeProject].tagline}</p>
               <p className="text-[var(--foreground-secondary)] mb-4">
                 {projects[activeProject].description}
               </p>

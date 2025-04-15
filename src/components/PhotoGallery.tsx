@@ -23,6 +23,12 @@ export default function PhotoGallery() {
     setHackathons(hackathons);
   }, []);
 
+  // Helper to format the image path correctly
+  const getImagePath = (path: string) => {
+    if (!path) return '/placeholder-image.svg';
+    return path.startsWith('/') ? path : `/${path}`;
+  };
+
   // Extract unique hackathon IDs for filtering
   const hackathonIds = Array.from(new Set(galleryPhotos.map(item => item.hackathon.id)));
 
@@ -107,7 +113,7 @@ export default function PhotoGallery() {
             onClick={() => setActivePhoto(index)}
           >
             <Image
-              src={item.photo.src || '/placeholder-image.jpg'}
+              src={getImagePath(item.photo.src)}
               alt={item.photo.caption}
               fill
               className="object-cover transition-all duration-300 group-hover:scale-105"
@@ -133,7 +139,7 @@ export default function PhotoGallery() {
           >
             <div className="relative w-full h-[70vh]">
               <Image
-                src={filteredPhotos[activePhoto].photo.src || '/placeholder-image.jpg'}
+                src={getImagePath(filteredPhotos[activePhoto].photo.src)}
                 alt={filteredPhotos[activePhoto].photo.caption}
                 fill
                 className="object-contain"

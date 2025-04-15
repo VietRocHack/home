@@ -26,6 +26,12 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     setProjects(filteredProjects);
   }, [hackathonId]);
 
+  // Helper to format the image path correctly
+  const getImagePath = (path: string) => {
+    if (!path) return '/placeholder-project.svg';
+    return path.startsWith('/') ? path : `/${path}`;
+  };
+
   // If no projects, show empty state
   if (projects.length === 0) {
     return <div className="text-center py-8">No projects found.</div>;
@@ -59,7 +65,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
             {/* Project image */}
             <div className="relative h-64 lg:h-auto rounded-lg overflow-hidden">
               <Image
-                src={projects[activeProject].thumbnail || '/placeholder-project.jpg'}
+                src={getImagePath(projects[activeProject].thumbnail)}
                 alt={projects[activeProject].name}
                 fill
                 className="object-cover"

@@ -42,6 +42,12 @@ export default function HackathonTimeline() {
     }
   };
 
+  // Helper to format the image path correctly
+  const getImagePath = (path: string) => {
+    if (!path) return '/placeholder-image.svg';
+    return path.startsWith('/') ? path : `/${path}`;
+  };
+
   // If data isn't loaded yet, show a loading state
   if (timelineEvents.length === 0) {
     return <div className="text-center py-8">Loading hackathon timeline...</div>;
@@ -53,7 +59,7 @@ export default function HackathonTimeline() {
       <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div className="relative h-80 rounded-lg overflow-hidden">
           <Image
-            src={timelineEvents[activeEvent].mainImage || '/placeholder-image.jpg'}
+            src={getImagePath(timelineEvents[activeEvent].mainImage)}
             alt={timelineEvents[activeEvent].name}
             fill
             className="object-cover"

@@ -3,25 +3,91 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Global Components
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# UI Components
 
-## Navbar
-- Horizontal nav with logo and links
-- Fixed to top
+The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.
+
+## Interactive Logo
+
+- Visual style: Compact "{VRH}" that expands to "{VietRocHack 🇻🇳}" on hover
+- Behavior:
+  - Default state: Shows "{VRH}" in large bold text
+  - Hover state: Expands to show "{VietRocHack}" with Vietnam flag
+  - Click action: Navigates to home page
+- Animation:
+  - Smooth width transition (duration-500)
+  - Flag has subtle pulse animation
+  - Width expands based on content with extra padding
+- Implementation: 
+  - Uses Next.js Image component for SVG flag from public directory
+  - Responsive and consistent across all devices
+  - Text size: text-2xl with appropriate padding
 
 ## Button
-- Variants: primary, secondary, ghost
-- Use accent colors
-- Rounded, hover glow
+
+![Button component with variants]
+
+- Visual style: Rounded corners, clear hover effects
+- Variants:
+  - Primary: Red background with white text, pulsing glow on hover
+  - Secondary: Cyan background with dark text, cyan glow on hover
+  - Ghost: Transparent with border, shimmering highlight on hover
+- States: Default, hover (lifted), active (pressed), disabled (dimmed)
+- Sizes: Small, medium, large
+- Animation: Each variant has a unique hover animation
 
 ## Card
-- Used for projects and team
-- Rounded-2xl, shadow-lg
-- Optional hover zoom or border highlight
 
-## Modal (Optional)
-- Triggered from project/team cards for more info
+![Card component with variants]
 
-## Animation
-- Prefer Framer Motion
-- Use for scroll-in sections and hover effects
+- Visual style: Rounded corners, subtle shadow, dark background
+- Variants:
+  - Default: Simple hover shadow enhancement
+  - Project: Red border highlight on hover with vertical lift
+  - Team: Yellow border highlight on hover with vertical lift
+  - Zoom: Scale enlargement (105%) on hover
+- Content: Flexible children for headings, text, images, and actions
+- Animation: Smooth transitions, variant-specific glow effects
+
+## Navbar
+
+![Navbar component]
+
+- Visual style: Dark bar fixed at top of screen
+- Elements: Logo, navigation links, mobile menu button
+- States: Regular links, active link (cyan), hover (with animated underline)
+- Behavior: Highlights current page, collapses to mobile menu on small screens
+- Animation: Links lift slightly and animate underline on hover
+
+## Footer
+
+![Footer component]
+
+- Visual style: Dark background with 4-column layout
+- Sections: About, quick links, social links, contact
+- Elements: Heading, text, links, button
+- Animation: Links slide right slightly on hover with color change
+- Behavior: Collapses to single column on mobile
+
+## Layout
+
+![Layout structure]
+
+- Structure: Full-page wrapper with flexbox layout
+- Elements: Contains Navbar at top, main content area (flexible), Footer at bottom
+- Behavior: Ensures footer always at bottom even with short content
+- Visual: Sets the consistent page background
+
+## Container
+
+![Container usage]
+
+- Visual style: Invisible wrapper that centers content
+- Behavior: Sets max-width (1200px) with responsive padding
+- Usage: Wraps all main content sections on every page
+- Spacing: Consistent horizontal padding that adjusts by screen size

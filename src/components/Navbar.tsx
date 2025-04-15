@@ -2,19 +2,74 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
+// Vietnam Flag component using the SVG from public directory
+const VietnamFlag = () => (
+  <Image 
+    src="/Flag_of_Vietnam.svg" 
+    alt="Vietnam Flag" 
+    width={24} 
+    height={16} 
+    className="inline-block align-middle mx-1 animate-pulse"
+  />
+);
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState("auto");
+
+  useEffect(() => {
+    if (logoRef.current) {
+      if (isExpanded) {
+        setWidth(`${logoRef.current.scrollWidth + 40}px`); // Added extra padding
+      } else {
+        setWidth("90px"); // Increased width of collapsed state
+      }
+    }
+  }, [isExpanded]);
 
   const isActive = (path: string) => {
     return pathname === path;
+  };
+  
+  const handleLogoClick = () => {
+    router.push('/');
   };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[var(--background-secondary)] border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex justify-between items-center">
-        <Link href="/" className="font-bold text-xl hover:text-[var(--accent-red)] transition-colors duration-200">
-          VietRocHack
+        <Link href="/">
+          <div 
+            ref={logoRef}
+            onClick={handleLogoClick}
+            onMouseEnter={() => setIsExpanded(true)}
+            onMouseLeave={() => setIsExpanded(false)}
+            style={{ width }}
+            className={`font-bold text-2xl cursor-pointer transition-all duration-500 overflow-hidden whitespace-nowrap ${
+              isExpanded 
+                ? 'px-6 py-2 rounded-md' 
+                : 'hover:text-[var(--accent-red)]'
+            }`}
+          >
+            <div className="flex items-center">
+              {isExpanded ? (
+                <>
+                  {"{VietRocHack"}
+                  <VietnamFlag />
+                  {"}"}
+                </>
+              ) : (
+                "{VRH}"
+              )}
+            </div>
+          </div>
         </Link>
         
         <nav className="hidden md:flex space-x-6">

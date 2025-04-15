@@ -3,16 +3,9 @@ description: This is design and layout specification for the "Projects" page
 globs: 
 alwaysApply: false
 ---
----
-description: This is design and layout specification for the "Projects" page
-globs: 
-alwaysApply: false
----
-
 # Projects Page (`/projects`)
 
 ## Layout
-
 - Title: "Our Projects"
 - Subtitle: Short description of projects collection
 - Projects displayed using ProjectGallery component
@@ -54,3 +47,7 @@ alwaysApply: false
 - Mobile: Single column, stacked layout
 - Project image above details on mobile
 - Navigation persists across all screen sizes
+
+## Styling
+- Responsive grid (`grid-cols-1`, `sm:grid-cols-2`, `lg:grid-cols-3`)
+- Hover effect with border glow or accent

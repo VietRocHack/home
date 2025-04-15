@@ -3,11 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
----
-description: 
-globs: 
-alwaysApply: true
----
 # Theme
 
 ## Typography
@@ -21,9 +16,17 @@ alwaysApply: true
 - Text primary: #F4F4F5
 - Text secondary: #A1A1AA
 - Accents:
-  - Red: #FF3C38
-  - Yellow: #FFDC00
-  - Cyan: #22D3EE
+  - Red: #FF3C38 (Primary accent) - Used for main CTA buttons, important highlights
+  - Yellow: #FFDC00 (Secondary accent) - Used for secondary buttons, links, active states
+  - Cyan: #22D3EE (Used sparingly for contrast when needed)
+
+## Color Usage
+- Primary Red: Call-to-action buttons, important highlights, pulsing animations
+- Secondary Yellow: Navigation active states, secondary buttons, stat values, badges
+- Text & UI:
+  - White/light gray for primary text
+  - Medium gray for secondary text
+  - Dark grays for backgrounds and cards
 
 ## Layout
 - Max width: 1200px, centered

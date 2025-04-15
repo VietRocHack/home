@@ -4,6 +4,9 @@ import Button from '@/components/Button';
 import Card from '@/components/Card';
 import RotatingLogo from '@/components/RotatingLogo';
 import AnimatedStat from '@/components/AnimatedStat';
+import BackgroundCarousel from '@/components/BackgroundCarousel';
+import PhotoGallery from '@/components/PhotoGallery';
+import HackathonTimeline from '@/components/HackathonTimeline';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -74,7 +77,7 @@ export default function Home() {
   return (
     <Layout>
       {/* 1. Splash / Rotating Logo Section */}
-      <section className="py-24 md:py-32 flex items-center justify-center min-h-[80vh]">
+      <BackgroundCarousel>
         <Container>
           <div className="flex flex-col items-center text-center">
             <RotatingLogo />
@@ -83,7 +86,7 @@ export default function Home() {
             </p>
           </div>
         </Container>
-      </section>
+      </BackgroundCarousel>
 
       {/* 2. Hero Section */}
       <section className="py-16 bg-[var(--background-secondary)]">
@@ -141,6 +144,28 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* Hackathon Timeline Section */}
+      <section className="py-16 bg-[var(--background-secondary)]">
+        <Container>
+          <h2 className="text-3xl font-bold mb-4 text-center">Our Hacking Timeline</h2>
+          <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-10">
+            Follow our journey from first-time participants to award-winning hackathon veterans.
+          </p>
+          <HackathonTimeline />
+        </Container>
+      </section>
+
+      {/* Photo Gallery Section */}
+      <section className="py-16">
+        <Container>
+          <h2 className="text-3xl font-bold mb-4 text-center">Our Hackathon Journey</h2>
+          <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-10">
+            Swipe through our adventures across hackathons nationwide. We've built, broken, fixed, and celebrated from coast to coast.
+          </p>
+          <PhotoGallery />
         </Container>
       </section>
 

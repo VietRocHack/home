@@ -3,6 +3,12 @@ description:
 globs: 
 alwaysApply: true
 ---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
 # Layout Specification
 
 ## Overall Structure

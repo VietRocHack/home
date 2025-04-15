@@ -1,5 +1,10 @@
 ---
-description: 
+description: This is design and layout specification for the "Contact" page
+globs: 
+alwaysApply: false
+---
+---
+description: This is design and layout specification for the "Team" page
 globs: 
 alwaysApply: false
 ---

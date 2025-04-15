@@ -1,5 +1,10 @@
 ---
-description: 
+description: This is design and layout specification for the "Vision" page
+globs: 
+alwaysApply: false
+---
+---
+description: This is design and layout specification for the "Vision" page
 globs: 
 alwaysApply: false
 ---

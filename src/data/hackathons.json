@@ -167,9 +167,25 @@
       "state": "MD",
       "achievement": "Winner General Prize",
       "description": "Developed 'Young Heroes', a safe and accessible 911 call simulation platform for kids.",
-      "mainImage": "",
+      "mainImage": "/team/hophacks_2024_demo_team_pic.jpg",
       "website": "https://hophacks.com",
-      "photos": [],
+      "photos":  [
+        {
+          "src": "/team/hophacks_2024_demo_team_pic.jpg",
+          "caption": "Demoing our project at HopHacks 2024",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/hophacks_2024_team_find_out_we_win.png",
+          "caption": "The moment we found out we won!",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/hophacks_2024_team_third_prize_pic.jpg",
+          "caption": "Accepting our 3rd place prize at HopHacks",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "youngheroes",
@@ -208,9 +224,45 @@
       "state": "CA",
       "achievement": "Best Use of XR",
       "description": "Developed an AI-powered extended reality study assistant to enhance personalized learning experiences.",
-      "mainImage": "",
+      "mainImage": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
       "website": "https://cal-hacks-11-0.devpost.com",
-      "photos": [],
+      "photos":  [
+        {
+          "src": "/team/calhacks_2024_team_at_apple_hq.jpg",
+          "caption": "Visit to Apple HQ during CalHacks",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/calhacks_2024_team_with_lananh_in_sanfrancisco.jpg",
+          "caption": "Team exploring San Francisco",
+          "isFeatured": false
+        },
+        {
+          "src": "/team/calhacks_2024_team_berkeley_backdrop_with_bear.jpg",
+          "caption": "Posing with the Berkeley Bear",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/calhacks_2024_demo_team_pic.jpg",
+          "caption": "Team demo at CalHacks",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/calhacks_2024_team_at_google_hq.jpg",
+          "caption": "Visit to Google campus",
+          "isFeatured": false
+        },
+        {
+          "src": "/team/calhacks_2024_team_vapi_award_pic.jpg",
+          "caption": "Winner of the VAPI API prize",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
+          "caption": "People's Choice Award winners",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "teachxr",
@@ -272,9 +324,15 @@
       "state": "TX",
       "achievement": "Best Real Estate Hack",
       "description": "Developed 'Realty Wingman', an AI assistant for real estate agents to enhance house visits with real-time emotion and attention analysis.",
-      "mainImage": "",
+      "mainImage": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
       "website": "https://hackutd.co",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
+          "caption": "At the HackUTD opening ceremony",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "realtywingman",
@@ -304,7 +362,7 @@
       "state": "MD",
       "achievement": "Best Developer Tool",
       "description": "Developed 'DMPN', a real-time productivity tracker and gamified platform to monitor and enhance developers' focus and efficiency.",
-      "mainImage": "",
+      "mainImage": "/team/bitcamp_2025_demo_team_pic.jpg",
       "website": "https://bit.camp",
       "photos": [],
       "projects": [

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { LOGO_CHANGE_EVENT } from './BackgroundCarousel';
 
+// List of main variants
 const hackVariants = [
   "VietRocHack",
   "VietTravelHack",
@@ -19,7 +21,7 @@ const rareVariants = [
 ];
 
 // Chance of showing the rare variant - increase for testing
-const RARE_CHANCE = 0.02;
+const RARE_CHANCE = 0.5;
 
 export default function RotatingLogo() {
   const [currentVariant, setCurrentVariant] = useState(0);
@@ -27,6 +29,24 @@ export default function RotatingLogo() {
   const [showRare, setShowRare] = useState(false);
   const [rareViewMode, setRareViewMode] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const previousVariantRef = useRef(currentVariant);
+  const previousRareRef = useRef(showRare);
+
+  // Function to trigger background change
+  const triggerBackgroundChange = () => {
+    // Dispatch custom event for background to listen to
+    window.dispatchEvent(new Event(LOGO_CHANGE_EVENT));
+  };
+
+  // Monitor logo changes to sync with background
+  useEffect(() => {
+    // If the logo variant has changed, trigger background change
+    if (previousVariantRef.current !== currentVariant || previousRareRef.current !== showRare) {
+      triggerBackgroundChange();
+      previousVariantRef.current = currentVariant;
+      previousRareRef.current = showRare;
+    }
+  }, [currentVariant, showRare]);
 
   // Function to trigger the rare variant
   const triggerRareVariant = () => {
@@ -38,7 +58,7 @@ export default function RotatingLogo() {
     if (!rareViewMode) {
       setTimeout(() => {
         setShowRare(false);
-      }, 100);
+      }, 1000);
     }
   };
 
@@ -95,7 +115,7 @@ export default function RotatingLogo() {
   // Create special styles for the rare variant
   const logoStyle = showRare ? {
     color: 'var(--accent-yellow)',
-    textShadow: '0 0 10px var(--accent-yellow)',
+    textShadow: '0 0 15px var(--accent-yellow)',
     transform: 'scale(1.1)',
     transition: 'all 0.1s ease'
   } : {};
@@ -104,15 +124,15 @@ export default function RotatingLogo() {
   const currentLogoText = showRare ? rareVariants[currentRareVariant] : hackVariants[currentVariant];
 
   return (
-    <div className="relative">
+    <div className="relative flex justify-center items-center">
       <h1 
-        className="text-6xl md:text-7xl font-bold mb-6 transition-all duration-700"
+        className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-center"
         style={logoStyle}
       >
         {currentLogoText}
       </h1>
       {rareViewMode && (
-        <div className="absolute top-0 right-0 text-xs px-2 py-1 bg-[var(--accent-yellow)] text-black rounded-md">
+        <div className="absolute -top-4 -right-4 text-xs px-2 py-1 bg-[var(--accent-yellow)] text-black rounded-md">
           Rare Mode
         </div>
       )}

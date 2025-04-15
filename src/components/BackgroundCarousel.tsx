@@ -19,6 +19,9 @@ const teamPhotos = [
   '/team/bitcamp_2025_demo_team_pic.jpg'
 ];
 
+// Create a custom event name for logo-background synchronization
+export const LOGO_CHANGE_EVENT = 'vietrochack-logo-change';
+
 interface BackgroundCarouselProps {
   children: React.ReactNode;
 }
@@ -27,29 +30,56 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [nextPhotoIndex, setNextPhotoIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isSyncedChange, setIsSyncedChange] = useState(false);
 
+  // Handle logo change event to sync background change
   useEffect(() => {
+    const handleLogoChange = () => {
+      if (!isTransitioning) {
+        setIsSyncedChange(true);
+        changeBackgroundImage();
+      }
+    };
+
+    // Listen for the custom logo change event
+    window.addEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
+    
+    return () => {
+      window.removeEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
+    };
+  }, [isTransitioning]);
+
+  // Function to change the background image
+  const changeBackgroundImage = () => {
+    // Start transition
+    setIsTransitioning(true);
+    
+    // After transition completes, update indices
+    setTimeout(() => {
+      setCurrentPhotoIndex(nextPhotoIndex);
+      setNextPhotoIndex((nextPhotoIndex + 1) % teamPhotos.length);
+      setIsTransitioning(false);
+      setIsSyncedChange(false);
+    }, 1000); // Match the transition duration from CSS
+  };
+
+  // Automatic background rotation (but only when not in synced mode)
+  useEffect(() => {
+    if (isSyncedChange) return;
+    
     const interval = setInterval(() => {
-      // Start transition
-      setIsTransitioning(true);
-      
-      // After transition completes, update indices
-      setTimeout(() => {
-        setCurrentPhotoIndex(nextPhotoIndex);
-        setNextPhotoIndex((nextPhotoIndex + 1) % teamPhotos.length);
-        setIsTransitioning(false);
-      }, 1000); // Match the transition duration from CSS
+      changeBackgroundImage();
     }, 8000); // Change image every 8 seconds
     
     return () => clearInterval(interval);
-  }, [nextPhotoIndex]);
+  }, [nextPhotoIndex, isSyncedChange]);
 
   return (
-    <div className="relative w-full min-h-[80vh] overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
       {/* Current photo (fading out during transition) */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-          isTransitioning ? 'opacity-0' : 'opacity-30'
+        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
+          isTransitioning ? 'opacity-0' : 'opacity-40'
         }`}
       >
         <Image
@@ -64,8 +94,8 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
       
       {/* Next photo (fading in during transition) */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-          isTransitioning ? 'opacity-30' : 'opacity-0'
+        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
+          isTransitioning ? 'opacity-40' : 'opacity-0'
         }`}
       >
         <Image
@@ -77,11 +107,11 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
         />
       </div>
       
-      {/* Dark overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
+      {/* Dark overlay to ensure text readability but not too dark */}
+      <div className="absolute inset-0 bg-opacity-60 z-10"></div>
       
-      {/* Content */}
-      <div className="relative z-20 w-full h-full flex items-center justify-center">
+      {/* Content - centered vertically and horizontally */}
+      <div className="relative z-20 w-full h-full flex items-center justify-center py-16">
         {children}
       </div>
     </div>

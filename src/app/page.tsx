@@ -78,14 +78,20 @@ export default function Home() {
     <Layout>
       {/* 1. Splash / Rotating Logo Section */}
       <BackgroundCarousel>
-        <Container>
-          <div className="flex flex-col items-center text-center">
-            <RotatingLogo />
-            <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-12">
-              Vietnamese hackers from the University of Rochester. Some of this site is real.
-            </p>
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl px-4">
+          <RotatingLogo />
+          <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-8">
+            Vietnamese hackers from the University of Rochester. Some of this site is real.
+          </p>
+          <div className="flex gap-4 mt-4">
+            <Link href="/projects">
+              <Button variant="primary" size="lg">Explore Projects</Button>
+            </Link>
+            <Link href="/team">
+              <Button variant="ghost" size="lg">Meet the Team</Button>
+            </Link>
           </div>
-        </Container>
+        </div>
       </BackgroundCarousel>
 
       {/* 2. Hero Section */}

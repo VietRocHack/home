@@ -15,7 +15,6 @@ const hackVariants = [
 
 // List of rare variants that will briefly appear
 const rareVariants = [
-  "VietRapeHack",
   "Địt mẹ Phúc Nguyên",
   "VietOnlyFansHack"
 ];

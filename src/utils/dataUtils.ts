@@ -1,4 +1,5 @@
 import hackathonData from '@/data/hackathons.json';
+import teamData from '@/data/team.json';
 
 // Types
 export interface Photo {
@@ -15,6 +16,8 @@ export interface Project {
   thumbnail: string;
   demoLink: string;
   githubLink: string;
+  devpostLink: string;
+  youtubeDemo: string | null;
   techStack: string[];
   achievements: string[];
   teamMembers: string[];
@@ -122,14 +125,14 @@ export function getHackathonByProjectId(projectId: string): Hackathon | undefine
  * Get all team members
  */
 export function getAllTeamMembers(): TeamMember[] {
-  return hackathonData.team;
+  return teamData.team;
 }
 
 /**
  * Get a specific team member by ID
  */
 export function getTeamMemberById(id: string): TeamMember | undefined {
-  return hackathonData.team.find(member => member.id === id);
+  return teamData.team.find(member => member.id === id);
 }
 
 /**

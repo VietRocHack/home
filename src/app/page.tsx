@@ -7,6 +7,7 @@ import AnimatedStat from '@/components/AnimatedStat';
 import BackgroundCarousel from '@/components/BackgroundCarousel';
 import PhotoGallery from '@/components/PhotoGallery';
 import HackathonTimeline from '@/components/HackathonTimeline';
+import ProjectGallery from '@/components/ProjectGallery';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getFeaturedProjects, getSummaryStatistics } from '@/utils/dataUtils';
@@ -92,30 +93,12 @@ export default function Home() {
             A few things we're not totally embarrassed to show:
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <Card variant="project" key={project.id}>
-                <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
-                <p className="text-[var(--foreground-secondary)] mb-4">
-                  {project.tagline}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.slice(0, 3).map((tag, i) => (
-                    <span key={i} className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3 mt-auto">
-                  <Link href={project.githubLink}>
-                    <Button variant="secondary" size="sm">GitHub</Button>
-                  </Link>
-                  <Link href={project.demoLink}>
-                    <Button variant="ghost" size="sm">Demo</Button>
-                  </Link>
-                </div>
-              </Card>
-            ))}
+          <ProjectGallery />
+          
+          <div className="flex justify-center mt-8">
+            <Link href="/projects">
+              <Button variant="primary" size="lg">See All Projects</Button>
+            </Link>
           </div>
         </Container>
       </section>

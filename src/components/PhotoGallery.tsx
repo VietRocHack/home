@@ -41,6 +41,42 @@ export default function PhotoGallery() {
     return <div className="text-center py-8">Loading photo gallery...</div>;
   }
 
+  // Show a message if the filtered photos are empty
+  if (filteredPhotos.length === 0 && filter) {
+    return (
+      <div className="w-full">
+        {/* Filter buttons */}
+        <div className="flex flex-wrap gap-2 mb-8 justify-center">
+          <button 
+            className={`px-4 py-2 rounded-md ${!filter ? 'bg-[var(--accent-red)] text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
+            onClick={() => setFilter(null)}
+          >
+            All Events
+          </button>
+          {hackathonIds.map((id) => (
+            <button 
+              key={id}
+              className={`px-4 py-2 rounded-md ${filter === id ? 'bg-[var(--accent-cyan)] text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
+              onClick={() => setFilter(id)}
+            >
+              {getHackathonName(id)}
+            </button>
+          ))}
+        </div>
+        
+        <div className="text-center py-8">
+          No photos found for {getHackathonName(filter)}. 
+          <button 
+            className="ml-2 text-[var(--accent-cyan)] underline"
+            onClick={() => setFilter(null)}
+          >
+            View all photos
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       {/* Filter buttons */}
@@ -71,13 +107,13 @@ export default function PhotoGallery() {
             onClick={() => setActivePhoto(index)}
           >
             <Image
-              src={item.photo.src}
+              src={item.photo.src || '/placeholder-image.jpg'}
               alt={item.photo.caption}
               fill
               className="object-cover transition-all duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
               <p className="text-white font-medium">{item.photo.caption}</p>
               <p className="text-gray-300 text-sm">{item.hackathon.name} • {item.hackathon.location}</p>
             </div>
@@ -97,7 +133,7 @@ export default function PhotoGallery() {
           >
             <div className="relative w-full h-[70vh]">
               <Image
-                src={filteredPhotos[activePhoto].photo.src}
+                src={filteredPhotos[activePhoto].photo.src || '/placeholder-image.jpg'}
                 alt={filteredPhotos[activePhoto].photo.caption}
                 fill
                 className="object-contain"

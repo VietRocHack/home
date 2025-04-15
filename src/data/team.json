@@ -60,6 +60,51 @@
         "linkedin": "https://linkedin.com/in/trung"
       },
       "skills": ["Python", "PyTorch", "TensorFlow", "Computer Vision", "NLP", "Data Analysis"]
+    },
+    {
+      "id": "duc",
+      "name": "Duc Nguyen",
+      "role": "Frontend Developer",
+      "school": "University of Rochester",
+      "major": "Computer Science",
+      "graduation": 2025,
+      "bio": "UI/UX enthusiast with a keen eye for design. Specializes in creating engaging and responsive user interfaces.",
+      "photo": "/team/duc.jpg",
+      "socialLinks": {
+        "github": "https://github.com/ducnguyen",
+        "linkedin": "https://linkedin.com/in/ducnguyen"
+      },
+      "skills": ["React", "Vue.js", "Figma", "Tailwind CSS", "JavaScript", "TypeScript"]
+    },
+    {
+      "id": "hoang",
+      "name": "Hoang Tran",
+      "role": "Backend Engineer",
+      "school": "University of Rochester",
+      "major": "Computer Science",
+      "graduation": 2024,
+      "bio": "Backend enthusiast who loves building scalable systems and solving complex problems.",
+      "photo": "/team/hoang.jpg",
+      "socialLinks": {
+        "github": "https://github.com/hoangtran",
+        "linkedin": "https://linkedin.com/in/hoangtran"
+      },
+      "skills": ["Python", "Node.js", "AWS", "Docker", "Flask", "Firebase"]
+    },
+    {
+      "id": "lam",
+      "name": "Lam Pham",
+      "role": "AI/ML Engineer",
+      "school": "University of Rochester",
+      "major": "Data Science",
+      "graduation": 2024,
+      "bio": "AI and machine learning specialist with a passion for building intelligent systems that solve real-world problems.",
+      "photo": "/team/lam.jpg",
+      "socialLinks": {
+        "github": "https://github.com/lampham",
+        "linkedin": "https://linkedin.com/in/lampham"
+      },
+      "skills": ["Python", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "Data Science"]
     }
   ]
 } 

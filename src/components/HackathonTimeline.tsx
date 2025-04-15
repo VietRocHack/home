@@ -31,6 +31,17 @@ export default function HackathonTimeline() {
     }
   }, [activeEvent, timelineEvents]);
 
+  // Function to scroll timeline left/right
+  const scrollTimeline = (direction: 'left' | 'right') => {
+    if (timelineRef.current) {
+      const scrollAmount = direction === 'left' ? -300 : 300;
+      timelineRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   // If data isn't loaded yet, show a loading state
   if (timelineEvents.length === 0) {
     return <div className="text-center py-8">Loading hackathon timeline...</div>;
@@ -42,7 +53,7 @@ export default function HackathonTimeline() {
       <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div className="relative h-80 rounded-lg overflow-hidden">
           <Image
-            src={timelineEvents[activeEvent].mainImage}
+            src={timelineEvents[activeEvent].mainImage || '/placeholder-image.jpg'}
             alt={timelineEvents[activeEvent].name}
             fill
             className="object-cover"
@@ -86,33 +97,56 @@ export default function HackathonTimeline() {
         </div>
       </div>
       
-      {/* Timeline scroll */}
-      <div 
-        ref={timelineRef} 
-        className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar"
-        style={{ scrollbarWidth: 'none' }}
-      >
-        <div className="w-full h-0.5 bg-gray-700 absolute top-4 left-0 right-0 z-0"></div>
+      {/* Timeline scroll with navigation buttons */}
+      <div className="relative">
+        {/* Left scroll button */}
+        <button 
+          onClick={() => scrollTimeline('left')}
+          className="absolute left-0 top-4 z-20 bg-gray-800 rounded-full p-2 hover:bg-gray-700"
+          aria-label="Scroll timeline left"
+        >
+          ←
+        </button>
+
+        {/* Right scroll button */}
+        <button 
+          onClick={() => scrollTimeline('right')}
+          className="absolute right-0 top-4 z-20 bg-gray-800 rounded-full p-2 hover:bg-gray-700"
+          aria-label="Scroll timeline right"
+        >
+          →
+        </button>
         
-        <div className="inline-flex gap-16 px-8 relative">
-          {timelineEvents.map((event, index) => (
-            <div 
-              key={event.id}
-              data-index={index}
-              className={`relative cursor-pointer pt-8 ${index === activeEvent ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
-              onClick={() => setActiveEvent(index)}
-            >
+        {/* Timeline container */}
+        <div 
+          ref={timelineRef} 
+          className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar mx-10"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {/* Timeline line */}
+          <div className="w-full h-0.5 bg-gray-700 absolute top-4 left-0 right-0 z-0"></div>
+          
+          {/* Timeline events */}
+          <div className="inline-flex gap-12 md:gap-16 px-8 relative">
+            {timelineEvents.map((event, index) => (
               <div 
-                className={`w-4 h-4 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 ${
-                  index === activeEvent ? 'bg-[var(--accent-red)]' : 'bg-gray-500'
-                }`}
-              ></div>
-              <div className="text-center min-w-[120px]">
-                <p className="font-medium">{event.name}</p>
-                <p className="text-sm text-[var(--foreground-secondary)]">{event.date}</p>
+                key={event.id}
+                data-index={index}
+                className={`relative cursor-pointer pt-8 ${index === activeEvent ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
+                onClick={() => setActiveEvent(index)}
+              >
+                <div 
+                  className={`w-4 h-4 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 ${
+                    index === activeEvent ? 'bg-[var(--accent-red)]' : 'bg-gray-500'
+                  }`}
+                ></div>
+                <div className="text-center min-w-[100px] max-w-[140px]">
+                  <p className="font-medium truncate">{event.name}</p>
+                  <p className="text-sm text-[var(--foreground-secondary)]">{event.date}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       

@@ -7,6 +7,8 @@ import { getHackathonsByDate, Hackathon } from '@/utils/dataUtils';
 export default function HackathonTimeline() {
   const [activeEvent, setActiveEvent] = useState(0);
   const [timelineEvents, setTimelineEvents] = useState<Hackathon[]>([]);
+  const [isPaused, setIsPaused] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   
   // Load hackathon data
@@ -14,6 +16,31 @@ export default function HackathonTimeline() {
     const hackathons = getHackathonsByDate();
     setTimelineEvents(hackathons);
   }, []);
+  
+  // Function to change event with direction animation
+  const changeEvent = (newIndex: number) => {
+    if (newIndex === activeEvent) return;
+    
+    // Determine slide direction
+    setSlideDirection(newIndex > activeEvent ? 'left' : 'right');
+    setActiveEvent(newIndex);
+    
+    // Reset animation after it completes
+    setTimeout(() => {
+      setSlideDirection(null);
+    }, 500); // Match this to the CSS transition duration
+  };
+
+  // Auto-rotate hackathons every 6 seconds
+  useEffect(() => {
+    if (timelineEvents.length <= 1 || isPaused) return;
+    
+    const timer = setInterval(() => {
+      changeEvent((activeEvent + 1) % timelineEvents.length);
+    }, 6000);
+    
+    return () => clearInterval(timer);
+  }, [timelineEvents.length, isPaused, activeEvent]);
   
   // Auto-scroll the timeline to active event
   useEffect(() => {
@@ -56,8 +83,13 @@ export default function HackathonTimeline() {
   return (
     <div className="w-full">
       {/* Main display of current event */}
-      <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-        <div className="relative h-80 rounded-lg overflow-hidden">
+      <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}>
+        <div className={`relative h-80 rounded-lg overflow-hidden transition-transform duration-500 ease-in-out ${
+          slideDirection === 'left' ? 'animate-slide-left' : 
+          slideDirection === 'right' ? 'animate-slide-right' : ''
+        }`}>
           <Image
             src={getImagePath(timelineEvents[activeEvent].mainImage)}
             alt={timelineEvents[activeEvent].name}
@@ -73,7 +105,10 @@ export default function HackathonTimeline() {
           </div>
         </div>
         
-        <div>
+        <div className={`transition-transform duration-500 ease-in-out ${
+          slideDirection === 'left' ? 'animate-slide-left' : 
+          slideDirection === 'right' ? 'animate-slide-right' : ''
+        }`}>
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-2xl font-bold">{timelineEvents[activeEvent].name}</h3>
             <span className="text-[var(--foreground-secondary)]">•</span>
@@ -87,14 +122,14 @@ export default function HackathonTimeline() {
           <div className="flex gap-3">
             <button 
               className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={() => setActiveEvent(prev => Math.max(0, prev - 1))}
+              onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
               disabled={activeEvent === 0}
             >
               Previous
             </button>
             <button 
               className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={() => setActiveEvent(prev => Math.min(timelineEvents.length - 1, prev + 1))}
+              onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
               disabled={activeEvent === timelineEvents.length - 1}
             >
               Next
@@ -139,7 +174,7 @@ export default function HackathonTimeline() {
                 key={event.id}
                 data-index={index}
                 className={`relative cursor-pointer pt-8 ${index === activeEvent ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
-                onClick={() => setActiveEvent(index)}
+                onClick={() => changeEvent(index)}
               >
                 <div 
                   className={`w-4 h-4 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 ${
@@ -160,6 +195,27 @@ export default function HackathonTimeline() {
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+      `}</style>
+      
+      {/* Add animation keyframes */}
+      <style jsx global>{`
+        @keyframes slideLeft {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
+        
+        @keyframes slideRight {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+        
+        .animate-slide-left {
+          animation: slideLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-slide-right {
+          animation: slideRight 0.5s ease-in-out forwards;
         }
       `}</style>
     </div>

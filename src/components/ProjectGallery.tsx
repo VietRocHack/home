@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/Button';
@@ -10,6 +10,8 @@ import { getAllProjects, Project, getHackathonByProjectId } from '@/utils/dataUt
 export default function ProjectGallery({ hackathonId }: { hackathonId?: string }) {
   const [activeProject, setActiveProject] = useState(0);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [isPaused, setIsPaused] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
 
   // Load projects
   useEffect(() => {
@@ -26,6 +28,31 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     setProjects(filteredProjects);
   }, [hackathonId]);
 
+  // Function to change project with direction animation
+  const changeProject = (newIndex: number) => {
+    if (newIndex === activeProject) return;
+    
+    // Determine slide direction
+    setSlideDirection(newIndex > activeProject ? 'left' : 'right');
+    setActiveProject(newIndex);
+    
+    // Reset animation after it completes
+    setTimeout(() => {
+      setSlideDirection(null);
+    }, 500); // Match this to the CSS transition duration
+  };
+
+  // Auto-rotate projects every 5 seconds
+  useEffect(() => {
+    if (projects.length <= 1 || isPaused) return;
+    
+    const timer = setInterval(() => {
+      changeProject((activeProject + 1) % projects.length);
+    }, 5000);
+    
+    return () => clearInterval(timer);
+  }, [projects.length, isPaused, activeProject]);
+
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
     if (!path) return '/placeholder-project.svg';
@@ -40,18 +67,20 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
   return (
     <div className="w-full">
       {/* Project display */}
-      <div className="relative mb-8">
+      <div className="relative mb-8 overflow-hidden" 
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}>
         {/* Navigation buttons */}
         <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 z-10 px-2">
           <button 
-            onClick={() => setActiveProject((activeProject - 1 + projects.length) % projects.length)}
+            onClick={() => changeProject((activeProject - 1 + projects.length) % projects.length)}
             className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white"
             aria-label="Previous project"
           >
             ←
           </button>
           <button 
-            onClick={() => setActiveProject((activeProject + 1) % projects.length)}
+            onClick={() => changeProject((activeProject + 1) % projects.length)}
             className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white"
             aria-label="Next project"
           >
@@ -60,7 +89,10 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         </div>
 
         {/* Current project */}
-        <Card variant="project" className="relative">
+        <Card variant="project" className={`relative transition-transform duration-500 ease-in-out ${
+          slideDirection === 'left' ? 'animate-slide-left' : 
+          slideDirection === 'right' ? 'animate-slide-right' : ''
+        }`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Project image */}
             <div className="relative h-64 lg:h-auto rounded-lg overflow-hidden">
@@ -132,7 +164,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         {projects.map((_, index) => (
           <button
             key={index}
-            onClick={() => setActiveProject(index)}
+            onClick={() => changeProject(index)}
             className={`w-3 h-3 rounded-full ${
               index === activeProject ? 'bg-[var(--accent-red)]' : 'bg-gray-500'
             }`}
@@ -140,6 +172,27 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
           />
         ))}
       </div>
+
+      {/* Add animation keyframes */}
+      <style jsx global>{`
+        @keyframes slideLeft {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
+        
+        @keyframes slideRight {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+        
+        .animate-slide-left {
+          animation: slideLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-slide-right {
+          animation: slideRight 0.5s ease-in-out forwards;
+        }
+      `}</style>
     </div>
   );
 } 

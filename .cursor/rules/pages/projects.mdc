@@ -4,24 +4,53 @@ globs:
 alwaysApply: false
 ---
 ---
-description: This is design and layout specification for the "Team" page
+description: This is design and layout specification for the "Projects" page
 globs: 
 alwaysApply: false
 ---
+
 # Projects Page (`/projects`)
 
 ## Layout
+
 - Title: "Our Projects"
-- Optional tag filters: stack, track, year
-- Grid layout of cards
+- Subtitle: Short description of projects collection
+- Projects displayed using ProjectGallery component
 
+## Project Gallery
+
+- Uses the ProjectGallery component
+- Features:
+  - Left/right navigation arrows to move between projects
+  - Navigation dots at the bottom for quick access
+  - Responsive layouts: grid on desktop, stacked on mobile
+  - Project image on left/top, details on right/bottom
+  
 ## Project Card
-- Title
-- Short description
-- Tech tags (in pill style)
-- Buttons: GitHub, Demo
-- Optional link to detail page or modal
 
-## Styling
-- Responsive grid (`grid-cols-1`, `sm:grid-cols-2`, `lg:grid-cols-3`)
-- Hover effect with border glow or accent
+- Project thumbnail (16:9 ratio)
+- Project name (heading)
+- Tagline (subheading)
+- Project description (paragraph)
+- Tech stack tags (pill badges)
+- Achievement tags (pill badges with special styling)
+- Action links:
+  - GitHub repository
+  - Live demo
+  - Devpost submission
+  - YouTube demo (if available)
+
+## Filtering
+
+- Option to filter projects by:
+  - Hackathon
+  - Technology stack
+  - Featured status
+
+## Responsive Behavior
+
+- Desktop: Grid layout with 2+ columns
+- Tablet: 2 column grid
+- Mobile: Single column, stacked layout
+- Project image above details on mobile
+- Navigation persists across all screen sizes

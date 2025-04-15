@@ -21,7 +21,7 @@ const rareVariants = [
 ];
 
 // Chance of showing the rare variant - increase for testing
-const RARE_CHANCE = 0.5;
+const RARE_CHANCE = 0.02;
 
 export default function RotatingLogo() {
   const [currentVariant, setCurrentVariant] = useState(0);

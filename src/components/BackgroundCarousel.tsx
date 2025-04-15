@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 // List all team photos
@@ -27,63 +27,100 @@ interface BackgroundCarouselProps {
 }
 
 export default function BackgroundCarousel({ children }: BackgroundCarouselProps) {
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [nextPhotoIndex, setNextPhotoIndex] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isSyncedChange, setIsSyncedChange] = useState(false);
+  // Only track a single active image index
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
+  
+  // Timer references
+  const fadeTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const carouselTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isBusy = useRef(false);
 
-  // Handle logo change event to sync background change
+  // Clear all active timers
+  const clearAllTimers = () => {
+    if (fadeTimerRef.current) {
+      clearTimeout(fadeTimerRef.current);
+      fadeTimerRef.current = null;
+    }
+    if (carouselTimerRef.current) {
+      clearInterval(carouselTimerRef.current);
+      carouselTimerRef.current = null;
+    }
+  };
+
+  // Function to advance to the next image
+  const advanceToNextImage = () => {
+    if (isBusy.current) return;
+    isBusy.current = true;
+    
+    // Fade out current image
+    setFadeIn(false);
+    
+    // Wait for fade-out to complete, then change image
+    fadeTimerRef.current = setTimeout(() => {
+      setActiveImageIndex(prevIndex => (prevIndex + 1) % teamPhotos.length);
+      
+      // Wait a moment for the new image to load, then fade in
+      setTimeout(() => {
+        setFadeIn(true);
+        isBusy.current = false;
+      }, 50);
+    }, 500); // Half the transition time for fade-out
+  };
+
+  // Handle logo change event
   useEffect(() => {
     const handleLogoChange = () => {
-      if (!isTransitioning) {
-        setIsSyncedChange(true);
-        changeBackgroundImage();
-      }
+      // Cancel any existing timers
+      clearAllTimers();
+      
+      // Advance to the next image
+      advanceToNextImage();
+      
+      // Start new timer after advancing
+      startCarouselTimer();
     };
-
-    // Listen for the custom logo change event
-    window.addEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
     
+    window.addEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
     return () => {
       window.removeEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
     };
-  }, [isTransitioning]);
+  }, []);
 
-  // Function to change the background image
-  const changeBackgroundImage = () => {
-    // Start transition
-    setIsTransitioning(true);
+  // Start carousel timer
+  const startCarouselTimer = () => {
+    // Clear any existing timer first
+    if (carouselTimerRef.current) {
+      clearInterval(carouselTimerRef.current);
+    }
     
-    // After transition completes, update indices
-    setTimeout(() => {
-      setCurrentPhotoIndex(nextPhotoIndex);
-      setNextPhotoIndex((nextPhotoIndex + 1) % teamPhotos.length);
-      setIsTransitioning(false);
-      setIsSyncedChange(false);
-    }, 1000); // Match the transition duration from CSS
+    // Start a new timer
+    carouselTimerRef.current = setInterval(() => {
+      advanceToNextImage();
+    }, 8000);
   };
 
-  // Automatic background rotation (but only when not in synced mode)
+  // Start carousel on mount and handle cleanup
   useEffect(() => {
-    if (isSyncedChange) return;
+    // Ensure image is faded in at start
+    setFadeIn(true);
     
-    const interval = setInterval(() => {
-      changeBackgroundImage();
-    }, 8000); // Change image every 8 seconds
+    // Start the carousel timer
+    startCarouselTimer();
     
-    return () => clearInterval(interval);
-  }, [nextPhotoIndex, isSyncedChange]);
+    // Cleanup on unmount
+    return clearAllTimers;
+  }, []);
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Current photo (fading out during transition) */}
+      {/* Single background image with fade effect */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
-          isTransitioning ? 'opacity-0' : 'opacity-40'
-        }`}
+        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 
+          ${fadeIn ? 'opacity-40' : 'opacity-0'}`}
       >
         <Image
-          src={teamPhotos[currentPhotoIndex]}
+          src={teamPhotos[activeImageIndex]}
           alt="Team background"
           fill
           className="object-cover"
@@ -92,25 +129,10 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
         />
       </div>
       
-      {/* Next photo (fading in during transition) */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
-          isTransitioning ? 'opacity-40' : 'opacity-0'
-        }`}
-      >
-        <Image
-          src={teamPhotos[nextPhotoIndex]}
-          alt="Team background"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
-      
-      {/* Dark overlay to ensure text readability but not too dark */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-opacity-60 z-10"></div>
       
-      {/* Content - centered vertically and horizontally */}
+      {/* Content */}
       <div className="relative z-20 w-full h-full flex items-center justify-center py-16">
         {children}
       </div>

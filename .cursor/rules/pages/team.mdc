@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Team Page (`/team`)
+
+## Layout
+- Title: "Meet the Team"
+- Grid layout: responsive (1–2–4)
+- Each team member card includes:
+  - Name
+  - Role
+  - Fun fact or short bio
+  - Avatar
+  - GitHub / LinkedIn links
+- Optional: Modal with extended info
+
+## Styling
+- Card background: #1E1E1E
+- Rounded corners, shadow
+- Hover: slight zoom or tooltip

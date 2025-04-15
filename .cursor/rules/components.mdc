@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Global Components
+
+## Navbar
+- Horizontal nav with logo and links
+- Fixed to top
+
+## Button
+- Variants: primary, secondary, ghost
+- Use accent colors
+- Rounded, hover glow
+
+## Card
+- Used for projects and team
+- Rounded-2xl, shadow-lg
+- Optional hover zoom or border highlight
+
+## Modal (Optional)
+- Triggered from project/team cards for more info
+
+## Animation
+- Prefer Framer Motion
+- Use for scroll-in sections and hover effects

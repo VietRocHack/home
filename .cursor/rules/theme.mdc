@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Theme
+
+## Typography
+- Font: Space Grotesk (Google Fonts)
+- Headings: font-weight 600–700
+- Body: font-weight 400
+- Use Tailwind classes: text-gray-100 (primary), text-gray-400 (secondary)
+
+## Colors
+- Background: #0F0F0F or #121212
+- Text primary: #F4F4F5
+- Text secondary: #A1A1AA
+- Accents:
+  - Red: #FF3C38
+  - Yellow: #FFDC00
+  - Cyan: #22D3EE
+
+## Layout
+- Max width: 1200px, centered
+- Horizontal padding: `px-4` (mobile), `px-8` (desktop)
+- Section spacing: `py-16`
+- Responsive breakpoints: Tailwind (`sm`, `md`, `lg`, `xl`)

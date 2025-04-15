@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Footer (global)
+
+## Content
+- Text: "© 2025 VietRocHack – Made with <3"
+- Links:
+  - GitHub
+  - Devpost
+  - Email
+
+## Styling
+- Sticky or fixed bottom
+- Font: text-sm or text-xs
+- Divider: top border `border-t border-[#333]`
+- Icons with hover accent color

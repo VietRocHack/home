@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Home Page (`/`)
+
+## Hero Section
+- Title: "We're VietRocHack"
+- Subtitle: "Vietnamese hackers building impactful and chaotic projects"
+- Two buttons: "Explore Projects" → `/projects`, "Meet the Team" → `/team`
+- Full height section (min-h-screen)
+
+## Featured Projects
+- Display 1–2 highlighted projects
+- Each includes:
+  - Project title
+  - Short description
+  - Stack tags
+  - Buttons: GitHub, Demo

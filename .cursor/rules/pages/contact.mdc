@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Contact Page (`/contact`)
+
+## Content
+- Title: "Let's Connect"
+- Static contact links:
+  - Email
+  - GitHub
+  - Devpost
+  - Discord
+
+## Optional Form
+- Fields: Name, Email, Message
+- Inputs: dark background, rounded, glow on focus
+- Buttons styled consistently

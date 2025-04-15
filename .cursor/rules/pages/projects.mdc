@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Projects Page (`/projects`)
+
+## Layout
+- Title: "Our Projects"
+- Optional tag filters: stack, track, year
+- Grid layout of cards
+
+## Project Card
+- Title
+- Short description
+- Tech tags (in pill style)
+- Buttons: GitHub, Demo
+- Optional link to detail page or modal
+
+## Styling
+- Responsive grid (`grid-cols-1`, `sm:grid-cols-2`, `lg:grid-cols-3`)
+- Hover effect with border glow or accent

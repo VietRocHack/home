@@ -12,13 +12,13 @@ export default function Card({
   variant = 'default',
   className = '',
 }: CardProps) {
-  const baseStyles = 'bg-[var(--background-secondary)] rounded-2xl shadow-lg p-6 border border-gray-800';
+  const baseStyles = 'bg-[var(--background-secondary)] rounded-2xl shadow-lg p-6 border border-gray-800 transition-all duration-300';
   
   const variantStyles = {
-    default: '',
-    project: 'hover:border-[var(--accent-red)] transition duration-300',
-    team: 'hover:border-[var(--accent-yellow)] transition duration-300',
-    zoom: 'hover:scale-105 transition duration-300',
+    default: 'hover:shadow-xl',
+    project: 'hover:border-[var(--accent-red)] hover:shadow-xl hover:shadow-[var(--accent-red)]/10 hover:-translate-y-1',
+    team: 'hover:border-[var(--accent-yellow)] hover:shadow-xl hover:shadow-[var(--accent-yellow)]/10 hover:-translate-y-1',
+    zoom: 'hover:scale-105 hover:shadow-xl',
   };
   
   return (

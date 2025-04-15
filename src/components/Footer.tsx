@@ -18,16 +18,16 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Home</Link>
+                <Link href="/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Home</Link>
               </li>
               <li>
-                <Link href="/team" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Team</Link>
+                <Link href="/team" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Team</Link>
               </li>
               <li>
-                <Link href="/projects" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Projects</Link>
+                <Link href="/projects" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Projects</Link>
               </li>
               <li>
-                <Link href="/vision" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Vision</Link>
+                <Link href="/vision" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Vision</Link>
               </li>
             </ul>
           </div>
@@ -36,23 +36,23 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Email</a>
+                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Email</a>
               </li>
               <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">GitHub</a>
+                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">GitHub</a>
               </li>
               <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">LinkedIn</a>
+                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">LinkedIn</a>
               </li>
               <li>
-                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition">Instagram</a>
+                <a href="#" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-cyan)] transition-all duration-200 hover:translate-x-1 inline-block">Instagram</a>
               </li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <Link href="/contact" className="px-4 py-2 bg-[var(--accent-red)] text-white rounded-lg font-medium hover:bg-opacity-90 transition inline-block">
+            <Link href="/contact" className="px-4 py-2 bg-[var(--accent-red)] text-white rounded-lg font-medium hover:bg-opacity-90 transition-all duration-200 inline-block hover:shadow-lg hover:shadow-[var(--accent-red)]/20 hover:translate-y-[-2px] active:translate-y-0 active:shadow-sm">
               Get in Touch
             </Link>
           </div>

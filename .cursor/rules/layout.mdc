@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Layout Specification
+
+## Overall Structure
+
+- Multipage website using a shared layout shell (`Layout` component).
+- All pages share the same header (navbar) and footer.
+- Pages are routed with standard navigation:
+  - `/` → Home
+  - `/team` → Team
+  - `/projects` → Projects
+  - `/vision` → Vision
+  - `/contact` → Contact
+
+- Responsive behavior is required (`sm`, `md`, `lg`, `xl`)
+
+## Section Spacing and Alignment
+
+- Each major section within a page should be separated by `py-16`
+- Headings are top-aligned (`text-3xl` or `text-4xl`, bold)
+- Text content is left-aligned on desktop, centered on mobile
+- Use grid/flex layouts for section blocks (e.g., grid of cards)
+
+## Responsiveness
+
+- All layout and components must be responsive:
+  - Mobile-first using Tailwind
+  - Grid-based layouts collapse to vertical on small screens
+  - Font sizes and spacing scale with breakpoints
+
+## Scroll Behavior
+
+- Smooth scroll enabled
+- Optional: animated reveal on scroll using Framer Motion
+- Navigation links in navbar should scroll to top or anchor cleanly

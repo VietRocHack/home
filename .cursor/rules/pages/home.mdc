@@ -8,18 +8,62 @@ description: This is design and layout specification for the "Team" page
 globs: 
 alwaysApply: false
 ---
-# Home Page (`/`)
+# Home Page Rules for VietRocHack
 
-## Hero Section
-- Title: "We're VietRocHack"
-- Subtitle: "Vietnamese hackers building impactful and chaotic projects"
-- Two buttons: "Explore Projects" → `/projects`, "Meet the Team" → `/team`
-- Full height section (min-h-screen)
+GOAL
+Implement the homepage of vietrochack.com using a clean, modern layout with a touch of dry humor. The theme is dark-mode only, with the Space Grotesk font. The page should feel professional but subtly self-aware, appealing to developers and hackathon enthusiasts.
 
-## Featured Projects
-- Display 1–2 highlighted projects
-- Each includes:
+LAYOUT STRUCTURE
+
+ 1. Splash / Rotating Logo Section
+- Fullscreen section that appears on page load.
+- Centered giant logo text: `VietRocHack`.
+- The text should cycle through a list of variations every 3–5 seconds, such as:
+  - VietTravelHack
+  - VietSleepHack
+  - VietReactHack
+  - VietWhyHack
+  - Viet404Hack
+- Use a crossfade or typewriter effect for transitions.
+- Subtitle below logo:  
+  "Vietnamese hackers from the University of Rochester. Some of this site is real."
+- Styling: large heading (`text-7xl`), centered, Space Grotesk, dark background.
+
+ 2. Hero Section
+- Title: `We’re VietRocHack.`
+- Subtitle: `We build apps. Win hackathons. And sometimes get sleep.`
+- Two buttons:
+  - `Explore Projects` → link to `/projects`
+  - `Meet the Team` → link to `/team`
+- Design: centered layout, subtle fade/slide animation on load, buttons with accent colors and hover effects.
+
+ 3. Featured Projects Section
+- Heading: `A few things we’re not totally embarrassed to show:`
+- Display 1–2 highlighted projects.
+- Each card should include:
   - Project title
-  - Short description
+  - 2-line summary
   - Stack tags
   - Buttons: GitHub, Demo
+- Use deadpan humor in project blurbs. Keep the styling clean and card-based.
+
+ 4. Team Strip Section
+- Heading: `Four devs. Two time zones. One shared Google Doc.`
+- Display a horizontal row of team photos from past hackathons.
+- On hover, show captions like:
+  - "Vuong debugging via prayer"
+  - "One hour before the demo crash"
+- Keep photos slightly grayscale by default, and color on hover.
+
+ 5. Stats Section
+- 2x2 grid of animated stats.
+- Each includes a title, a number (animated count), and a dry subtext.
+  - Example:
+    - Hackathons Entered: `7` → "And survived most of them"
+    - Bugs Denied: `All` → "They're features"
+- Style should be clean and minimal, using a dark grid with white or light text.
+
+INTERACTION DETAILS
+- Use Framer Motion or similar for animations (fade in, typewriter effect, hover transitions).
+- The rotating logo should be implemented with `setInterval` or equivalent in React to cycle through the names list.
+- Ensure the hero content does not shift unexpectedly as the logo cycles.

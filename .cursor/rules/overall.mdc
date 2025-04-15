@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# VietRocHack Website – Overview
+
+This is the official website for **VietRocHack**, a Vietnamese hackathon team composed of students from the University of Rochester. The site serves as a public portfolio to showcase the team, their projects, hackathon achievements, and long-term vision.
+
+## Purpose
+
+- To present the team and its members professionally.
+- To showcase all projects submitted to various hackathons.
+- To highlight the mission, culture, and creativity behind the team.
+- To provide an easy way to contact or connect with VietRocHack.
+
+## Target Audience
+
+- Recruiters or tech professionals reviewing team work.
+- Fellow hackers and students interested in VietRocHack.
+- Organizers, sponsors, or judges reviewing hackathon projects.
+- Visitors curious about the team or looking for inspiration.
+
+## Design Aesthetic
+
+- Uses visual hierarchy, grid layouts, and animations for polish.
+- Built with responsiveness in mind, working across desktop, tablet, and mobile.

@@ -1,3 +1,8 @@
+---
+description: Contains the schema of the data objects used in the website
+globs: 
+alwaysApply: false
+---
 # Data Structure and Management
 
 ## Overview
@@ -123,3 +128,4 @@ The `src/utils/dataUtils.ts` file provides helper functions to access and manipu
 - `getAllPhotos()` - Get all photos from all hackathons
 - `getFeaturedPhotos(limit?)` - Get featured photos
 - `getStatistics()` - Get overall statistics 
+ 

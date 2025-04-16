@@ -12,6 +12,12 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "VietRocHack",
   description: "The official website for VietRocHack, a Vietnamese hackathon team from the University of Rochester.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ]
+  }
 };
 
 export default function RootLayout({

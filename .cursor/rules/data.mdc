@@ -1,4 +1,9 @@
 ---
+description: Contains the schema of the data objects used in the website, currently have hackathons.json and team.json
+globs: 
+alwaysApply: false
+---
+---
 description: Contains the schema of the data objects used in the website
 globs: 
 alwaysApply: false
@@ -100,7 +105,7 @@ interface Photo {
 - **Hackathon/Event photos**: `/public/team/{hackathon_id}_{descriptive_name}.{jpg|png}`
   Example: `/public/team/hophacks_2024_demo_team_pic.jpg`
 
-- **Project screenshots**: `/public/projects/{project_id}-screenshot{n}.{jpg|png}`
+- **Project screenshots**: `/public/projects/{project_id}/screenshot{n}.{jpg|png}`
   Example: `/public/projects/youngheroes-screenshot1.jpg`
 
 ### Image Path Handling

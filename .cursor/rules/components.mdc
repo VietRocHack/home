@@ -3,9 +3,13 @@ description:
 globs: 
 alwaysApply: true
 ---
+---
+description: 
+globs: 
+alwaysApply: true
+---
 
 # UI Components
-
 The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.
 
 ## Interactive Logo
@@ -23,6 +27,24 @@ The VietRocHack website uses a set of reusable UI components that share a consis
 - Implementation: 
   - Responsive text sizing across devices
   - Proper vertical alignment of first characters
+
+## BackgroundCarousel
+
+- Visual style: Fullscreen background with semi-transparent overlay
+- Image sources:
+  - Dynamically loaded from hackathons.json photos array
+  - Special image ('/team/bitcamp_2025/demo_team_pic.jpg') prioritized by appearing first
+- Behavior:
+  - Randomly selects next image rather than sequential display
+  - Tracks previous image to prevent showing the same image consecutively
+  - Synchronized with logo changes through custom event
+- Animation:
+  - Smooth fade transitions between images (1000ms duration)
+  - 40% opacity when fully visible to maintain content readability
+- Implementation:
+  - Uses Next.js Image component with fill and object-cover
+  - 8-second automatic rotation interval
+  - Fallback dark background when no images are available
 
 ## Button
 
@@ -127,4 +149,4 @@ The VietRocHack website uses a set of reusable UI components that share a consis
   - Complex z-index management for proper layering effects
   - Conditional rendering of achievement badges
   - Auto-scrolls timeline to keep active event centered
-  - Custom animations with opacity and transform transitions
+  - Custom animations with opacity and transform transitions 

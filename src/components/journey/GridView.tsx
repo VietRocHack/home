@@ -39,11 +39,6 @@ export default function GridView({ photos, getImagePath, onPhotoClick }: GridVie
             <p className="text-white font-medium">{item.photo.caption}</p>
             <p className="text-gray-300 text-sm">{item.hackathon.name} • {item.hackathon.date}</p>
           </div>
-          {item.hackathon.achievement && (
-            <div className="absolute top-2 right-2 bg-[var(--accent-yellow)] text-black px-2 py-1 rounded-md text-xs font-medium">
-              🏆 {item.hackathon.achievement}
-            </div>
-          )}
         </motion.div>
       ))}
     </motion.div>

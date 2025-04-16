@@ -16,7 +16,7 @@ export default function HackathonTimeline() {
   // Load hackathon data
   useEffect(() => {
     // Use the original order from the JSON file
-    const hackathons = [...getAllHackathons()].reverse();
+    const hackathons = getAllHackathons();
     setTimelineEvents(hackathons);
   }, []);
   
@@ -200,9 +200,12 @@ export default function HackathonTimeline() {
         {/* Timeline container */}
         <div 
           ref={timelineRef} 
-          className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar"
+          className="relative overflow-x-auto pb-4 hide-scrollbar"
           style={{ scrollbarWidth: 'none' }}
         >
+
+        {/* Scrollable content wrapper */}
+          <div className="relative min-w-max">
           {/* Timeline line */}
           <div className="w-full h-0.5 bg-gray-700 absolute top-4 left-0 right-0 z-0"></div>
           
@@ -238,6 +241,7 @@ export default function HackathonTimeline() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,11 @@ description:
 globs: 
 alwaysApply: true
 ---
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # UI Components
 
 The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.

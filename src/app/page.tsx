@@ -122,10 +122,11 @@ export default function Home() {
             {teamMembers.map((member, index) => (
               <div key={member.id + index}className="group relative w-64 h-64 overflow-hidden rounded-lg">
                 <Image 
-                  src={member.image}
+                  src={member.image.startsWith('http') ? member.image : '/' + member.image.replace(/^\//, '')}
                   alt={member.name}
                   fill
                   className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  unoptimized={member.image.startsWith('http')}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-lg font-medium">{member.name}</p>

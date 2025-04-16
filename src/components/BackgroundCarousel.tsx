@@ -115,6 +115,17 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     return clearAllTimers;
   }, []);
 
+  // Helper to format the image path correctly
+  const getImagePath = (path: string) => {
+    if (!path) return '/placeholder-image.svg';
+    // If path is a URL (starts with http:// or https://), return it as is
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Otherwise, treat as local path
+    return path.startsWith('/') ? path : `/${path}`;
+  };
+
   // If there are no photos, just render the children
   if (allPhotos.length === 0) {
     return (
@@ -135,12 +146,13 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
           ${fadeIn ? 'opacity-40' : 'opacity-0'}`}
       >
         <Image
-          src={allPhotos[activeImageIndex]}
+          src={getImagePath(allPhotos[activeImageIndex])}
           alt="Team background"
           fill
           className="object-cover"
           priority
           sizes="100vw"
+          unoptimized={allPhotos[activeImageIndex].startsWith('http')}
         />
       </div>
       

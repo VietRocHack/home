@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# BackgroundCarousel
+
+- Visual style: Fullscreen background with semi-transparent overlay
+- Image sources:
+  - Dynamically loaded from hackathons.json photos array
+  - Special image ('/team/bitcamp_2025/demo_team_pic.jpg') prioritized by appearing first
+- Behavior:
+  - Randomly selects next image rather than sequential display
+  - Tracks previous image to prevent showing the same image consecutively
+  - Synchronized with logo changes through custom event
+- Animation:
+  - Smooth fade transitions between images (1000ms duration)
+  - 40% opacity when fully visible to maintain content readability
+- Implementation:
+  - Uses Next.js Image component with fill and object-cover
+  - 8-second automatic rotation interval
+  - Fallback dark background when no images are available 

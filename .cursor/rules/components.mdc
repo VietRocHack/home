@@ -3,259 +3,32 @@ description:
 globs: 
 alwaysApply: true
 ---
----
-description: 
-globs: 
-alwaysApply: true
----
-
 # UI Components
 The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.
 
-## Interactive Logo
+This file provides a summary of all available components. For detailed specifications of each component, refer to the individual documentation files in the `/components` directory.
 
-- Visual style: 
-  - Stacked format with "[V]iet", middle word, and "[H]ack" vertically aligned
-  - First characters of each word are in square brackets
-  - Consistent spacing between first character and rest of word
-- Behavior:
-  - Rotates through various middle words (Roc, Travel, DMPN, etc.)
-  - Shows rare variants occasionally or when triggered
-- Animation:
-  - Smooth transition between variants
-  - Special visual effects for rare variants
-- Implementation: 
-  - Responsive text sizing across devices
-  - Proper vertical alignment of first characters
+## Core Components
 
-## BackgroundCarousel
+- **[Interactive Logo](./components/InteractiveLogo.mdc)** - Animated stacked logo with rotating middle words
+- **[BackgroundCarousel](./components/BackgroundCarousel.mdc)** - Fullscreen background image carousel with transitions
+- **[Button](./components/Button.mdc)** - Multi-variant buttons with customized hover animations
+- **[Card](./components/Card.mdc)** - Flexible card components with various interactive states
+- **[Navbar](./components/Navbar.mdc)** - Site navigation with responsive mobile menu
+- **[Footer](./components/Footer.mdc)** - Site footer with multi-column layout
+- **[Layout](./components/Layout.mdc)** - Page wrapper ensuring consistent structure 
+- **[Container](./components/Container.mdc)** - Content container with responsive padding
 
-- Visual style: Fullscreen background with semi-transparent overlay
-- Image sources:
-  - Dynamically loaded from hackathons.json photos array
-  - Special image ('/team/bitcamp_2025/demo_team_pic.jpg') prioritized by appearing first
-- Behavior:
-  - Randomly selects next image rather than sequential display
-  - Tracks previous image to prevent showing the same image consecutively
-  - Synchronized with logo changes through custom event
-- Animation:
-  - Smooth fade transitions between images (1000ms duration)
-  - 40% opacity when fully visible to maintain content readability
-- Implementation:
-  - Uses Next.js Image component with fill and object-cover
-  - 8-second automatic rotation interval
-  - Fallback dark background when no images are available
+## Gallery Components
 
-## Button
+- **[ProjectGallery](./components/ProjectGallery.mdc)** - Auto-rotating gallery for project showcase
+- **[HackathonTimeline](./components/HackathonTimeline.mdc)** - Timeline-based hackathon showcase
 
-![Button component with variants]
+## Journey Gallery Components
 
-- Visual style: Rounded corners, clear hover effects
-- Variants:
-  - Primary: Red background with white text, pulsing glow on hover
-  - Secondary: Yellow background with dark text, yellow glow on hover
-  - Ghost: Transparent with border, shimmering highlight on hover
-- States: Default, hover (lifted), active (pressed), disabled (dimmed)
-- Sizes: Small, medium, large
-- Animation: Each variant has a unique hover animation
-
-## Card
-
-![Card component with variants]
-
-- Visual style: Rounded corners, subtle shadow, dark background
-- Variants:
-  - Default: Simple hover shadow enhancement
-  - Project: Red border highlight on hover with vertical lift
-  - Team: Yellow border highlight on hover with vertical lift
-  - Zoom: Scale enlargement (105%) on hover
-- Content: Flexible children for headings, text, images, and actions
-- Animation: Smooth transitions, variant-specific glow effects
-
-## Navbar
-
-![Navbar component]
-
-- Visual style: Dark bar fixed at top of screen
-- Elements: Logo, navigation links, mobile menu button
-- States: Regular links, active link (cyan), hover (with animated underline)
-- Behavior: Highlights current page, collapses to mobile menu on small screens
-- Animation: Links lift slightly and animate underline on hover
-
-## Footer
-
-![Footer component]
-
-- Visual style: Dark background with 4-column layout
-- Sections: About, quick links, social links, contact
-- Elements: Heading, text, links, button
-- Animation: Links slide right slightly on hover with color change
-- Behavior: Collapses to single column on mobile
-
-## Layout
-
-![Layout structure]
-
-- Structure: Full-page wrapper with flexbox layout
-- Elements: Contains Navbar at top, main content area (flexible), Footer at bottom
-- Behavior: Ensures footer always at bottom even with short content
-- Visual: Sets the consistent page background
-
-## Container
-
-![Container usage]
-
-- Visual style: Invisible wrapper that centers content
-- Behavior: Sets max-width (1200px) with responsive padding
-- Usage: Wraps all main content sections on every page
-- Spacing: Consistent horizontal padding that adjusts by screen size
-
-## ProjectGallery
-
-- Visual style: 
-  - Fixed-height card (36rem) with image on left, details on right
-  - Scrollable description area for overflowing content
-  - Custom scrollbar styling that matches site theme
-- Behavior:
-  - Auto-rotates through projects every 5 seconds
-  - Pauses rotation on mouse hover
-  - Manual navigation with previous/next buttons and dot indicators
-- Animation:
-  - Simultaneous animation of both old and new content
-  - Fade-in/fade-out combined with slide transitions
-  - Direction-aware animations (left/right)
-- Implementation:
-  - Dynamically injected keyframe animations
-  - Controlled z-index layering for proper visual hierarchy
-  - Responsive layout adapts to various screen sizes
-
-## HackathonTimeline
-
-- Visual style: 
-  - Two-column layout with image and event details
-  - Achievement badges for prize-winning hackathons
-  - Interactive timeline with visual differentiation for achievements
-- Behavior:
-  - Auto-rotates through hackathons every 6 seconds
-  - Pauses rotation on mouse hover
-  - Navigation buttons positioned on main content card for easy access
-  - Timeline markers indicate prize-winning events with yellow color and trophy icon
-- Animation:
-  - Text content fades while sliding during transitions
-  - Images slide without fading for contrast
-  - New content slides over old content for layered effect
-  - Direction-aware animations based on navigation choice
-- Implementation:
-  - Complex z-index management for proper layering effects
-  - Conditional rendering of achievement badges
-  - Auto-scrolls timeline to keep active event centered
-  - Custom animations with opacity and transform transitions 
-
-## HackathonJourneyGallery
-
-- Visual style:
-  - Modern gallery with multiple view modes (Grid, Timeline, Hackathons)
-  - Responsive design with smooth animations
-  - Consistent dark theme with accent colors (red for active controls, yellow for achievements)
-- Behavior:
-  - Dynamic filtering by hackathon events
-  - Sorting options (newest/oldest first)
-  - Interactive photo viewing with lightbox
-  - Fullscreen and slideshow modes
-- Components:
-  - Main Gallery Component: Orchestrates state and data flow
-  - GalleryControls: UI controls for view modes, sorting, and filtering
-  - GridView: Responsive photo grid with hover effects
-  - TimelineView: Chronological display with visual timeline
-  - HackathonsView: Groups photos by hackathon with event details
-  - PhotoLightbox: Enhanced viewing experience with navigation
-- Implementation:
-  - Modular architecture with React components
-  - Framer Motion for smooth animations and transitions
-  - Next.js Image component for optimized image loading
-  - Responsive layout with Tailwind CSS
-
-### GalleryControls
-
-- Visual style:
-  - Sticky controls bar with glass morphism effect (backdrop blur)
-  - Active state indicators using accent colors
-  - Rounded buttons with hover effects
-- Behavior:
-  - Controls for switching between view modes (Grid, Timeline, Hackathons)
-  - Sorting controls (newest/oldest first)
-  - Dynamic filter buttons for each hackathon
-- Implementation:
-  - Responsive design adjusts for mobile layouts
-  - Sticky positioning for easy access while scrolling
-
-### GridView
-
-- Visual style:
-  - Responsive grid layout (1-4 columns based on screen size)
-  - Square aspect ratio for consistent appearance
-  - Hover effects revealing photo information
-  - Achievement badges for prize-winning events
-- Animation:
-  - Staggered fade-in animation on initial render
-  - Scale and overlay animations on hover
-- Implementation:
-  - CSS Grid with responsive columns
-  - Framer Motion for animations
-  - Next.js Image component with fill and object-cover
-
-### TimelineView
-
-- Visual style:
-  - Vertical timeline with alternating left/right layout
-  - Visual indicators for events (red dots, yellow for achievements)
-  - Continuous timeline line connecting all events
-- Behavior:
-  - Chronological display of photos with event details
-  - Click to view photos in lightbox
-- Animation:
-  - Staggered fade-in and slide animations
-  - Hover effects on photos and info cards
-- Implementation:
-  - Responsive layout that collapses to single column on mobile
-  - Custom positioning for timeline elements
-
-### HackathonsView
-
-- Visual style:
-  - Card-based layout for each hackathon
-  - Featured image with gradient overlay
-  - Organized sections for event info, projects, and photos
-  - Achievement badges for prize-winning events
-- Behavior:
-  - Groups photos by hackathon with comprehensive event details
-  - Project cards with links to external resources (Devpost, GitHub, Demo)
-  - Click to view photos in lightbox
-- Animation:
-  - Fade-in and slide animations on render
-  - Hover effects on photos and interactive elements
-- Implementation:
-  - Responsive grid layouts
-  - External links with proper target attributes
-  - Conditional rendering based on available data
-
-### PhotoLightbox
-
-- Visual style:
-  - Full-screen overlay with image focus
-  - Information panel with photo details
-  - Navigation controls and functional buttons
-  - Optional fullscreen mode
-- Behavior:
-  - Navigation between photos (previous/next)
-  - Slideshow functionality with 5-second interval
-  - Toggle between normal and fullscreen modes
-  - Click outside to close
-- Animation:
-  - Fade and scale animations for opening/closing
-  - Smooth transitions between photos
-- Implementation:
-  - Modal dialog with backdrop
-  - Auto-advancing slideshow with configurable timer
-  - Keyboard navigation support
-  - Framer Motion for animations 
+- **[HackathonJourneyGallery](./components/HackathonJourneyGallery.mdc)** - Comprehensive gallery with multiple view modes
+  - **GalleryControls** - View mode and filter controls
+  - **GridView** - Grid-based photo layout
+  - **TimelineView** - Chronological display with timeline
+  - **HackathonsView** - Event-grouped display with details
+  - **PhotoLightbox** - Enhanced photo viewing experience

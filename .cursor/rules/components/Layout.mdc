@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Layout
+
+- Structure: Full-page wrapper with flexbox layout
+- Elements: Contains Navbar at top, main content area (flexible), Footer at bottom
+- Behavior: Ensures footer always at bottom even with short content
+- Visual: Sets the consistent page background 

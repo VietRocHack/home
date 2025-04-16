@@ -1,0 +1,6 @@
+# Container
+
+- Visual style: Invisible wrapper that centers content
+- Behavior: Sets max-width (1200px) with responsive padding
+- Usage: Wraps all main content sections on every page
+- Spacing: Consistent horizontal padding that adjusts by screen size 

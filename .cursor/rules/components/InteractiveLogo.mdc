@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Interactive Logo
+
+- Visual style: 
+  - Stacked format with "[V]iet", middle word, and "[H]ack" vertically aligned
+  - First characters of each word are in square brackets
+  - Consistent spacing between first character and rest of word
+- Behavior:
+  - Rotates through various middle words (Roc, Travel, DMPN, etc.)
+  - Shows rare variants occasionally or when triggered
+- Animation:
+  - Smooth transition between variants
+  - Special visual effects for rare variants
+- Implementation: 
+  - Responsive text sizing across devices
+  - Proper vertical alignment of first characters 

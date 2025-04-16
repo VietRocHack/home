@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ProjectGallery
+
+- Visual style: 
+  - Fixed-height card (36rem) with image on left, details on right
+  - Scrollable description area for overflowing content
+  - Custom scrollbar styling that matches site theme
+- Behavior:
+  - Auto-rotates through projects every 5 seconds
+  - Pauses rotation on mouse hover
+  - Manual navigation with previous/next buttons and dot indicators
+- Animation:
+  - Simultaneous animation of both old and new content
+  - Fade-in/fade-out combined with slide transitions
+  - Direction-aware animations (left/right)
+- Implementation:
+  - Dynamically injected keyframe animations
+  - Controlled z-index layering for proper visual hierarchy
+  - Responsive layout adapts to various screen sizes 

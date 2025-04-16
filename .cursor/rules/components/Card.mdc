@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Card
+
+- Visual style: Rounded corners, subtle shadow, dark background
+- Variants:
+  - Default: Simple hover shadow enhancement
+  - Project: Red border highlight on hover with vertical lift
+  - Team: Yellow border highlight on hover with vertical lift
+  - Zoom: Scale enlargement (105%) on hover
+- Content: Flexible children for headings, text, images, and actions
+- Animation: Smooth transitions, variant-specific glow effects 

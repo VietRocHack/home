@@ -2,22 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-
-// List all team photos
-const teamPhotos = [
-  '/team/hophacks_2024_demo_team_pic.jpg',
-  '/team/hophacks_2024_team_find_out_we_win.png',
-  '/team/hophacks_2024_team_third_prize_pic.jpg',
-  '/team/calhacks_2024_team_at_apple_hq.jpg',
-  '/team/calhacks_2024_team_with_lananh_in_sanfrancisco.jpg',
-  '/team/calhacks_2024_team_berkeley_backdrop_with_bear.jpg',
-  '/team/calhacks_2024_demo_team_pic.jpg',
-  '/team/calhacks_2024_team_at_google_hq.jpg',
-  '/team/calhacks_2024_team_vapi_award_pic.jpg',
-  '/team/calhacks_2024_team_people_choice_award_pic.jpg',
-  '/team/hackutd_2024_team_at_introduction_ceremony.jpg',
-  '/team/bitcamp_2025_demo_team_pic.jpg'
-];
+import { getAllPhotos } from '@/utils/dataUtils';
 
 // Create a custom event name for logo-background synchronization
 export const LOGO_CHANGE_EVENT = 'vietrochack-logo-change';
@@ -27,6 +12,9 @@ interface BackgroundCarouselProps {
 }
 
 export default function BackgroundCarousel({ children }: BackgroundCarouselProps) {
+  // Get all photos from the hackathons data
+  const allPhotos = getAllPhotos().map(item => item.photo.src);
+  allPhotos.unshift('/team/bitcamp_2025/demo_team_pic.jpg');
   // Only track a single active image index
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
@@ -35,6 +23,7 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
   const fadeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const carouselTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isBusy = useRef(false);
+  const prevImageIndex = useRef<number | null>(null);
 
   // Clear all active timers
   const clearAllTimers = () => {
@@ -48,9 +37,21 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     }
   };
 
+  // Get a random image index that's different from the current one
+  const getRandomImageIndex = (): number => {
+    if (allPhotos.length <= 1) return 0;
+    
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * allPhotos.length);
+    } while (randomIndex === activeImageIndex || randomIndex === prevImageIndex.current);
+    
+    return randomIndex;
+  };
+
   // Function to advance to the next image
   const advanceToNextImage = () => {
-    if (isBusy.current) return;
+    if (isBusy.current || allPhotos.length === 0) return;
     isBusy.current = true;
     
     // Fade out current image
@@ -58,7 +59,9 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     
     // Wait for fade-out to complete, then change image
     fadeTimerRef.current = setTimeout(() => {
-      setActiveImageIndex(prevIndex => (prevIndex + 1) % teamPhotos.length);
+      prevImageIndex.current = activeImageIndex;
+      const newIndex = getRandomImageIndex();
+      setActiveImageIndex(newIndex);
       
       // Wait a moment for the new image to load, then fade in
       setTimeout(() => {
@@ -112,6 +115,18 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     return clearAllTimers;
   }, []);
 
+  // If there are no photos, just render the children
+  if (allPhotos.length === 0) {
+    return (
+      <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 bg-[#0F0F0F] z-0"></div>
+        <div className="relative z-20 w-full h-full flex items-center justify-center py-16">
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
       {/* Single background image with fade effect */}
@@ -120,7 +135,7 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
           ${fadeIn ? 'opacity-40' : 'opacity-0'}`}
       >
         <Image
-          src={teamPhotos[activeImageIndex]}
+          src={allPhotos[activeImageIndex]}
           alt="Team background"
           fill
           className="object-cover"

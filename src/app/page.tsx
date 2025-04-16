@@ -121,7 +121,7 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={member.id} className="group relative w-64 h-64 overflow-hidden rounded-lg">
+              <div key={member.id + index}className="group relative w-64 h-64 overflow-hidden rounded-lg">
                 <Image 
                   src={member.image}
                   alt={member.name}

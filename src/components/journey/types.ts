@@ -1,4 +1,4 @@
-import { Hackathon, Photo, Meme } from '@/utils/dataUtils';
+import { Hackathon, Photo } from '@/utils/dataUtils';
 
 export interface GalleryPhoto {
   photo: Photo;

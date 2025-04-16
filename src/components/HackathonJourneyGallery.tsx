@@ -10,8 +10,12 @@ import HackathonsView from './journey/HackathonsView';
 import FunThingsView from './journey/FunThingsView';
 import PhotoLightbox from './journey/PhotoLightbox';
 import MemeLightbox from './journey/MemeLightbox';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function HackathonJourneyGallery() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
   const [filter, setFilter] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -52,6 +56,26 @@ export default function HackathonJourneyGallery() {
     setGalleryPhotos(photos);
     setMemes(memesData);
   }, []);
+
+  // Read view from URL query parameter
+  useEffect(() => {
+    const viewParam = searchParams.get('view');
+    if (viewParam && (viewParam === 'grid' || viewParam === 'timeline' || viewParam === 'hackathons' || viewParam === 'fun')) {
+      setViewMode(viewParam as ViewMode);
+    }
+  }, [searchParams]);
+
+  // Update URL when view mode changes
+  const updateViewMode = (mode: ViewMode) => {
+    setViewMode(mode);
+    
+    // Create new URL with the updated view parameter
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('view', mode);
+    
+    // Update URL without refreshing the page
+    router.push(`/journey?${params.toString()}`, { scroll: false });
+  };
 
   // Extract unique hackathon IDs for filtering
   const hackathonIds = Array.from(new Set(galleryPhotos.map(item => item.hackathon.id)));
@@ -170,7 +194,7 @@ export default function HackathonJourneyGallery() {
       {/* Gallery Controls */}
       <GalleryControls 
         viewMode={viewMode}
-        setViewMode={setViewMode}
+        setViewMode={updateViewMode}
         sortOrder={sortOrder}
         setSortOrder={setSortOrder}
         filter={filter}

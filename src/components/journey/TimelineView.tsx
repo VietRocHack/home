@@ -36,6 +36,7 @@ export default function TimelineView({ photos, getImagePath, onPhotoClick }: Tim
                 fill
                 className="object-cover transition-all duration-300 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, 50vw"
+                unoptimized={item.photo.src.startsWith('http')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
                 <p className="text-white font-medium">{item.photo.caption}</p>

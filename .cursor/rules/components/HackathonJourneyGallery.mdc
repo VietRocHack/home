@@ -5,6 +5,45 @@ alwaysApply: false
 ---
 # HackathonJourneyGallery
 
+## Overview
+The HackathonJourneyGallery component is a comprehensive, interactive gallery showcasing the team's hackathon journey through photos, memories, and experiences. It offers multiple view modes including grid, timeline, hackathon groupings, and fun meme content.
+
+## Features
+- Multiple interactive view modes with distinct layouts
+- Filterable by hackathon events
+- Sortable by date (newest/oldest)
+- Fullscreen photo/meme viewer with navigation
+- Slideshow mode for automatic playback
+- Support for both local images and remote CDN-hosted images
+
+## Component Structure
+The component uses a modular architecture with specialized sub-components:
+
+- **GalleryControls**: View mode selection, sorting, and filtering
+- **GridView**: Grid-based photo layout (responsive)
+- **TimelineView**: Chronological display with timeline indicators
+- **HackathonsView**: Event-grouped display with project details
+- **FunThingsView**: Display for fun/meme content
+- **PhotoLightbox**: Enhanced viewing experience for photos
+- **MemeLightbox**: Specialized lightbox for meme content
+
+## Integration
+All image handling supports both local paths and full CDN URLs through the `getImagePath` helper function. This allows images to be served from:
+
+- Local public directory (e.g., `/meme/image.jpg`)
+- External CDN services (e.g., `https://cdn.example.com/images/photo.jpg`)
+
+## Data Sources
+- Hackathon data from hackathons.json
+- Team member data from team.json
+- Meme content from meme.json
+- All accessible through dataUtils.ts utility functions
+
+## Responsive Behavior
+- Adapts to all screen sizes (mobile, tablet, desktop)
+- Optimized image loading with appropriate size hints
+- Touch-friendly controls for mobile devices
+
 - Visual style:
   - Modern gallery with multiple view modes (Grid, Timeline, Hackathons)
   - Responsive design with smooth animations

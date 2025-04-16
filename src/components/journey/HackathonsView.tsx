@@ -33,6 +33,7 @@ export default function HackathonsView({
               fill
               className="object-cover"
               sizes="100vw"
+              unoptimized={hackathon.mainImage.startsWith('http')}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
               <h2 className="text-2xl font-bold">{hackathon.name}</h2>
@@ -106,6 +107,7 @@ export default function HackathonsView({
                         fill
                         className="object-cover transition-all duration-300 group-hover:scale-105"
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                        unoptimized={item.photo.src.startsWith('http')}
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                         <span className="text-white text-sm">View</span>

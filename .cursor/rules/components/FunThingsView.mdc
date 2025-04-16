@@ -14,7 +14,7 @@ interface FunThingsViewProps {
 ```
 
 - **memes**: Array of meme objects from the data store
-- **getImagePath**: Function to format image paths correctly
+- **getImagePath**: Function to format image paths correctly, supporting both local paths and CDN URLs
 - **onMemeClick**: Callback function when a meme is clicked
 
 ## Visual Design
@@ -44,4 +44,5 @@ interface FunThingsViewProps {
 
 ## Data Source
 - Pulls data from meme.json via dataUtils.ts
-- Supports filtering and sorting through parent component 
+- Supports filtering and sorting through parent component
+- Supports images hosted either locally or on a CDN (full URLs) 

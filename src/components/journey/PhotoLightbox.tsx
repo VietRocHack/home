@@ -59,6 +59,7 @@ export default function PhotoLightbox({
               sizes="100vw"
               quality={90}
               priority
+              unoptimized={photo.photo.src.startsWith('http')}
             />
           </div>
           

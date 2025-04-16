@@ -412,11 +412,11 @@
       "state": "MD",
       "achievement": "People's Choice",
       "description": "We were pretty burned out from the Fall hackathons, we kind of went off the grid for a while. At this point, VietRocHack is pretty much settled, with everyone having an internship/job for the summer. However, we decided to do this one just for the good old days, so we head back to the Free State of Maryland. Surprisingly, we won an award and we got our messages delivered to one of our long-term group meme. All is good!",
-      "mainImage": "/team/bitcamp_2025/demo_team_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/demo_team_pic_zctkbd.jpg",
       "website": "https://bit.camp",
       "photos": [
         {
-          "src": "/team/bitcamp_2025/demo_team_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/demo_team_pic_zctkbd.jpg",
           "caption": "Demoing our project at Bitcamp",
           "isFeatured": true
         }

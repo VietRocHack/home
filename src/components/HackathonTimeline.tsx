@@ -2,24 +2,33 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { getHackathonsByDate, Hackathon } from '@/utils/dataUtils';
+import { getAllHackathons, Hackathon } from '@/utils/dataUtils';
 
 export default function HackathonTimeline() {
   const [activeEvent, setActiveEvent] = useState(0);
+  const [previousEvent, setPreviousEvent] = useState(0);
   const [timelineEvents, setTimelineEvents] = useState<Hackathon[]>([]);
   const [isPaused, setIsPaused] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
   
   // Load hackathon data
   useEffect(() => {
-    const hackathons = getHackathonsByDate();
+    // Use the original order from the JSON file
+    const hackathons = [...getAllHackathons()].reverse();
     setTimelineEvents(hackathons);
   }, []);
   
   // Function to change event with direction animation
   const changeEvent = (newIndex: number) => {
-    if (newIndex === activeEvent) return;
+    if (newIndex === activeEvent || isAnimating) return;
+    
+    // Set animating state
+    setIsAnimating(true);
+    
+    // Save previous event
+    setPreviousEvent(activeEvent);
     
     // Determine slide direction
     setSlideDirection(newIndex > activeEvent ? 'left' : 'right');
@@ -28,6 +37,7 @@ export default function HackathonTimeline() {
     // Reset animation after it completes
     setTimeout(() => {
       setSlideDirection(null);
+      setIsAnimating(false);
     }, 500); // Match this to the CSS transition duration
   };
 
@@ -83,57 +93,123 @@ export default function HackathonTimeline() {
   return (
     <div className="w-full">
       {/* Main display of current event */}
-      <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center overflow-hidden"
+      <div className="mb-10 relative"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
-        <div className={`relative h-80 rounded-lg overflow-hidden transition-transform duration-500 ease-in-out ${
-          slideDirection === 'left' ? 'animate-slide-left' : 
-          slideDirection === 'right' ? 'animate-slide-right' : ''
-        }`}>
-          <Image
-            src={getImagePath(timelineEvents[activeEvent].mainImage)}
-            alt={timelineEvents[activeEvent].name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-4">
-            <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
-              {timelineEvents[activeEvent].achievement}
-            </span>
-          </div>
-        </div>
         
-        <div className={`transition-transform duration-500 ease-in-out ${
-          slideDirection === 'left' ? 'animate-slide-left' : 
-          slideDirection === 'right' ? 'animate-slide-right' : ''
-        }`}>
-          <div className="flex items-center gap-3 mb-2">
-            <h3 className="text-2xl font-bold">{timelineEvents[activeEvent].name}</h3>
-            <span className="text-[var(--foreground-secondary)]">•</span>
-            <span className="text-[var(--accent-red)]">{timelineEvents[activeEvent].date}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center overflow-hidden">
+          {/* Container for both slides */}
+          <div className="relative h-80 z-20">
+            {/* Previous event image (visible during animation) */}
+            {isAnimating && (
+              <div className={`absolute inset-0 rounded-lg overflow-hidden transition-transform duration-500 ease-in-out z-10 ${
+                slideDirection === 'left' ? 'animate-slide-out-left' : 
+                slideDirection === 'right' ? 'animate-slide-out-right' : ''
+              }`}>
+                <Image
+                  src={getImagePath(timelineEvents[previousEvent].mainImage)}
+                  alt={timelineEvents[previousEvent].name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
+                    {timelineEvents[previousEvent].achievement}
+                  </span>
+                </div>
+              </div>
+            )}
+            
+            {/* Current event image */}
+            <div className={`absolute inset-0 rounded-lg overflow-hidden transition-transform duration-500 ease-in-out z-20 ${
+              slideDirection === 'left' ? 'animate-slide-in-left' : 
+              slideDirection === 'right' ? 'animate-slide-in-right' : ''
+            }`}>
+              <Image
+                src={getImagePath(timelineEvents[activeEvent].mainImage)}
+                alt={timelineEvents[activeEvent].name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
+                  {timelineEvents[activeEvent].achievement}
+                </span>
+              </div>
+            </div>
           </div>
-          <p className="text-lg mb-2">{timelineEvents[activeEvent].location}</p>
-          <p className="text-[var(--foreground-secondary)] mb-6">
-            {timelineEvents[activeEvent].description}
-          </p>
           
-          <div className="flex gap-3">
-            <button 
-              className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
-              disabled={activeEvent === 0}
-            >
-              Previous
-            </button>
-            <button 
-              className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
-              disabled={activeEvent === timelineEvents.length - 1}
-            >
-              Next
-            </button>
+          {/* Container for content slides */}
+          <div className="relative h-full min-h-[250px]">
+            {/* Previous event content (visible during animation) */}
+            {isAnimating && (
+              <div className={`absolute inset-0 transition-all duration-500 ease-in-out z-10 ${
+                slideDirection === 'left' ? 'animate-fade-slide-out-left' : 
+                slideDirection === 'right' ? 'animate-fade-slide-out-right' : ''
+              }`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-2xl font-bold">{timelineEvents[previousEvent].name}</h3>
+                  <span className="text-[var(--foreground-secondary)]">•</span>
+                  <span className="text-[var(--accent-red)]">{timelineEvents[previousEvent].date}</span>
+                </div>
+                <p className="text-lg mb-2">{timelineEvents[previousEvent].location}</p>
+                <p className="text-[var(--foreground-secondary)] mb-6">
+                  {timelineEvents[previousEvent].description}
+                </p>
+                
+                <div className="flex gap-3">
+                  <button 
+                    className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={true}
+                  >
+                    Previous
+                  </button>
+                  <button 
+                    className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={true}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {/* Current event content */}
+            <div className={`absolute inset-0 transition-all duration-500 ease-in-out z-20 ${
+              slideDirection === 'left' ? 'animate-fade-slide-in-left' : 
+              slideDirection === 'right' ? 'animate-fade-slide-in-right' : ''
+            }`}>
+              <div className="flex items-center gap-3 mb-2">
+                <h3 className="text-2xl font-bold">{timelineEvents[activeEvent].name}</h3>
+                <span className="text-[var(--foreground-secondary)]">•</span>
+                <span className="text-[var(--accent-red)]">{timelineEvents[activeEvent].date}</span>
+              </div>
+              <p className="text-lg mb-2">{timelineEvents[activeEvent].location}</p>
+              <p className="text-[var(--foreground-secondary)] mb-6">
+                {timelineEvents[activeEvent].description}
+              </p>
+              
+              <div className="flex gap-3">
+                <button 
+                  className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
+                  disabled={activeEvent === 0 || isAnimating}
+                >
+                  Previous
+                </button>
+                <button 
+                  className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
+                  disabled={activeEvent === timelineEvents.length - 1 || isAnimating}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,24 +274,110 @@ export default function HackathonTimeline() {
         }
       `}</style>
       
-      {/* Add animation keyframes */}
+      {/* Add animation keyframes and custom overlay styles */}
       <style jsx global>{`
-        @keyframes slideLeft {
+        @keyframes slideInLeft {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
         }
         
-        @keyframes slideRight {
+        @keyframes slideOutLeft {
+          from { transform: translateX(0); }
+          to { transform: translateX(-100%); }
+        }
+        
+        @keyframes slideInRight {
           from { transform: translateX(-100%); }
           to { transform: translateX(0); }
         }
         
-        .animate-slide-left {
-          animation: slideLeft 0.5s ease-in-out forwards;
+        @keyframes slideOutRight {
+          from { transform: translateX(0); }
+          to { transform: translateX(100%); }
         }
         
-        .animate-slide-right {
-          animation: slideRight 0.5s ease-in-out forwards;
+        @keyframes fadeSlideInLeft {
+          from { 
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to { 
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeSlideOutLeft {
+          from { 
+            transform: translateX(0);
+            opacity: 1;
+          }
+          to { 
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes fadeSlideInRight {
+          from { 
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to { 
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeSlideOutRight {
+          from { 
+            transform: translateX(0);
+            opacity: 1;
+          }
+          to { 
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+        
+        .animate-slide-in-left {
+          animation: slideInLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-slide-out-left {
+          animation: slideOutLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-slide-in-right {
+          animation: slideInRight 0.5s ease-in-out forwards;
+        }
+        
+        .animate-slide-out-right {
+          animation: slideOutRight 0.5s ease-in-out forwards;
+        }
+        
+        .animate-fade-slide-in-left {
+          animation: fadeSlideInLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-fade-slide-out-left {
+          animation: fadeSlideOutLeft 0.5s ease-in-out forwards;
+        }
+        
+        .animate-fade-slide-in-right {
+          animation: fadeSlideInRight 0.5s ease-in-out forwards;
+        }
+        
+        .animate-fade-slide-out-right {
+          animation: fadeSlideOutRight 0.5s ease-in-out forwards;
+        }
+        
+        /* On small screens, ensure proper layering during cross-column animations */
+        @media (max-width: 767px) {
+          .animate-slide-in-left, .animate-slide-in-right,
+          .animate-fade-slide-in-left, .animate-fade-slide-in-right {
+            z-index: 30 !important;
+          }
         }
       `}</style>
     </div>

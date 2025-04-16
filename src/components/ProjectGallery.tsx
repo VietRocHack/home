@@ -68,6 +68,78 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     return path.startsWith('/') ? path : `/${path}`;
   };
 
+  // Create fade-slide animations for image and content
+  useEffect(() => {
+    // Add custom animation keyframes
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeSlideInLeft {
+        from { 
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeSlideOutLeft {
+        from { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to { 
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes fadeSlideInRight {
+        from { 
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeSlideOutRight {
+        from { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to { 
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      
+      .animate-fade-slide-in-left {
+        animation: fadeSlideInLeft 0.5s ease-in-out forwards;
+      }
+      
+      .animate-fade-slide-out-left {
+        animation: fadeSlideOutLeft 0.5s ease-in-out forwards;
+      }
+      
+      .animate-fade-slide-in-right {
+        animation: fadeSlideInRight 0.5s ease-in-out forwards;
+      }
+      
+      .animate-fade-slide-out-right {
+        animation: fadeSlideOutRight 0.5s ease-in-out forwards;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // If no projects, show empty state
   if (projects.length === 0) {
     return <div className="text-center py-8">No projects found.</div>;
@@ -103,9 +175,9 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         <div className="relative h-[36rem]">
           {/* Previous project (visible during animation) */}
           {isAnimating && (
-            <Card variant="project" className={`absolute top-0 left-0 w-full h-full transition-transform duration-500 ease-in-out ${
-              slideDirection === 'left' ? 'animate-slide-out-left' : 
-              slideDirection === 'right' ? 'animate-slide-out-right' : ''
+            <Card variant="project" className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
+              slideDirection === 'left' ? 'animate-fade-slide-out-left' : 
+              slideDirection === 'right' ? 'animate-fade-slide-out-right' : ''
             }`}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
                 {/* Project image */}
@@ -178,9 +250,9 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
           )}
 
           {/* Current project */}
-          <Card variant="project" className={`absolute top-0 left-0 w-full h-full transition-transform duration-500 ease-in-out ${
-            slideDirection === 'left' ? 'animate-slide-in-left' : 
-            slideDirection === 'right' ? 'animate-slide-in-right' : ''
+          <Card variant="project" className={`absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out ${
+            slideDirection === 'left' ? 'animate-fade-slide-in-left' : 
+            slideDirection === 'right' ? 'animate-fade-slide-in-right' : ''
           }`}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
               {/* Project image */}
@@ -268,44 +340,8 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         ))}
       </div>
 
-      {/* Add animation keyframes and custom scrollbar */}
+      {/* Custom scrollbar styling */}
       <style jsx global>{`
-        @keyframes slideInLeft {
-          from { transform: translateX(100%); }
-          to { transform: translateX(0); }
-        }
-        
-        @keyframes slideOutLeft {
-          from { transform: translateX(0); }
-          to { transform: translateX(-100%); }
-        }
-        
-        @keyframes slideInRight {
-          from { transform: translateX(-100%); }
-          to { transform: translateX(0); }
-        }
-        
-        @keyframes slideOutRight {
-          from { transform: translateX(0); }
-          to { transform: translateX(100%); }
-        }
-        
-        .animate-slide-in-left {
-          animation: slideInLeft 0.5s ease-in-out forwards;
-        }
-        
-        .animate-slide-out-left {
-          animation: slideOutLeft 0.5s ease-in-out forwards;
-        }
-        
-        .animate-slide-in-right {
-          animation: slideInRight 0.5s ease-in-out forwards;
-        }
-        
-        .animate-slide-out-right {
-          animation: slideOutRight 0.5s ease-in-out forwards;
-        }
-        
         /* Custom scrollbar styling */
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;

@@ -105,9 +105,19 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <h2 className="text-3xl font-bold mb-4 text-center">Our Hackathon Journey</h2>
-          <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-10">
+          <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-6">
             Swipe through our adventures across hackathons nationwide. We&apos;ve built, broken, fixed, and celebrated from coast to coast.
           </p>
+          <div className="flex justify-center mb-8">
+            <Link href="/journey">
+              <Button variant="secondary" size="lg">
+                Explore Full Journey
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Button>
+            </Link>
+          </div>
           <PhotoGallery />
         </Container>
       </section>

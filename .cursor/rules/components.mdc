@@ -86,3 +86,37 @@ The VietRocHack website uses a set of reusable UI components that share a consis
 - Behavior: Sets max-width (1200px) with responsive padding
 - Usage: Wraps all main content sections on every page
 - Spacing: Consistent horizontal padding that adjusts by screen size
+
+## ProjectGallery
+
+- Visual style: Responsive card with image and project details
+- Behavior:
+  - Auto-rotates through projects every 5 seconds
+  - Pauses rotation on mouse hover
+  - Manual navigation with previous/next buttons and dot indicators
+- Animation:
+  - Sliding transition when changing projects
+  - Left-to-right or right-to-left animation based on navigation direction
+  - Smooth 500ms transition with ease-in-out timing
+- Implementation:
+  - Context-aware slide direction detection
+  - CSS keyframe animations for smooth transitions
+  - Automatic timer reset after animations complete
+
+## HackathonTimeline
+
+- Visual style: Two-column layout with image and event details
+- Behavior:
+  - Auto-rotates through hackathons every 6 seconds
+  - Pauses rotation on mouse hover
+  - Interactive timeline with clickable events
+  - Manual navigation with buttons
+- Animation:
+  - Sliding transition when changing hackathons
+  - Direction-aware animation based on navigation choice
+  - Timeline dots highlight active event
+  - Auto-scrolls timeline to keep active event centered
+- Implementation:
+  - Smooth scrolling behavior for timeline navigation
+  - CSS keyframe animations for content transitions
+  - Context-aware slide direction detection

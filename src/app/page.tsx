@@ -1,7 +1,6 @@
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
-import Card from '@/components/Card';
 import RotatingLogo from '@/components/RotatingLogo';
 import AnimatedStat from '@/components/AnimatedStat';
 import BackgroundCarousel from '@/components/BackgroundCarousel';
@@ -10,7 +9,7 @@ import HackathonTimeline from '@/components/HackathonTimeline';
 import ProjectGallery from '@/components/ProjectGallery';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getFeaturedProjects, getSummaryStatistics } from '@/utils/dataUtils';
+import { getSummaryStatistics } from '@/utils/dataUtils';
 
 const teamMembers = [
   {
@@ -36,9 +35,6 @@ const teamMembers = [
 ];
 
 export default function Home() {
-  // Get featured projects
-  const featuredProjects = getFeaturedProjects(2);
-  
   // Get statistics
   const stats = getSummaryStatistics();
 
@@ -66,7 +62,7 @@ export default function Home() {
       <section className="py-16 bg-[var(--background-secondary)]">
         <Container>
           <div className="flex flex-col items-center text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">We're VietRocHack.</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">We&apos;re VietRocHack.</h2>
             <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-10">
               We build apps. Win hackathons. And sometimes get sleep.
             </p>
@@ -90,7 +86,7 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <h2 className="text-3xl font-bold mb-10 text-center">
-            A few things we're not totally embarrassed to show:
+            A few things we&apos;re not totally embarrassed to show:
           </h2>
           
           <ProjectGallery />
@@ -119,7 +115,7 @@ export default function Home() {
         <Container>
           <h2 className="text-3xl font-bold mb-4 text-center">Our Hackathon Journey</h2>
           <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-10">
-            Swipe through our adventures across hackathons nationwide. We've built, broken, fixed, and celebrated from coast to coast.
+            Swipe through our adventures across hackathons nationwide. We&apos;ve built, broken, fixed, and celebrated from coast to coast.
           </p>
           <PhotoGallery />
         </Container>

@@ -10,9 +10,25 @@
       "state": "NY",
       "achievement": "Most Dandy Hack",
       "description": "Developed a campus navigation app that factors in weather and tunnel routes.",
-      "mainImage": "",
+      "mainImage": "/team/dandyhacks_2023/people_choice_award.jpg",
       "website": "https://dandyhacks-2023.devpost.com",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/dandyhacks_2023/team_working.jpg",
+          "caption": "Working on our project at DandyHacks",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/dandyhacks_2023/people_choice_announcement.jpg",
+          "caption": "People's Choice Award winners",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/dandyhacks_2023/people_choice_award.jpg",
+          "caption": "People's Choice Award winners",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "rocmap",
@@ -392,7 +408,13 @@
       "description": "Developed 'DMPN', a real-time productivity tracker and gamified platform to monitor and enhance developers' focus and efficiency.",
       "mainImage": "/team/bitcamp_2025/demo_team_pic.jpg",
       "website": "https://bit.camp",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/bitcamp_2025/demo_team_pic.jpg",
+          "caption": "Demoing our project at Bitcamp",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "dmpn",

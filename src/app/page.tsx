@@ -14,33 +14,16 @@ import { getSummaryStatistics, getAllTeamMembers } from '@/utils/dataUtils';
 // Get team members from data
 const teamData = getAllTeamMembers();
 
-// Team members for homepage display
-const teamMembers = [
-  {
-    id: "vuong",
-    name: "Vuong",
-    caption: "Vuong debugging via prayer",
-    image: "/people/vuong/avatar.jpg"
-  },
-  {
-    id: "duc",
-    name: "Duc",
-    caption: "One hour before the demo crash",
-    image: "/people/duc/avatar.jpg"
-  },
-  {
-    id: "hoang",
-    name: "Hoang",
-    caption: "Trying to center a div at 3 AM",
-    image: "/people/hoang/avatar.jpg"
-  },
-  {
-    id: "lam",
-    name: "Lam",
-    caption: "When the code works but you don't know why",
-    image: "/people/lam/avatar.jpg"
-  }
-];
+// Team members for homepage display with custom captions
+const teamMembers = teamData.map(member => ({
+  id: member.id,
+  name: member.name.split(' ')[0], // Just use first name
+  caption: member.id === "vuong" ? "Vuong debugging via prayer" :
+           member.id === "duc" ? "One hour before the demo crash" :
+           member.id === "hoang" ? "Trying to center a div at 3 AM" :
+           "When the code works but you don't know why",
+  image: member.photo // Use photo path from team.json
+}));
 
 export default function Home() {
   // Get statistics
@@ -139,15 +122,12 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {teamMembers.map((member, index) => (
               <div key={member.id} className="group relative w-64 h-64 overflow-hidden rounded-lg">
-                {/* Remove placeholder background since we have real images now */}
-                {member.image && (
-                  <Image 
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                )}
+                <Image 
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-lg font-medium">{member.name}</p>
                   <p className="text-sm text-[var(--foreground-secondary)]">{member.caption}</p>

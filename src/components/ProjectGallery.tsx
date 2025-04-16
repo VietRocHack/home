@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/Button';
@@ -14,6 +14,8 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
   const [isPaused, setIsPaused] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const autoRotateTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const currentProjectIndexRef = useRef<number>(0);
 
   // Load projects
   useEffect(() => {
@@ -29,6 +31,11 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     
     setProjects(filteredProjects);
   }, [hackathonId]);
+  
+  // Keep the ref in sync with the state
+  useEffect(() => {
+    currentProjectIndexRef.current = activeProject;
+  }, [activeProject]);
 
   // Function to change project with direction animation
   const changeProject = (newIndex: number) => {
@@ -36,6 +43,12 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     
     // Set animating state
     setIsAnimating(true);
+    
+    // Clear existing timer when manually changing
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+      autoRotateTimerRef.current = null;
+    }
     
     // Save previous project
     setPreviousProject(activeProject);
@@ -48,19 +61,44 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
     setTimeout(() => {
       setSlideDirection(null);
       setIsAnimating(false);
+      
+      // Restart auto-rotation after manual change
+      if (!isPaused) {
+        startAutoRotation();
+      }
     }, 500); // Match this to the CSS transition duration
   };
 
-  // Auto-rotate projects every 5 seconds
-  useEffect(() => {
-    if (projects.length <= 1 || isPaused) return;
+  // Function to start auto-rotation
+  const startAutoRotation = () => {
+    // Clear any existing timer first
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+    }
     
-    const timer = setInterval(() => {
-      changeProject((activeProject + 1) % projects.length);
+    // Start a new timer
+    autoRotateTimerRef.current = setInterval(() => {
+      if (!isAnimating && !isPaused && projects.length > 1) {
+        // Use the ref to get the current index to avoid closure issues
+        const nextIndex = (currentProjectIndexRef.current + 1) % projects.length;
+        changeProject(nextIndex);
+      }
     }, 5000);
+  };
+
+  // Auto-rotate projects
+  useEffect(() => {
+    if (projects.length <= 1) return;
     
-    return () => clearInterval(timer);
-  }, [projects.length, isPaused, activeProject]);
+    startAutoRotation();
+    
+    // Cleanup on unmount
+    return () => {
+      if (autoRotateTimerRef.current) {
+        clearInterval(autoRotateTimerRef.current);
+      }
+    };
+  }, [projects.length, isPaused]); // Keep isPaused dependency
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {

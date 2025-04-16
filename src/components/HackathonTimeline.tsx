@@ -12,6 +12,8 @@ export default function HackathonTimeline() {
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const autoRotateTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const currentEventIndexRef = useRef<number>(0);
   
   // Load hackathon data
   useEffect(() => {
@@ -20,12 +22,23 @@ export default function HackathonTimeline() {
     setTimelineEvents(hackathons);
   }, []);
   
+  // Keep the ref in sync with the state
+  useEffect(() => {
+    currentEventIndexRef.current = activeEvent;
+  }, [activeEvent]);
+  
   // Function to change event with direction animation
   const changeEvent = (newIndex: number) => {
     if (newIndex === activeEvent || isAnimating) return;
     
     // Set animating state
     setIsAnimating(true);
+    
+    // Clear existing timer when manually changing
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+      autoRotateTimerRef.current = null;
+    }
     
     // Save previous event
     setPreviousEvent(activeEvent);
@@ -38,19 +51,44 @@ export default function HackathonTimeline() {
     setTimeout(() => {
       setSlideDirection(null);
       setIsAnimating(false);
+      
+      // Restart auto-rotation after manual change
+      if (!isPaused) {
+        startAutoRotation();
+      }
     }, 500); // Match this to the CSS transition duration
   };
 
-  // Auto-rotate hackathons every 6 seconds
-  useEffect(() => {
-    if (timelineEvents.length <= 1 || isPaused) return;
+  // Function to start auto-rotation
+  const startAutoRotation = () => {
+    // Clear any existing timer first
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+    }
     
-    const timer = setInterval(() => {
-      changeEvent((activeEvent + 1) % timelineEvents.length);
+    // Start a new timer
+    autoRotateTimerRef.current = setInterval(() => {
+      if (!isAnimating && !isPaused && timelineEvents.length > 1) {
+        // Use the ref to get the current index to avoid closure issues
+        const nextIndex = (currentEventIndexRef.current + 1) % timelineEvents.length;
+        changeEvent(nextIndex);
+      }
     }, 6000);
+  };
+
+  // Auto-rotate hackathons
+  useEffect(() => {
+    if (timelineEvents.length <= 1) return;
     
-    return () => clearInterval(timer);
-  }, [timelineEvents.length, isPaused, activeEvent]);
+    startAutoRotation();
+    
+    // Cleanup on unmount
+    return () => {
+      if (autoRotateTimerRef.current) {
+        clearInterval(autoRotateTimerRef.current);
+      }
+    };
+  }, [timelineEvents.length, isPaused]); // Keep isPaused dependency
   
   // Auto-scroll the timeline to active event
   useEffect(() => {

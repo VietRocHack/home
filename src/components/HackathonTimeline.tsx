@@ -68,17 +68,6 @@ export default function HackathonTimeline() {
     }
   }, [activeEvent, timelineEvents]);
 
-  // Function to scroll timeline left/right
-  const scrollTimeline = (direction: 'left' | 'right') => {
-    if (timelineRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      timelineRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
     if (!path) return '/placeholder-image.svg';
@@ -97,6 +86,26 @@ export default function HackathonTimeline() {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
         
+        {/* Navigation buttons */}
+        <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 px-2">
+          <button
+            onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
+            disabled={activeEvent === 0 || isAnimating}
+            className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40"
+            aria-label="Previous hackathon"
+          >
+            ←
+          </button>
+          <button
+            onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
+            disabled={activeEvent === timelineEvents.length - 1 || isAnimating}
+            className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40"
+            aria-label="Next hackathon"
+          >
+            →
+          </button>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center overflow-hidden">
           {/* Container for both slides */}
           <div className="relative h-80 z-20">
@@ -114,11 +123,13 @@ export default function HackathonTimeline() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
-                    {timelineEvents[previousEvent].achievement}
-                  </span>
-                </div>
+                {timelineEvents[previousEvent].achievement && (
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
+                      {timelineEvents[previousEvent].achievement}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
             
@@ -135,11 +146,13 @@ export default function HackathonTimeline() {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
-                  {timelineEvents[activeEvent].achievement}
-                </span>
-              </div>
+              {timelineEvents[activeEvent].achievement && (
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="bg-[var(--accent-yellow)] text-black px-3 py-1 rounded-full text-sm font-medium">
+                    {timelineEvents[activeEvent].achievement}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
           
@@ -160,21 +173,6 @@ export default function HackathonTimeline() {
                 <p className="text-[var(--foreground-secondary)] mb-6">
                   {timelineEvents[previousEvent].description}
                 </p>
-                
-                <div className="flex gap-3">
-                  <button 
-                    className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={true}
-                  >
-                    Previous
-                  </button>
-                  <button 
-                    className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={true}
-                  >
-                    Next
-                  </button>
-                </div>
               </div>
             )}
             
@@ -192,52 +190,17 @@ export default function HackathonTimeline() {
               <p className="text-[var(--foreground-secondary)] mb-6">
                 {timelineEvents[activeEvent].description}
               </p>
-              
-              <div className="flex gap-3">
-                <button 
-                  className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
-                  disabled={activeEvent === 0 || isAnimating}
-                >
-                  Previous
-                </button>
-                <button 
-                  className="px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
-                  disabled={activeEvent === timelineEvents.length - 1 || isAnimating}
-                >
-                  Next
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Timeline scroll with navigation buttons */}
-      <div className="relative">
-        {/* Left scroll button */}
-        <button 
-          onClick={() => scrollTimeline('left')}
-          className="absolute left-0 top-4 z-20 bg-gray-800 rounded-full p-2 hover:bg-gray-700"
-          aria-label="Scroll timeline left"
-        >
-          ←
-        </button>
-
-        {/* Right scroll button */}
-        <button 
-          onClick={() => scrollTimeline('right')}
-          className="absolute right-0 top-4 z-20 bg-gray-800 rounded-full p-2 hover:bg-gray-700"
-          aria-label="Scroll timeline right"
-        >
-          →
-        </button>
-        
+      {/* Timeline with events */}
+      <div className="relative mb-8">
         {/* Timeline container */}
         <div 
           ref={timelineRef} 
-          className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar mx-10"
+          className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar"
           style={{ scrollbarWidth: 'none' }}
         >
           {/* Timeline line */}
@@ -252,11 +215,23 @@ export default function HackathonTimeline() {
                 className={`relative cursor-pointer pt-8 ${index === activeEvent ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
                 onClick={() => changeEvent(index)}
               >
+                {/* Timeline marker - yellow full circle for prize winners, red half circle for active, gray for others */}
                 <div 
-                  className={`w-4 h-4 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 ${
-                    index === activeEvent ? 'bg-[var(--accent-red)]' : 'bg-gray-500'
-                  }`}
-                ></div>
+                  className={`w-4 h-4 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 
+                    ${event.achievement ? 
+                      'bg-[var(--accent-yellow)] ring-2 ring-[var(--accent-yellow)] ring-opacity-30' : 
+                      index === activeEvent ? 
+                        'bg-[var(--accent-red)]' : 
+                        'bg-gray-500'
+                    }`}
+                >
+                  {/* Trophy icon for prize winners */}
+                  {event.achievement && (
+                    <span className="absolute -top-5 left-1/2 transform -translate-x-1/2 text-[var(--accent-yellow)]" title={event.achievement}>
+                      🏆
+                    </span>
+                  )}
+                </div>
                 <div className="text-center min-w-[100px] max-w-[140px]">
                   <p className="font-medium truncate">{event.name}</p>
                   <p className="text-sm text-[var(--foreground-secondary)]">{event.date}</p>

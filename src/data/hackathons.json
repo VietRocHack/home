@@ -47,7 +47,7 @@
       "location": "Rochester Institute of Technology",
       "city": "Rochester",
       "state": "NY",
-      "achievement": "Best Use of AI",
+      "achievement": "",
       "description": "Created an AI-powered dining assistant to enhance campus dining experiences.",
       "mainImage": "/team/brickhack_2024_demo_pic.jpg",
       "website": "https://brickhack-x.devpost.com",
@@ -82,7 +82,7 @@
             "GPT-4",
             "DALL·E 3"
           ],
-          "achievements": ["Best Use of AI"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -97,7 +97,7 @@
       "location": "Yale University",
       "city": "New Haven",
       "state": "CT",
-      "achievement": "Education Award",
+      "achievement": "Best Education Award",
       "description": "Developed an eye-tracking powered classroom assistant to enhance student engagement.",
       "mainImage": "/team/yhack_2024_best_education_award_pic.jpg",
       "website": "https://yhack.devpost.com",
@@ -128,7 +128,7 @@
             "Supabase",
             "GPT-4"
           ],
-          "achievements": ["Education Award"],
+          "achievements": ["Best Education Award"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -143,7 +143,7 @@
       "location": "Online",
       "city": "",
       "state": "",
-      "achievement": "Best Travel Hack",
+      "achievement": "",
       "description": "Developed an AI-powered trip planner that transforms TikTok videos into personalized travel itineraries.",
       "mainImage": "",
       "website": "https://devpost.com/software/vietrochack",
@@ -167,7 +167,7 @@
             "DynamoDB",
             "GPT-4"
           ],
-          "achievements": ["Best Travel Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -182,7 +182,7 @@
       "location": "Johns Hopkins University",
       "city": "Baltimore",
       "state": "MD",
-      "achievement": "Winner General Prize",
+      "achievement": "3rd Place Overall",
       "description": "Developed 'Young Heroes', a safe and accessible 911 call simulation platform for kids.",
       "mainImage": "/team/hophacks_2024_team_third_prize_pic.jpg",
       "website": "https://hophacks.com",
@@ -223,7 +223,7 @@
             "PyTorch",
             "Figma"
           ],
-          "achievements": ["Winner General Prize"],
+          "achievements": ["3rd Place Overall"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -239,7 +239,7 @@
       "location": "UC Berkeley",
       "city": "Berkeley",
       "state": "CA",
-      "achievement": "Best Use of XR",
+      "achievement": "People's Choice Award & VAPI: Best use of Voice AI",
       "description": "Developed an AI-powered extended reality study assistant to enhance personalized learning experiences.",
       "mainImage": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
       "website": "https://cal-hacks-11-0.devpost.com",
@@ -292,7 +292,7 @@
           "devpostLink": "https://devpost.com/software/teachxr",
           "youtubeDemo": "",
           "techStack": ["React", "Three.js", "OpenAI", "XR"],
-          "achievements": ["Best Use of XR"],
+          "achievements": ["People's Choice Award", "VAPI: Best use of Voice AI"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -307,7 +307,7 @@
       "location": "University of Massachusetts Amherst",
       "city": "Amherst",
       "state": "MA",
-      "achievement": "Best AR/VR Hack",
+      "achievement": "",
       "description": "Developed 'Xplore It', an AI-powered XR assistant that provides real-time, personalized guidance for various tasks, enhancing user engagement and learning.",
       "mainImage": "/team/hackumass_2024_better_demo_pic.jpg",
       "website": "https://hackumass-xii.devpost.com/",
@@ -335,7 +335,7 @@
           "devpostLink": "https://devpost.com/software/xplore-it",
           "youtubeDemo": "",
           "techStack": ["React", "Flask", "OpenAI", "MetaQuest", "Vapi.ai"],
-          "achievements": ["Best AR/VR Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -350,7 +350,7 @@
       "location": "University of Texas at Dallas",
       "city": "Dallas",
       "state": "TX",
-      "achievement": "Best Real Estate Hack",
+      "achievement": "",
       "description": "Developed 'Realty Wingman', an AI assistant for real estate agents to enhance house visits with real-time emotion and attention analysis.",
       "mainImage": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
       "website": "https://hackutd.co",
@@ -373,7 +373,7 @@
           "devpostLink": "https://devpost.com/software/reaity-wingman",
           "youtubeDemo": "",
           "techStack": ["Flask", "OpenCV", "Python"],
-          "achievements": ["Best Real Estate Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -388,7 +388,7 @@
       "location": "University of Maryland",
       "city": "College Park",
       "state": "MD",
-      "achievement": "Best Developer Tool",
+      "achievement": "People's Choice",
       "description": "Developed 'DMPN', a real-time productivity tracker and gamified platform to monitor and enhance developers' focus and efficiency.",
       "mainImage": "/team/bitcamp_2025_demo_team_pic.jpg",
       "website": "https://bit.camp",
@@ -411,7 +411,7 @@
             "OpenAI Vision API",
             "WebSockets"
           ],
-          "achievements": ["Best Developer Tool"],
+          "achievements": ["People's Choice"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true

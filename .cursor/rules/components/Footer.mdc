@@ -1,3 +1,8 @@
+---
+description: Styling specification for Footer component
+globs: 
+alwaysApply: false
+---
 # Footer
 
 - Visual style: Dark background with 4-column layout

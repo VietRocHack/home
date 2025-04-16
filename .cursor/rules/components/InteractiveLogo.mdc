@@ -1,3 +1,8 @@
+---
+description: Styling specification for InteractiveLogo component
+globs: 
+alwaysApply: false
+---
 # Interactive Logo
 
 - Visual style: 

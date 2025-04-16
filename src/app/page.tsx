@@ -9,28 +9,36 @@ import HackathonTimeline from '@/components/HackathonTimeline';
 import ProjectGallery from '@/components/ProjectGallery';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSummaryStatistics } from '@/utils/dataUtils';
+import { getSummaryStatistics, getAllTeamMembers } from '@/utils/dataUtils';
 
+// Get team members from data
+const teamData = getAllTeamMembers();
+
+// Team members for homepage display
 const teamMembers = [
   {
+    id: "vuong",
     name: "Vuong",
     caption: "Vuong debugging via prayer",
-    image: "/Flag_of_Vietnam.svg"
+    image: "/people/vuong/avatar.jpg"
   },
   {
-    name: "Minh",
+    id: "duc",
+    name: "Duc",
     caption: "One hour before the demo crash",
-    image: "/Flag_of_Vietnam.svg"
+    image: "/people/duc/avatar.jpg"
   },
   {
-    name: "Linh",
+    id: "hoang",
+    name: "Hoang",
     caption: "Trying to center a div at 3 AM",
-    image: "/Flag_of_Vietnam.svg"
+    image: "/people/hoang/avatar.jpg"
   },
   {
-    name: "Trung",
+    id: "lam",
+    name: "Lam",
     caption: "When the code works but you don't know why",
-    image: "/Flag_of_Vietnam.svg"
+    image: "/people/lam/avatar.jpg"
   }
 ];
 
@@ -130,9 +138,8 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="group relative w-64 h-64 overflow-hidden rounded-lg">
-                {/* Placeholder image if actual images not available */}
-                <div className="absolute inset-0 bg-gray-700 filter grayscale group-hover:grayscale-0 transition-all duration-300"></div>
+              <div key={member.id} className="group relative w-64 h-64 overflow-hidden rounded-lg">
+                {/* Remove placeholder background since we have real images now */}
                 {member.image && (
                   <Image 
                     src={member.image}
@@ -169,15 +176,15 @@ export default function Home() {
             />
             <AnimatedStat
               key="sleep"
-              title="Sleep Debt"
+              title="Phở Eaten"
               value={stats.sleepLost}
-              subtext="Hours and counting"
+              subtext="tái nạm gầu gân"
             />
             <AnimatedStat
               key="coffee"
-              title="Coffee Consumed"
-              value={stats.coffeeConsumed}
-              subtext="Cups since our last commit"
+              title="Places Travelled"
+              value={8}
+              subtext="Across the US for hackathons"
             />
           </div>
         </Container>

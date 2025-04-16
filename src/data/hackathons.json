@@ -161,9 +161,15 @@
       "state": "",
       "achievement": "",
       "description": "YHACK was the last hackathon of the 2024 season and summer rolled around. We were all pretty spread out (one in Vietnam, one in Rochester, one in San Jose), but we still decided to do a hackathon over the summer. This was when Lam joined us, creating a 4 person team like today. This was our first major online hackathon and we were all hyped AF for this. We organized our team just like a proper startup, with CI/CD pipelines and standup meetings. Nevertheless, yet another humbling experience!",
-      "mainImage": "",
+      "mainImage": "/team/tiktoktechjam_2024/demo_pic.png",
       "website": "https://devpost.com/software/vietrochack",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/tiktoktechjam_2024/demo_pic.png",
+          "caption": "Demoing our project at TikTok TechJam",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "swipeandfly",

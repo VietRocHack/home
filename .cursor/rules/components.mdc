@@ -3,30 +3,25 @@ description:
 globs: 
 alwaysApply: true
 ---
----
-description: 
-globs: 
-alwaysApply: true
----
 # UI Components
 
 The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.
 
 ## Interactive Logo
 
-- Visual style: Compact "{VRH}" that expands to "{VietRocHack 🇻🇳}" on hover
+- Visual style: 
+  - Stacked format with "[V]iet", middle word, and "[H]ack" vertically aligned
+  - First characters of each word are in square brackets
+  - Consistent spacing between first character and rest of word
 - Behavior:
-  - Default state: Shows "{VRH}" in large bold text
-  - Hover state: Expands to show "{VietRocHack}" with Vietnam flag
-  - Click action: Navigates to home page
+  - Rotates through various middle words (Roc, Travel, DMPN, etc.)
+  - Shows rare variants occasionally or when triggered
 - Animation:
-  - Smooth width transition (duration-500)
-  - Flag has subtle pulse animation
-  - Width expands based on content with extra padding
+  - Smooth transition between variants
+  - Special visual effects for rare variants
 - Implementation: 
-  - Uses Next.js Image component for SVG flag from public directory
-  - Responsive and consistent across all devices
-  - Text size: text-2xl with appropriate padding
+  - Responsive text sizing across devices
+  - Proper vertical alignment of first characters
 
 ## Button
 
@@ -94,34 +89,41 @@ The VietRocHack website uses a set of reusable UI components that share a consis
 
 ## ProjectGallery
 
-- Visual style: Responsive card with image and project details
+- Visual style: 
+  - Fixed-height card (36rem) with image on left, details on right
+  - Scrollable description area for overflowing content
+  - Custom scrollbar styling that matches site theme
 - Behavior:
   - Auto-rotates through projects every 5 seconds
   - Pauses rotation on mouse hover
   - Manual navigation with previous/next buttons and dot indicators
 - Animation:
-  - Sliding transition when changing projects
-  - Left-to-right or right-to-left animation based on navigation direction
-  - Smooth 500ms transition with ease-in-out timing
+  - Simultaneous animation of both old and new content
+  - Fade-in/fade-out combined with slide transitions
+  - Direction-aware animations (left/right)
 - Implementation:
-  - Context-aware slide direction detection
-  - CSS keyframe animations for smooth transitions
-  - Automatic timer reset after animations complete
+  - Dynamically injected keyframe animations
+  - Controlled z-index layering for proper visual hierarchy
+  - Responsive layout adapts to various screen sizes
 
 ## HackathonTimeline
 
-- Visual style: Two-column layout with image and event details
+- Visual style: 
+  - Two-column layout with image and event details
+  - Achievement badges for prize-winning hackathons
+  - Interactive timeline with visual differentiation for achievements
 - Behavior:
   - Auto-rotates through hackathons every 6 seconds
   - Pauses rotation on mouse hover
-  - Interactive timeline with clickable events
-  - Manual navigation with buttons
+  - Navigation buttons positioned on main content card for easy access
+  - Timeline markers indicate prize-winning events with yellow color and trophy icon
 - Animation:
-  - Sliding transition when changing hackathons
-  - Direction-aware animation based on navigation choice
-  - Timeline dots highlight active event
-  - Auto-scrolls timeline to keep active event centered
+  - Text content fades while sliding during transitions
+  - Images slide without fading for contrast
+  - New content slides over old content for layered effect
+  - Direction-aware animations based on navigation choice
 - Implementation:
-  - Smooth scrolling behavior for timeline navigation
-  - CSS keyframe animations for content transitions
-  - Context-aware slide direction detection
+  - Complex z-index management for proper layering effects
+  - Conditional rendering of achievement badges
+  - Auto-scrolls timeline to keep active event centered
+  - Custom animations with opacity and transform transitions

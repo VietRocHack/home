@@ -11,21 +11,45 @@ export default function HackathonTimeline() {
   const [isPaused, setIsPaused] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const autoRotateTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const currentEventIndexRef = useRef<number>(0);
   
   // Load hackathon data
   useEffect(() => {
     // Use the original order from the JSON file
-    const hackathons = [...getAllHackathons()].reverse();
+    const hackathons = getAllHackathons();
     setTimelineEvents(hackathons);
   }, []);
   
+  // Keep the ref in sync with the state
+  useEffect(() => {
+    currentEventIndexRef.current = activeEvent;
+    
+    // Reset description expanded state when changing events
+    setIsDescriptionExpanded(false);
+  }, [activeEvent]);
+  
+  // Toggle description expanded state
+  const toggleDescription = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering other click handlers
+    setIsDescriptionExpanded(!isDescriptionExpanded);
+    setIsPaused(true); // Pause auto-rotation when expanded
+  };
+
   // Function to change event with direction animation
   const changeEvent = (newIndex: number) => {
     if (newIndex === activeEvent || isAnimating) return;
     
     // Set animating state
     setIsAnimating(true);
+    
+    // Clear existing timer when manually changing
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+      autoRotateTimerRef.current = null;
+    }
     
     // Save previous event
     setPreviousEvent(activeEvent);
@@ -38,19 +62,44 @@ export default function HackathonTimeline() {
     setTimeout(() => {
       setSlideDirection(null);
       setIsAnimating(false);
+      
+      // Restart auto-rotation after manual change
+      if (!isPaused) {
+        startAutoRotation();
+      }
     }, 500); // Match this to the CSS transition duration
   };
 
-  // Auto-rotate hackathons every 6 seconds
-  useEffect(() => {
-    if (timelineEvents.length <= 1 || isPaused) return;
+  // Function to start auto-rotation
+  const startAutoRotation = () => {
+    // Clear any existing timer first
+    if (autoRotateTimerRef.current) {
+      clearInterval(autoRotateTimerRef.current);
+    }
     
-    const timer = setInterval(() => {
-      changeEvent((activeEvent + 1) % timelineEvents.length);
+    // Start a new timer
+    autoRotateTimerRef.current = setInterval(() => {
+      if (!isAnimating && !isPaused && timelineEvents.length > 1) {
+        // Use the ref to get the current index to avoid closure issues
+        const nextIndex = (currentEventIndexRef.current + 1) % timelineEvents.length;
+        changeEvent(nextIndex);
+      }
     }, 6000);
+  };
+
+  // Auto-rotate hackathons
+  useEffect(() => {
+    if (timelineEvents.length <= 1) return;
     
-    return () => clearInterval(timer);
-  }, [timelineEvents.length, isPaused, activeEvent]);
+    startAutoRotation();
+    
+    // Cleanup on unmount
+    return () => {
+      if (autoRotateTimerRef.current) {
+        clearInterval(autoRotateTimerRef.current);
+      }
+    };
+  }, [timelineEvents.length, isPaused]); // Keep isPaused dependency
   
   // Auto-scroll the timeline to active event
   useEffect(() => {
@@ -82,31 +131,11 @@ export default function HackathonTimeline() {
   return (
     <div className="w-full">
       {/* Main display of current event */}
-      <div className="mb-10 relative"
+      <div className={`mb-2 relative transition-all duration-500 ease-in-out ${isDescriptionExpanded ? 'min-h-[400px]' : 'min-h-[300px]'}`}
         onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}>
+        onMouseLeave={() => isDescriptionExpanded ? null : setIsPaused(false)}>
         
-        {/* Navigation buttons */}
-        <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 px-2">
-          <button
-            onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
-            disabled={activeEvent === 0 || isAnimating}
-            className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40"
-            aria-label="Previous hackathon"
-          >
-            ←
-          </button>
-          <button
-            onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
-            disabled={activeEvent === timelineEvents.length - 1 || isAnimating}
-            className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40"
-            aria-label="Next hackathon"
-          >
-            →
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start overflow-hidden">
           {/* Container for both slides */}
           <div className="relative h-80 z-20">
             {/* Previous event image (visible during animation) */}
@@ -156,8 +185,8 @@ export default function HackathonTimeline() {
             </div>
           </div>
           
-          {/* Container for content slides */}
-          <div className="relative h-full min-h-[250px]">
+          {/* Container for content slides - adjust height based on expanded state */}
+          <div className={`relative ${isDescriptionExpanded ? 'min-h-[350px]' : 'min-h-[250px]'} transition-all duration-500 ease-in-out`}>
             {/* Previous event content (visible during animation) */}
             {isAnimating && (
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out z-10 ${
@@ -170,9 +199,9 @@ export default function HackathonTimeline() {
                   <span className="text-[var(--accent-red)]">{timelineEvents[previousEvent].date}</span>
                 </div>
                 <p className="text-lg mb-2">{timelineEvents[previousEvent].location}</p>
-                <p className="text-[var(--foreground-secondary)] mb-6">
-                  {timelineEvents[previousEvent].description}
-                </p>
+                <div className="text-[var(--foreground-secondary)] mb-6">
+                  <p>{timelineEvents[previousEvent].description}</p>
+                </div>
               </div>
             )}
             
@@ -187,12 +216,81 @@ export default function HackathonTimeline() {
                 <span className="text-[var(--accent-red)]">{timelineEvents[activeEvent].date}</span>
               </div>
               <p className="text-lg mb-2">{timelineEvents[activeEvent].location}</p>
-              <p className="text-[var(--foreground-secondary)] mb-6">
-                {timelineEvents[activeEvent].description}
-              </p>
+              
+              {/* Description container */}
+              <div className="flex flex-col mb-4">
+                {/* Scrollable description area with adjustable height */}
+                <div className={`${isDescriptionExpanded ? 'h-[250px]' : 'h-[120px]'} transition-all duration-300 ease-in-out`}>
+                  <div className={`${isDescriptionExpanded ? 'h-full overflow-y-auto custom-scrollbar' : 'h-full overflow-hidden relative'}`}>
+                    <div className="pr-2">
+                      <p className="text-[var(--foreground-secondary)]">
+                        {timelineEvents[activeEvent].description}
+                      </p>
+                      
+                      {/* Additional details that show when expanded */}
+                      {isDescriptionExpanded && (
+                        <div className="mt-6">
+                          <h4 className="font-semibold mb-3">Projects:</h4>
+                          <div className="space-y-4">
+                            {timelineEvents[activeEvent].projects.map(project => (
+                              <div key={project.id} className="pl-3 border-l-2 border-[var(--accent-red)]">
+                                <p className="font-medium">{project.name}</p>
+                                <p className="text-sm text-[var(--foreground-secondary)]">{project.tagline}</p>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {project.techStack.slice(0, 3).map((tech, i) => (
+                                    <span key={i} className="px-2 py-1 bg-gray-800 rounded-full text-xs">
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Gradient fade effect at the bottom when not expanded */}
+                    {!isDescriptionExpanded && (
+                      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Read more / Read less toggle - improved click target */}
+                <div className="relative z-30 mt-2">
+                  <button 
+                    onClick={toggleDescription}
+                    className="text-[var(--accent-yellow)] hover:underline text-sm font-medium focus:outline-none py-1 px-2 -ml-2 rounded hover:bg-gray-800 hover:bg-opacity-50"
+                  >
+                    {isDescriptionExpanded ? 'Read less' : 'Read more'}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Navigation buttons - moved to bottom */}
+      <div className="flex justify-center gap-4 mb-6">
+        <button
+          onClick={() => changeEvent(Math.max(0, activeEvent - 1))}
+          disabled={activeEvent === 0 || isAnimating}
+          className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40 hover:scale-110 transition-transform"
+          aria-label="Previous hackathon"
+        >
+          ←
+        </button>
+        <span className="text-sm text-gray-400 self-center">{activeEvent + 1} / {timelineEvents.length}</span>
+        <button
+          onClick={() => changeEvent(Math.min(timelineEvents.length - 1, activeEvent + 1))}
+          disabled={activeEvent === timelineEvents.length - 1 || isAnimating}
+          className="bg-black bg-opacity-50 hover:bg-opacity-70 p-3 rounded-full text-white disabled:opacity-40 hover:scale-110 transition-transform"
+          aria-label="Next hackathon"
+        >
+          →
+        </button>
       </div>
       
       {/* Timeline with events */}
@@ -200,9 +298,12 @@ export default function HackathonTimeline() {
         {/* Timeline container */}
         <div 
           ref={timelineRef} 
-          className="relative overflow-x-auto pb-4 whitespace-nowrap hide-scrollbar"
+          className="relative overflow-x-auto pb-4 hide-scrollbar"
           style={{ scrollbarWidth: 'none' }}
         >
+
+        {/* Scrollable content wrapper */}
+          <div className="relative min-w-max">
           {/* Timeline line */}
           <div className="w-full h-0.5 bg-gray-700 absolute top-4 left-0 right-0 z-0"></div>
           
@@ -238,6 +339,7 @@ export default function HackathonTimeline() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
@@ -345,6 +447,25 @@ export default function HackathonTimeline() {
         
         .animate-fade-slide-out-right {
           animation: fadeSlideOutRight 0.5s ease-in-out forwards;
+        }
+        
+        /* Custom scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #1a1a1a;
+          border-radius: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: var(--accent-red);
+          border-radius: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #ff5a5a;
         }
         
         /* On small screens, ensure proper layering during cross-column animations */

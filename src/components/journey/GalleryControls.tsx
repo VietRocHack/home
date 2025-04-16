@@ -51,6 +51,12 @@ export default function GalleryControls({
             >
               Hackathons
             </button>
+            <button 
+              className={`px-3 py-1 rounded-md text-sm ${viewMode === 'fun' ? 'bg-[var(--accent-red)] text-white' : 'hover:bg-gray-700 text-gray-300'}`}
+              onClick={() => setViewMode('fun')}
+            >
+              Fun
+            </button>
           </div>
         </div>
         
@@ -75,7 +81,7 @@ export default function GalleryControls({
       </div>
       
       {/* Filter buttons */}
-      {viewMode !== 'hackathons' && (
+      {viewMode !== 'hackathons' && viewMode !== 'fun' && (
         <div className="flex flex-wrap gap-2 mt-4 justify-center" ref={scrollRef}>
           <button 
             className={`px-3 py-1 rounded-md text-sm ${!filter ? 'bg-[var(--accent-red)] text-white' : 'bg-gray-700 hover:bg-gray-600'}`}

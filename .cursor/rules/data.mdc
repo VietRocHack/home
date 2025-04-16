@@ -3,11 +3,6 @@ description: Contains the schema of the data objects used in the website, curren
 globs: 
 alwaysApply: false
 ---
----
-description: Contains the schema of the data objects used in the website
-globs: 
-alwaysApply: false
----
 # Data Structure and Management
 
 ## Overview

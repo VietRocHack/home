@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { getAllPhotos, getHackathonsByDate } from '@/utils/dataUtils';
+import { getAllPhotos, getHackathonsByDate, getAllMemes, Meme } from '@/utils/dataUtils';
 import { GalleryPhoto, ViewMode, SortOrder, HackathonGrouping } from './journey/types';
 import GalleryControls from './journey/GalleryControls';
 import GridView from './journey/GridView';
 import TimelineView from './journey/TimelineView';
 import HackathonsView from './journey/HackathonsView';
+import FunThingsView from './journey/FunThingsView';
 import PhotoLightbox from './journey/PhotoLightbox';
+import MemeLightbox from './journey/MemeLightbox';
 
 export default function HackathonJourneyGallery() {
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
@@ -16,6 +18,8 @@ export default function HackathonJourneyGallery() {
   const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
   const [hackathons, setHackathons] = useState<HackathonGrouping[]>([]);
+  const [memes, setMemes] = useState<Meme[]>([]);
+  const [activeMeme, setActiveMeme] = useState<number | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isSlideshow, setIsSlideshow] = useState(false);
   const slideshowTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -31,6 +35,7 @@ export default function HackathonJourneyGallery() {
   useEffect(() => {
     const hackathonsData = getHackathonsByDate();
     const photos = getAllPhotos();
+    const memesData = getAllMemes();
     
     // Group photos by hackathon
     const groupedHackathons = hackathonsData.map(hackathon => {
@@ -40,6 +45,7 @@ export default function HackathonJourneyGallery() {
     
     setHackathons(groupedHackathons);
     setGalleryPhotos(photos);
+    setMemes(memesData);
   }, []);
 
   // Extract unique hackathon IDs for filtering
@@ -55,6 +61,14 @@ export default function HackathonJourneyGallery() {
     const dateA = a.hackathon.year;
     const dateB = b.hackathon.year;
     return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+  });
+
+  // Sort memes
+  const sortedMemes = [...memes].sort((a, b) => {
+    // Extract year from date string and convert to number
+    const yearA = parseInt(a.date.split(' ')[1]);
+    const yearB = parseInt(b.date.split(' ')[1]);
+    return sortOrder === 'newest' ? yearB - yearA : yearA - yearB;
   });
 
   // Slideshow timer
@@ -112,6 +126,10 @@ export default function HackathonJourneyGallery() {
     setActivePhoto(index);
   };
 
+  const handleMemeClick = (index: number) => {
+    setActiveMeme(index);
+  };
+
   const handlePreviousPhoto = () => {
     setActivePhoto((prev) => 
       prev !== null ? (prev - 1 + filteredPhotos.length) % filteredPhotos.length : 0
@@ -124,11 +142,24 @@ export default function HackathonJourneyGallery() {
     );
   };
 
+  const handlePreviousMeme = () => {
+    setActiveMeme((prev) => 
+      prev !== null ? (prev - 1 + sortedMemes.length) % sortedMemes.length : 0
+    );
+  };
+
+  const handleNextMeme = () => {
+    setActiveMeme((prev) => 
+      prev !== null ? (prev + 1) % sortedMemes.length : 0
+    );
+  };
+
   const handleCloseLightbox = () => {
     if (isSlideshow) {
       toggleSlideshow();
     }
     setActivePhoto(null);
+    setActiveMeme(null);
     setIsFullscreen(false);
   };
 
@@ -175,6 +206,14 @@ export default function HackathonJourneyGallery() {
           onPhotoClick={handleHackathonPhotoClick}
         />
       )}
+
+      {viewMode === 'fun' && (
+        <FunThingsView 
+          memes={sortedMemes}
+          getImagePath={getImagePath}
+          onMemeClick={handleMemeClick}
+        />
+      )}
       
       {/* Photo Lightbox */}
       <PhotoLightbox 
@@ -189,6 +228,19 @@ export default function HackathonJourneyGallery() {
         onToggleSlideshow={toggleSlideshow}
         onPrevious={handlePreviousPhoto}
         onNext={handleNextPhoto}
+      />
+
+      {/* Meme Lightbox */}
+      <MemeLightbox 
+        isOpen={activeMeme !== null}
+        meme={activeMeme !== null ? sortedMemes[activeMeme] : null}
+        memes={sortedMemes}
+        isFullscreen={isFullscreen}
+        getImagePath={getImagePath}
+        onClose={handleCloseLightbox}
+        onToggleFullscreen={toggleFullscreen}
+        onPrevious={handlePreviousMeme}
+        onNext={handleNextMeme}
       />
     </div>
   );

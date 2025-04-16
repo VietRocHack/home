@@ -31,4 +31,6 @@ This file provides a summary of all available components. For detailed specifica
   - **GridView** - Grid-based photo layout
   - **TimelineView** - Chronological display with timeline
   - **HackathonsView** - Event-grouped display with details
+  - **[FunThingsView](./components/FunThingsView.mdc)** - Fun team moments and meme display
   - **PhotoLightbox** - Enhanced photo viewing experience
+  - **[MemeLightbox](./components/MemeLightbox.mdc)** - Specialized lightbox for viewing meme content 

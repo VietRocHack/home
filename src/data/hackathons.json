@@ -2,7 +2,7 @@
   "hackathons": [
     {
       "id": "dandyhacks-2023",
-      "name": "DandyHacks",
+      "name": "DandyHacks '23",
       "year": 2023,
       "date": "November 2023",
       "location": "University of Rochester",
@@ -47,11 +47,22 @@
       "location": "Rochester Institute of Technology",
       "city": "Rochester",
       "state": "NY",
-      "achievement": "Best Use of AI",
+      "achievement": "",
       "description": "Created an AI-powered dining assistant to enhance campus dining experiences.",
-      "mainImage": "",
+      "mainImage": "/team/brickhack_2024_demo_pic.jpg",
       "website": "https://brickhack-x.devpost.com",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/brickhack_2024_busy_at_work.jpg",
+          "caption": "Busy at work",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/brickhack_2024_demo_pic.jpg",
+          "caption": "Demoing our project at BrickHack X",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "dainingrit",
@@ -71,7 +82,7 @@
             "GPT-4",
             "DALL·E 3"
           ],
-          "achievements": ["Best Use of AI"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -80,17 +91,23 @@
     },
     {
       "id": "yhack-2024",
-      "name": "YHACK",
+      "name": "YHACK 2024",
       "year": 2024,
       "date": "March 2024",
       "location": "Yale University",
       "city": "New Haven",
       "state": "CT",
-      "achievement": "Education Award",
+      "achievement": "Best Education Award",
       "description": "Developed an eye-tracking powered classroom assistant to enhance student engagement.",
-      "mainImage": "",
+      "mainImage": "/team/yhack_2024_best_education_award_pic.jpg",
       "website": "https://yhack.devpost.com",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/yhack_2024_best_education_award_pic.jpg",
+          "caption": "Best Education Award winners",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "eduvision",
@@ -111,7 +128,7 @@
             "Supabase",
             "GPT-4"
           ],
-          "achievements": ["Education Award"],
+          "achievements": ["Best Education Award"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -126,7 +143,7 @@
       "location": "Online",
       "city": "",
       "state": "",
-      "achievement": "Best Travel Hack",
+      "achievement": "",
       "description": "Developed an AI-powered trip planner that transforms TikTok videos into personalized travel itineraries.",
       "mainImage": "",
       "website": "https://devpost.com/software/vietrochack",
@@ -150,7 +167,7 @@
             "DynamoDB",
             "GPT-4"
           ],
-          "achievements": ["Best Travel Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -165,9 +182,9 @@
       "location": "Johns Hopkins University",
       "city": "Baltimore",
       "state": "MD",
-      "achievement": "Winner General Prize",
+      "achievement": "3rd Place Overall",
       "description": "Developed 'Young Heroes', a safe and accessible 911 call simulation platform for kids.",
-      "mainImage": "/team/hophacks_2024_demo_team_pic.jpg",
+      "mainImage": "/team/hophacks_2024_team_third_prize_pic.jpg",
       "website": "https://hophacks.com",
       "photos":  [
         {
@@ -206,7 +223,7 @@
             "PyTorch",
             "Figma"
           ],
-          "achievements": ["Winner General Prize"],
+          "achievements": ["3rd Place Overall"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -216,13 +233,13 @@
 
     {
       "id": "calhacks-2024",
-      "name": "CalHacks",
+      "name": "CalHacks 11.0",
       "year": 2024,
       "date": "October 2024",
       "location": "UC Berkeley",
       "city": "Berkeley",
       "state": "CA",
-      "achievement": "Best Use of XR",
+      "achievement": "People's Choice Award & VAPI: Best use of Voice AI",
       "description": "Developed an AI-powered extended reality study assistant to enhance personalized learning experiences.",
       "mainImage": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
       "website": "https://cal-hacks-11-0.devpost.com",
@@ -269,13 +286,13 @@
           "name": "TeachXR",
           "tagline": "World's First AI Study Assistant in Extended Reality",
           "description": "TeachXR is an immersive AI tutor that allows students to interact with study materials in extended reality, providing personalized assistance and enhancing engagement.",
-          "thumbnail": "",
+          "thumbnail": "projects/calhacks_2024_teachxr_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/teachxr",
           "youtubeDemo": "",
           "techStack": ["React", "Three.js", "OpenAI", "XR"],
-          "achievements": ["Best Use of XR"],
+          "achievements": ["People's Choice Award", "VAPI: Best use of Voice AI"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -290,24 +307,35 @@
       "location": "University of Massachusetts Amherst",
       "city": "Amherst",
       "state": "MA",
-      "achievement": "Best AR/VR Hack",
+      "achievement": "",
       "description": "Developed 'Xplore It', an AI-powered XR assistant that provides real-time, personalized guidance for various tasks, enhancing user engagement and learning.",
-      "mainImage": "",
+      "mainImage": "/team/hackumass_2024_better_demo_pic.jpg",
       "website": "https://hackumass-xii.devpost.com/",
-      "photos": [],
+      "photos": [
+        {
+          "src": "/team/hackumass_2024_better_demo_pic.jpg",
+          "caption": "Slacking our project at HackUMass",
+          "isFeatured": true
+        },
+        {
+          "src": "/team/hackumass_2024_demo_pic.jpg",
+          "caption": "Bereal demoing our project at HackUMass",
+          "isFeatured": true
+        }
+      ],
       "projects": [
         {
           "id": "xploreit",
           "name": "Xplore It",
           "tagline": "Effortless Task Mastery with Personalized XR Helper",
           "description": "Xplore It is a fully interactive XR assistant designed to help users tackle any task, even those without specific online tutorials. It offers voice interaction, visual task guidance, and human-like engagement to provide tailored, step-by-step instructions.",
-          "thumbnail": "",
+          "thumbnail": "projects/hackumass_2024_xploreit_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/xplore-it",
           "youtubeDemo": "",
           "techStack": ["React", "Flask", "OpenAI", "MetaQuest", "Vapi.ai"],
-          "achievements": ["Best AR/VR Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -322,7 +350,7 @@
       "location": "University of Texas at Dallas",
       "city": "Dallas",
       "state": "TX",
-      "achievement": "Best Real Estate Hack",
+      "achievement": "",
       "description": "Developed 'Realty Wingman', an AI assistant for real estate agents to enhance house visits with real-time emotion and attention analysis.",
       "mainImage": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
       "website": "https://hackutd.co",
@@ -339,13 +367,13 @@
           "name": "Realty Wingman",
           "tagline": "AI assistant for realty agents during house visits",
           "description": "Realty Wingman is a cutting-edge mobile app that revolutionizes the home-buying process. By leveraging real-time AI-powered emotion detection, eye-tracking, facial expression analysis, and voice tone recognition, it gives realtors a crystal-clear view of what potential buyers are truly feeling. As buyers explore a property, the app tracks where they're looking, listens to their comments, and analyzes their tone, all while capturing video footage. At the end of each showing, realtors receive a comprehensive summary, including key highlights of buyer interest and areas of hesitation, enabling them to tailor their follow-ups and provide a hyper-personalized experience.",
-          "thumbnail": "",
+          "thumbnail": "projects/hackutd_2024_realtywingman_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/reaity-wingman",
           "youtubeDemo": "",
           "techStack": ["Flask", "OpenCV", "Python"],
-          "achievements": ["Best Real Estate Hack"],
+          "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -360,7 +388,7 @@
       "location": "University of Maryland",
       "city": "College Park",
       "state": "MD",
-      "achievement": "Best Developer Tool",
+      "achievement": "People's Choice",
       "description": "Developed 'DMPN', a real-time productivity tracker and gamified platform to monitor and enhance developers' focus and efficiency.",
       "mainImage": "/team/bitcamp_2025_demo_team_pic.jpg",
       "website": "https://bit.camp",
@@ -371,7 +399,7 @@
           "name": "DMPN: Developer Monitoring & Productivity Nexus",
           "tagline": "Find your Developer Aura - Compete to be the Sigma Dev",
           "description": "DMPN is an aura tracker that provides live feedback on developers' focus and productivity during coding sessions. It analyzes webcam images and screen captures in real-time using OpenAI's vision models to generate productivity scores, which are visualized in clean UIs. The platform also features 'Aura Battles,' an elo-based matchmaking system for developers to compete and showcase their productivity.",
-          "thumbnail": "",
+          "thumbnail": "projects/bitcamp_2025_dmpn_thumbnail.png",
           "demoLink": "https://www.myaura.tech",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/dmpn-dev-aura-aio",
@@ -383,7 +411,7 @@
             "OpenAI Vision API",
             "WebSockets"
           ],
-          "achievements": ["Best Developer Tool"],
+          "achievements": ["People's Choice"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": true
@@ -392,9 +420,9 @@
     }
   ],
   "statistics": {
-    "hackathonsEntered": 10,
-    "projectsBuilt": 15,
-    "prizesWon": 12,
+    "hackathonsEntered": 9,
+    "projectsBuilt": 11,
+    "prizesWon": 5,
     "codeLines": 58293,
     "coffeeConsumed": 323,
     "sleepLost": "∞"

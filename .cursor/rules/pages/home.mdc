@@ -30,7 +30,7 @@ LAYOUT STRUCTURE
 - Styling: large heading (`text-7xl`), centered, Space Grotesk, dark background.
 
  2. Hero Section
-- Title: `We’re VietRocHack.`
+- Title: `We're VietRocHack.`
 - Subtitle: `We build apps. Win hackathons. And sometimes get sleep.`
 - Two buttons:
   - `Explore Projects` → link to `/projects`
@@ -38,16 +38,36 @@ LAYOUT STRUCTURE
 - Design: centered layout, subtle fade/slide animation on load, buttons with accent colors and hover effects.
 
  3. Featured Projects Section
-- Heading: `A few things we’re not totally embarrassed to show:`
-- Display 1–2 highlighted projects.
-- Each card should include:
+- Heading: `A few things we're not totally embarrassed to show:`
+- Display 1–2 highlighted projects using the ProjectGallery component.
+- ProjectGallery includes:
+  - Auto-rotation every 5 seconds with smooth sliding animations
+  - Direction-aware transitions (slides from right when going forward, from left when going backward)
+  - Pause on hover functionality
+  - Navigation buttons and dot indicators
+- Each project card should include:
   - Project title
   - 2-line summary
   - Stack tags
   - Buttons: GitHub, Demo
 - Use deadpan humor in project blurbs. Keep the styling clean and card-based.
 
- 4. Team Strip Section
+ 4. Hackathon Timeline Section
+- Heading: `Our hackathon journey so far:`
+- Display HackathonTimeline component with our participation history.
+- HackathonTimeline includes:
+  - Auto-rotation every 6 seconds with smooth sliding animations
+  - Direction-aware transitions based on navigation choice
+  - Interactive timeline with clickable events
+  - Pause on hover functionality
+  - Auto-scrolling timeline to keep active event centered
+- Each hackathon entry shows:
+  - Event name and date
+  - Location
+  - Achievement badges
+  - Event description and project connection
+
+ 5. Team Strip Section
 - Heading: `Four devs. Two time zones. One shared Google Doc.`
 - Display a horizontal row of team photos from past hackathons.
 - On hover, show captions like:
@@ -55,7 +75,7 @@ LAYOUT STRUCTURE
   - "One hour before the demo crash"
 - Keep photos slightly grayscale by default, and color on hover.
 
- 5. Stats Section
+ 6. Stats Section
 - 2x2 grid of animated stats.
 - Each includes a title, a number (animated count), and a dry subtext.
   - Example:
@@ -67,3 +87,7 @@ INTERACTION DETAILS
 - Use Framer Motion or similar for animations (fade in, typewriter effect, hover transitions).
 - The rotating logo should be implemented with `setInterval` or equivalent in React to cycle through the names list.
 - Ensure the hero content does not shift unexpectedly as the logo cycles.
+- All components with sliding animations should have a consistent transition pattern:
+  - Smooth 500ms transitions with ease-in-out timing
+  - Direction-aware animations based on navigation context
+  - Pause functionality on hover to improve user experience

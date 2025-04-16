@@ -9,30 +9,21 @@ import HackathonTimeline from '@/components/HackathonTimeline';
 import ProjectGallery from '@/components/ProjectGallery';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSummaryStatistics } from '@/utils/dataUtils';
+import { getSummaryStatistics, getAllTeamMembers } from '@/utils/dataUtils';
 
-const teamMembers = [
-  {
-    name: "Vuong",
-    caption: "Vuong debugging via prayer",
-    image: "/Flag_of_Vietnam.svg"
-  },
-  {
-    name: "Minh",
-    caption: "One hour before the demo crash",
-    image: "/Flag_of_Vietnam.svg"
-  },
-  {
-    name: "Linh",
-    caption: "Trying to center a div at 3 AM",
-    image: "/Flag_of_Vietnam.svg"
-  },
-  {
-    name: "Trung",
-    caption: "When the code works but you don't know why",
-    image: "/Flag_of_Vietnam.svg"
-  }
-];
+// Get team members from data
+const teamData = getAllTeamMembers();
+
+// Team members for homepage display with custom captions
+const teamMembers = teamData.map(member => ({
+  id: member.id,
+  name: member.name.split(' ')[0], // Just use first name
+  caption: member.id === "vuong" ? "Vuong debugging via prayer" :
+           member.id === "duc" ? "One hour before the demo crash" :
+           member.id === "hoang" ? "Trying to center a div at 3 AM" :
+           "When the code works but you don't know why",
+  image: member.photo // Use photo path from team.json
+}));
 
 export default function Home() {
   // Get statistics
@@ -43,17 +34,17 @@ export default function Home() {
       {/* 1. Splash / Rotating Logo Section */}
       <BackgroundCarousel>
         <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl px-4">
-          <RotatingLogo />
-          <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-8">
-            Vietnamese hackers from the University of Rochester. Some of this site is real.
-          </p>
-          <div className="flex gap-4 mt-4">
-            <Link href="/projects">
-              <Button variant="primary" size="lg">Explore Projects</Button>
-            </Link>
-            <Link href="/team">
-              <Button variant="ghost" size="lg">Meet the Team</Button>
-            </Link>
+          {/* Opaque background container */}
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-xl max-w-3xl mx-auto">
+            <RotatingLogo />
+            <div className="flex gap-4 mt-8 justify-center">
+              <Link href="/projects">
+                <Button variant="primary" size="lg">Explore Projects</Button>
+              </Link>
+              <Link href="/team">
+                <Button variant="ghost" size="lg">Meet the Team</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </BackgroundCarousel>
@@ -130,17 +121,13 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="group relative w-64 h-64 overflow-hidden rounded-lg">
-                {/* Placeholder image if actual images not available */}
-                <div className="absolute inset-0 bg-gray-700 filter grayscale group-hover:grayscale-0 transition-all duration-300"></div>
-                {member.image && (
-                  <Image 
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                )}
+              <div key={member.id + index}className="group relative w-64 h-64 overflow-hidden rounded-lg">
+                <Image 
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-lg font-medium">{member.name}</p>
                   <p className="text-sm text-[var(--foreground-secondary)]">{member.caption}</p>
@@ -169,15 +156,15 @@ export default function Home() {
             />
             <AnimatedStat
               key="sleep"
-              title="Sleep Debt"
+              title="Phở Eaten"
               value={stats.sleepLost}
-              subtext="Hours and counting"
+              subtext="tái nạm gầu gân"
             />
             <AnimatedStat
               key="coffee"
-              title="Coffee Consumed"
-              value={stats.coffeeConsumed}
-              subtext="Cups since our last commit"
+              title="Places Travelled"
+              value={8}
+              subtext="Across the US for hackathons"
             />
           </div>
         </Container>

@@ -2,109 +2,71 @@
   "team": [
     {
       "id": "vuong",
-      "name": "Vuong Nguyen",
-      "role": "Full-stack Developer",
+      "name": "Vuong Ho",
+      "role": "Full Stack Engineer",
       "school": "University of Rochester",
-      "major": "Computer Science",
+      "major": "Computer Science & Applied Mathematics",
       "graduation": 2025,
-      "bio": "Core team member specializing in backend architecture and AI integration. Usually found debugging via prayer.",
-      "photo": "/team/vuong.jpg",
+      "bio": "Full-stack engineer and hackathon leader with experience at Meta and Google. Passionate about building scalable systems and leading high-performing teams.",
+      "photo": "/people/vuong/avatar.jpg",
       "socialLinks": {
-        "github": "https://github.com/vuongnguyen",
-        "linkedin": "https://linkedin.com/in/vuongnguyen",
-        "twitter": "https://twitter.com/vuongnguyen"
+        "github": "https://github.com/vuongho",
+        "linkedin": "https://linkedin.com/in/vuongho"
       },
-      "skills": ["JavaScript", "Python", "React", "TensorFlow", "Node.js", "AWS"]
-    },
-    {
-      "id": "minh",
-      "name": "Minh Tran",
-      "role": "Frontend Developer",
-      "school": "University of Rochester",
-      "major": "Computer Science",
-      "graduation": 2025,
-      "bio": "UI/UX specialist who creates beautiful, responsive interfaces. Often seen one hour before the demo crash.",
-      "photo": "/team/minh.jpg",
-      "socialLinks": {
-        "github": "https://github.com/minhtran",
-        "linkedin": "https://linkedin.com/in/minhtran"
-      },
-      "skills": ["React", "TypeScript", "Tailwind CSS", "Figma", "Next.js", "Flutter"]
-    },
-    {
-      "id": "linh",
-      "name": "Linh Pham",
-      "role": "Backend Developer",
-      "school": "University of Rochester",
-      "major": "Data Science",
-      "graduation": 2024,
-      "bio": "Database and API wizard who makes everything run smoothly. Occasionally caught trying to center a div at 3 AM.",
-      "photo": "/team/linh.jpg",
-      "socialLinks": {
-        "github": "https://github.com/linhpham",
-        "linkedin": "https://linkedin.com/in/linhpham"
-      },
-      "skills": ["Python", "Django", "PostgreSQL", "MongoDB", "Docker", "FastAPI"]
-    },
-    {
-      "id": "trung",
-      "name": "Trung Le",
-      "role": "Machine Learning Engineer",
-      "school": "University of Rochester",
-      "major": "Computer Science & Mathematics",
-      "graduation": 2023,
-      "bio": "AI/ML specialist who builds the smart parts of our projects. Known for making code work without knowing why.",
-      "photo": "/team/trung.jpg",
-      "socialLinks": {
-        "github": "https://github.com/trung",
-        "linkedin": "https://linkedin.com/in/trung"
-      },
-      "skills": ["Python", "PyTorch", "TensorFlow", "Computer Vision", "NLP", "Data Analysis"]
+      "skills": [
+        "React",
+        "Node.js",
+        "Python",
+        "AWS",
+        "Docker",
+        "MongoDB",
+        "TypeScript"
+      ]
     },
     {
       "id": "duc",
-      "name": "Duc Nguyen",
-      "role": "Frontend Developer",
+      "name": "Duc Vu",
+      "role": "Software Engineer",
       "school": "University of Rochester",
       "major": "Computer Science",
-      "graduation": 2025,
-      "bio": "UI/UX enthusiast with a keen eye for design. Specializes in creating engaging and responsive user interfaces.",
-      "photo": "/team/duc.jpg",
+      "graduation": 2026,
+      "bio": "Curious software engineer passionate about learning and exploring new technologies. Winner of Cal Hack 11.0 and experienced in developing innovative software solutions.",
+      "photo": "/people/duc/avatar.jpg",
       "socialLinks": {
-        "github": "https://github.com/ducnguyen",
-        "linkedin": "https://linkedin.com/in/ducnguyen"
+        "github": "https://github.com/ducvu",
+        "linkedin": "https://linkedin.com/in/duc-vu-21766a226"
       },
-      "skills": ["React", "Vue.js", "Figma", "Tailwind CSS", "JavaScript", "TypeScript"]
+      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
     },
     {
       "id": "hoang",
-      "name": "Hoang Tran",
-      "role": "Backend Engineer",
+      "name": "Hoang Le",
+      "role": "Software Engineer",
       "school": "University of Rochester",
       "major": "Computer Science",
-      "graduation": 2024,
-      "bio": "Backend enthusiast who loves building scalable systems and solving complex problems.",
-      "photo": "/team/hoang.jpg",
+      "graduation": 2027,
+      "bio": "Incoming @ Meta | CS @ URochester | 4x Hackathons Winner",
+      "photo": "/people/hoang/avatar.jpg",
       "socialLinks": {
-        "github": "https://github.com/hoangtran",
-        "linkedin": "https://linkedin.com/in/hoangtran"
+        "github": "https://github.com/hoangle",
+        "linkedin": "https://linkedin.com/in/hoangle"
       },
-      "skills": ["Python", "Node.js", "AWS", "Docker", "Flask", "Firebase"]
+      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
     },
     {
       "id": "lam",
       "name": "Lam Pham",
-      "role": "AI/ML Engineer",
+      "role": "Software Engineer",
       "school": "University of Rochester",
-      "major": "Data Science",
-      "graduation": 2024,
-      "bio": "AI and machine learning specialist with a passion for building intelligent systems that solve real-world problems.",
-      "photo": "/team/lam.jpg",
+      "major": "Computer Science",
+      "graduation": 2026,
+      "bio": "Incoming @ Fetch | 3x Hackathon Winner | CS @ U of R",
+      "photo": "/people/lam/avatar.jpg",
       "socialLinks": {
         "github": "https://github.com/lampham",
         "linkedin": "https://linkedin.com/in/lampham"
       },
-      "skills": ["Python", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "Data Science"]
+      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
     }
   ]
-} 
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { getAllPhotos, getHackathonsByDate, getAllMemes, Meme } from '@/utils/dataUtils';
+import { getAllPhotos, getAllMemes, Meme, getAllHackathons } from '@/utils/dataUtils';
 import { GalleryPhoto, ViewMode, SortOrder, HackathonGrouping } from './journey/types';
 import GalleryControls from './journey/GalleryControls';
 import GridView from './journey/GridView';
@@ -38,7 +38,7 @@ export default function HackathonJourneyGallery() {
   
   // Load data
   useEffect(() => {
-    const hackathonsData = getHackathonsByDate();
+    const hackathonsData = getAllHackathons();
     const photos = getAllPhotos();
     const memesData = getAllMemes();
     
@@ -57,16 +57,9 @@ export default function HackathonJourneyGallery() {
   const hackathonIds = Array.from(new Set(galleryPhotos.map(item => item.hackathon.id)));
 
   // Filter and sort photos
-  let filteredPhotos = filter 
+  const filteredPhotos = filter 
     ? galleryPhotos.filter(item => item.hackathon.id === filter)
     : galleryPhotos;
-
-  // Sort photos
-  filteredPhotos = [...filteredPhotos].sort((a, b) => {
-    const dateA = a.hackathon.year;
-    const dateB = b.hackathon.year;
-    return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
-  });
 
   // Sort memes
   const sortedMemes = [...memes].sort((a, b) => {

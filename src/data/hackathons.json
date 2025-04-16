@@ -19,7 +19,7 @@
           "name": "RocMap",
           "tagline": "U of R's very own map navigator, tunnels and weather included!",
           "description": "RocMap takes data of the starting and ending points from user's input and creates the most optimal route map, with images and instructions included, to navigate users to their desired destinations. It also calculates the distance and time depending on the weather conditions, thereby suggesting the shortest and most efficient path to get there.",
-          "thumbnail": "projects/dandyhacks_2023_rocmap_thumbnail.png",
+          "thumbnail": "projects/dandyhacks_2023/rocmap_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/rocmap",
@@ -49,16 +49,16 @@
       "state": "NY",
       "achievement": "",
       "description": "Created an AI-powered dining assistant to enhance campus dining experiences.",
-      "mainImage": "/team/brickhack_2024_demo_pic.jpg",
+      "mainImage": "/team/brickhack_2024/demo_pic.jpg",
       "website": "https://brickhack-x.devpost.com",
       "photos": [
         {
-          "src": "/team/brickhack_2024_busy_at_work.jpg",
+          "src": "/team/brickhack_2024/busy_at_work.jpg",
           "caption": "Busy at work",
           "isFeatured": true
         },
         {
-          "src": "/team/brickhack_2024_demo_pic.jpg",
+          "src": "/team/brickhack_2024/demo_pic.jpg",
           "caption": "Demoing our project at BrickHack X",
           "isFeatured": true
         }
@@ -69,7 +69,7 @@
           "name": "dAIningRIT",
           "tagline": "Dining halls meet AI, at RIT!",
           "description": "dAIningRIT is an AI-powered mobile web app that aims to make college dining more enjoyable. By combining already made ingredients in the dining hall, students can create virtually any dish they desire, increasing enjoyment and reducing food waste.",
-          "thumbnail": "projects/brickhack_2024_dainingrit_thumbnail.jpg",
+          "thumbnail": "projects/brickhack_2024/dainingrit_thumbnail.jpg",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/dainingrit",
@@ -99,11 +99,11 @@
       "state": "CT",
       "achievement": "Best Education Award",
       "description": "Developed an eye-tracking powered classroom assistant to enhance student engagement.",
-      "mainImage": "/team/yhack_2024_best_education_award_pic.jpg",
+      "mainImage": "/team/yhack_2024/best_education_award_pic.jpg",
       "website": "https://yhack.devpost.com",
       "photos": [
         {
-          "src": "/team/yhack_2024_best_education_award_pic.jpg",
+          "src": "/team/yhack_2024/best_education_award_pic.jpg",
           "caption": "Best Education Award winners",
           "isFeatured": true
         }
@@ -114,7 +114,7 @@
           "name": "EduVision",
           "tagline": "Eye-tracking powered classroom assistant!",
           "description": "EduVision is a dynamic website that utilizes eye gazing technology and AI chatbots to enhance classroom engagement. Through the integration of eye tracking capabilities, the platform accurately detects and analyzes students' gaze patterns, allowing educators to notice confusing topics, gauge their attentiveness, and adjust their teaching accordingly.",
-          "thumbnail": "projects/yhack_2024_eduvision_thumbnail.png",
+          "thumbnail": "projects/yhack_2024/eduvision_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/eduvision-y9fw0g",
@@ -154,7 +154,7 @@
           "name": "SwipeAndFly",
           "tagline": "Plan your next memories, with TikTok",
           "description": "SwipeAndFly analyzes TikTok videos to extract travel inspiration and uses AI to generate personalized itineraries, making trip planning engaging and efficient.",
-          "thumbnail": "projects/tiktoktechjam_2024_swipeandfly_thumbnail.png",
+          "thumbnail": "projects/tiktoktechjam_2024/swipeandfly_thumbnail.png",
           "demoLink": "https://swipeandfly.world",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/vietrochack",
@@ -184,21 +184,21 @@
       "state": "MD",
       "achievement": "3rd Place Overall",
       "description": "Developed 'Young Heroes', a safe and accessible 911 call simulation platform for kids.",
-      "mainImage": "/team/hophacks_2024_team_third_prize_pic.jpg",
+      "mainImage": "/team/hophacks_2024/team_third_prize_pic.jpg",
       "website": "https://hophacks.com",
       "photos":  [
         {
-          "src": "/team/hophacks_2024_demo_team_pic.jpg",
+          "src": "/team/hophacks_2024/demo_team_pic.jpg",
           "caption": "Demoing our project at HopHacks 2024",
           "isFeatured": true
         },
         {
-          "src": "/team/hophacks_2024_team_find_out_we_win.png",
+          "src": "/team/hophacks_2024/team_find_out_we_win.png",
           "caption": "The moment we found out we won!",
           "isFeatured": true
         },
         {
-          "src": "/team/hophacks_2024_team_third_prize_pic.jpg",
+          "src": "/team/hophacks_2024/team_third_prize_pic.jpg",
           "caption": "Accepting our 3rd place prize at HopHacks",
           "isFeatured": true
         }
@@ -209,7 +209,7 @@
           "name": "Young Heroes",
           "tagline": "Safe & Accessible 911 call simulation platform for kids.",
           "description": "Young Heroes is a mobile app designed to create a safe and accessible space for children aged 4 to 12. It empowers kids to recognize critical situations and communicate effectively with 911 when needed. The app offers an end-to-end simulation where kids can interactively communicate with a 911 dispatcher in real-time using generative AI, providing realistic practice and learning experiences unmatched by other platforms.",
-          "thumbnail": "projects/hophacks_2024_youngheroes_thumbnail.png",
+          "thumbnail": "projects/hophacks_2024/youngheroes_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/young-heroes-hmi2vl",
@@ -241,41 +241,41 @@
       "state": "CA",
       "achievement": "People's Choice Award & VAPI: Best use of Voice AI",
       "description": "Developed an AI-powered extended reality study assistant to enhance personalized learning experiences.",
-      "mainImage": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
+      "mainImage": "/team/calhacks_2024/team_people_choice_award_pic.jpg",
       "website": "https://cal-hacks-11-0.devpost.com",
       "photos":  [
         {
-          "src": "/team/calhacks_2024_team_at_apple_hq.jpg",
+          "src": "/team/calhacks_2024/team_at_apple_hq.jpg",
           "caption": "Visit to Apple HQ during CalHacks",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024_team_with_lananh_in_sanfrancisco.jpg",
+          "src": "/team/calhacks_2024/team_with_lananh_in_sanfrancisco.jpg",
           "caption": "Team exploring San Francisco",
           "isFeatured": false
         },
         {
-          "src": "/team/calhacks_2024_team_berkeley_backdrop_with_bear.jpg",
+          "src": "/team/calhacks_2024/team_berkeley_backdrop_with_bear.jpg",
           "caption": "Posing with the Berkeley Bear",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024_demo_team_pic.jpg",
+          "src": "/team/calhacks_2024/demo_team_pic.jpg",
           "caption": "Team demo at CalHacks",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024_team_at_google_hq.jpg",
+          "src": "/team/calhacks_2024/team_at_google_hq.jpg",
           "caption": "Visit to Google campus",
           "isFeatured": false
         },
         {
-          "src": "/team/calhacks_2024_team_vapi_award_pic.jpg",
+          "src": "/team/calhacks_2024/team_vapi_award_pic.jpg",
           "caption": "Winner of the VAPI API prize",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024_team_people_choice_award_pic.jpg",
+          "src": "/team/calhacks_2024/team_people_choice_award_pic.jpg",
           "caption": "People's Choice Award winners",
           "isFeatured": true
         }
@@ -286,7 +286,7 @@
           "name": "TeachXR",
           "tagline": "World's First AI Study Assistant in Extended Reality",
           "description": "TeachXR is an immersive AI tutor that allows students to interact with study materials in extended reality, providing personalized assistance and enhancing engagement.",
-          "thumbnail": "projects/calhacks_2024_teachxr_thumbnail.png",
+          "thumbnail": "projects/calhacks_2024/teachxr_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/teachxr",
@@ -309,16 +309,16 @@
       "state": "MA",
       "achievement": "",
       "description": "Developed 'Xplore It', an AI-powered XR assistant that provides real-time, personalized guidance for various tasks, enhancing user engagement and learning.",
-      "mainImage": "/team/hackumass_2024_better_demo_pic.jpg",
+      "mainImage": "/team/hackumass_2024/better_demo_pic.jpg",
       "website": "https://hackumass-xii.devpost.com/",
       "photos": [
         {
-          "src": "/team/hackumass_2024_better_demo_pic.jpg",
+          "src": "/team/hackumass_2024/better_demo_pic.jpg",
           "caption": "Slacking our project at HackUMass",
           "isFeatured": true
         },
         {
-          "src": "/team/hackumass_2024_demo_pic.jpg",
+          "src": "/team/hackumass_2024/demo_pic.jpg",
           "caption": "Bereal demoing our project at HackUMass",
           "isFeatured": true
         }
@@ -329,7 +329,7 @@
           "name": "Xplore It",
           "tagline": "Effortless Task Mastery with Personalized XR Helper",
           "description": "Xplore It is a fully interactive XR assistant designed to help users tackle any task, even those without specific online tutorials. It offers voice interaction, visual task guidance, and human-like engagement to provide tailored, step-by-step instructions.",
-          "thumbnail": "projects/hackumass_2024_xploreit_thumbnail.png",
+          "thumbnail": "projects/hackumass_2024/xploreit_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/xplore-it",
@@ -352,11 +352,11 @@
       "state": "TX",
       "achievement": "",
       "description": "Developed 'Realty Wingman', an AI assistant for real estate agents to enhance house visits with real-time emotion and attention analysis.",
-      "mainImage": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
+      "mainImage": "/team/hackutd_2024/team_at_introduction_ceremony.jpg",
       "website": "https://hackutd.co",
       "photos": [
         {
-          "src": "/team/hackutd_2024_team_at_introduction_ceremony.jpg",
+          "src": "/team/hackutd_2024/team_at_introduction_ceremony.jpg",
           "caption": "At the HackUTD opening ceremony",
           "isFeatured": true
         }
@@ -367,7 +367,7 @@
           "name": "Realty Wingman",
           "tagline": "AI assistant for realty agents during house visits",
           "description": "Realty Wingman is a cutting-edge mobile app that revolutionizes the home-buying process. By leveraging real-time AI-powered emotion detection, eye-tracking, facial expression analysis, and voice tone recognition, it gives realtors a crystal-clear view of what potential buyers are truly feeling. As buyers explore a property, the app tracks where they're looking, listens to their comments, and analyzes their tone, all while capturing video footage. At the end of each showing, realtors receive a comprehensive summary, including key highlights of buyer interest and areas of hesitation, enabling them to tailor their follow-ups and provide a hyper-personalized experience.",
-          "thumbnail": "projects/hackutd_2024_realtywingman_thumbnail.png",
+          "thumbnail": "projects/hackutd_2024/realtywingman_thumbnail.png",
           "demoLink": "",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/reaity-wingman",
@@ -390,7 +390,7 @@
       "state": "MD",
       "achievement": "People's Choice",
       "description": "Developed 'DMPN', a real-time productivity tracker and gamified platform to monitor and enhance developers' focus and efficiency.",
-      "mainImage": "/team/bitcamp_2025_demo_team_pic.jpg",
+      "mainImage": "/team/bitcamp_2025/demo_team_pic.jpg",
       "website": "https://bit.camp",
       "photos": [],
       "projects": [
@@ -399,7 +399,7 @@
           "name": "DMPN: Developer Monitoring & Productivity Nexus",
           "tagline": "Find your Developer Aura - Compete to be the Sigma Dev",
           "description": "DMPN is an aura tracker that provides live feedback on developers' focus and productivity during coding sessions. It analyzes webcam images and screen captures in real-time using OpenAI's vision models to generate productivity scores, which are visualized in clean UIs. The platform also features 'Aura Battles,' an elo-based matchmaking system for developers to compete and showcase their productivity.",
-          "thumbnail": "projects/bitcamp_2025_dmpn_thumbnail.png",
+          "thumbnail": "projects/bitcamp_2025/dmpn_thumbnail.png",
           "demoLink": "https://www.myaura.tech",
           "githubLink": "",
           "devpostLink": "https://devpost.com/software/dmpn-dev-aura-aio",

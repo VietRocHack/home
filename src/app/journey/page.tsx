@@ -1,6 +1,7 @@
 import HackathonJourneyGallery from '@/components/HackathonJourneyGallery';
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
+import { Suspense } from 'react';
 
 export const metadata = {
   title: 'Hackathon Journey | VietRocHack',
@@ -22,7 +23,9 @@ export default function JourneyPage() {
             </p>
           </div>
           
-          <HackathonJourneyGallery />
+          <Suspense fallback={<div className="text-center py-8">Loading gallery...</div>}>
+            <HackathonJourneyGallery />
+          </Suspense>
         </div>
       </Container>
     </Layout>

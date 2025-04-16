@@ -3,6 +3,11 @@ description:
 globs: 
 alwaysApply: true
 ---
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # UI Components
 The VietRocHack website uses a set of reusable UI components that share a consistent dark theme with accent colors.
 
@@ -10,27 +15,27 @@ This file provides a summary of all available components. For detailed specifica
 
 ## Core Components
 
-- **[Interactive Logo](./components/InteractiveLogo.mdc)** - Animated stacked logo with rotating middle words
-- **[BackgroundCarousel](./components/BackgroundCarousel.mdc)** - Fullscreen background image carousel with transitions
-- **[Button](./components/Button.mdc)** - Multi-variant buttons with customized hover animations
-- **[Card](./components/Card.mdc)** - Flexible card components with various interactive states
-- **[Navbar](./components/Navbar.mdc)** - Site navigation with responsive mobile menu
-- **[Footer](./components/Footer.mdc)** - Site footer with multi-column layout
-- **[Layout](./components/Layout.mdc)** - Page wrapper ensuring consistent structure 
-- **[Container](./components/Container.mdc)** - Content container with responsive padding
+- **[Interactive Logo](mdc:components/InteractiveLogo.mdc)** - Animated stacked logo with rotating middle words
+- **[BackgroundCarousel](mdc:components/BackgroundCarousel.mdc)** - Fullscreen background image carousel with transitions
+- **[Button](mdc:components/Button.mdc)** - Multi-variant buttons with customized hover animations
+- **[Card](mdc:components/Card.mdc)** - Flexible card components with various interactive states
+- **[Navbar](mdc:components/Navbar.mdc)** - Site navigation with responsive mobile menu
+- **[Footer](mdc:components/Footer.mdc)** - Site footer with multi-column layout
+- **[Layout](mdc:components/Layout.mdc)** - Page wrapper ensuring consistent structure 
+- **[Container](mdc:components/Container.mdc)** - Content container with responsive padding
 
 ## Gallery Components
 
-- **[ProjectGallery](./components/ProjectGallery.mdc)** - Auto-rotating gallery for project showcase
-- **[HackathonTimeline](./components/HackathonTimeline.mdc)** - Timeline-based hackathon showcase
+- **[ProjectGallery](mdc:components/ProjectGallery.mdc)** - Auto-rotating gallery for project showcase
+- **[HackathonTimeline](mdc:components/HackathonTimeline.mdc)** - Timeline-based hackathon showcase
 
 ## Journey Gallery Components
 
-- **[HackathonJourneyGallery](./components/HackathonJourneyGallery.mdc)** - Comprehensive gallery with multiple view modes
+- **[HackathonJourneyGallery](mdc:components/HackathonJourneyGallery.mdc)** - Comprehensive gallery with multiple view modes
   - **GalleryControls** - View mode and filter controls
   - **GridView** - Grid-based photo layout
   - **TimelineView** - Chronological display with timeline
   - **HackathonsView** - Event-grouped display with details
-  - **[FunThingsView](./components/FunThingsView.mdc)** - Fun team moments and meme display
+  - **[FunThingsView](mdc:components/FunThingsView.mdc)** - Fun team moments and meme display
   - **PhotoLightbox** - Enhanced photo viewing experience
-  - **[MemeLightbox](./components/MemeLightbox.mdc)** - Specialized lightbox for viewing meme content 
+  - **[MemeLightbox](mdc:components/MemeLightbox.mdc)** - Specialized lightbox for viewing meme content 

@@ -28,6 +28,11 @@ export default function HackathonJourneyGallery() {
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
     if (!path) return '/placeholder-image.svg';
+    // If path is a URL (starts with http:// or https://), return it as is
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Otherwise, treat as local path
     return path.startsWith('/') ? path : `/${path}`;
   };
   

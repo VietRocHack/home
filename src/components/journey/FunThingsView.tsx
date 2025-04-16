@@ -41,6 +41,7 @@ export default function FunThingsView({ memes, getImagePath, onMemeClick }: FunT
                 fill
                 className="object-cover transition-all duration-300 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                unoptimized={meme.src.startsWith('http')}
               />
             </div>
             

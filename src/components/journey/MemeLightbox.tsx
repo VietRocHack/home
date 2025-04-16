@@ -102,6 +102,7 @@ export default function MemeLightbox({
                 fill
                 sizes="(max-width: 768px) 100vw, 80vw"
                 priority
+                unoptimized={meme.src.startsWith('http')}
               />
             </div>
             

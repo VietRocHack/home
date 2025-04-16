@@ -3,20 +3,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { LOGO_CHANGE_EVENT } from './BackgroundCarousel';
 
-// List of main variants
+// List of main variant phrases with words to be stacked
 const hackVariants = [
-  "VietRocHack",
-  "VietTravelHack",
-  "VietDMPNHack",
-  "VietReactHack",
-  "VietWhyHack",
-  "Viet404Hack"
+  ["Viet", "Roc", "Hack"],
+  ["Viet", "Travel", "Hack"],
+  ["Viet", "DMPN", "Hack"],
+  ["Viet", "React", "Hack"],
+  ["Viet", "Why", "Hack"],
+  ["Viet", "404", "Hack"]
 ];
 
 // List of rare variants that will briefly appear
 const rareVariants = [
-  "Địt mẹ Phúc Nguyên",
-  "VietOnlyFansHack"
+  ["Địt", "Mẹ", "Phúc", "Nguyên"],
+  ["Viet", "OnlyFans", "Hack"]
 ];
 
 // Chance of showing the rare variant - increase for testing
@@ -119,17 +119,26 @@ export default function RotatingLogo() {
     transition: 'all 0.1s ease'
   } : {};
 
-  // Add a small indicator when in rare view mode
-  const currentLogoText = showRare ? rareVariants[currentRareVariant] : hackVariants[currentVariant];
+  // Get the current word list
+  const currentWordList = showRare 
+    ? rareVariants[currentRareVariant] 
+    : hackVariants[currentVariant];
 
   return (
     <div className="relative flex justify-center items-center">
-      <h1 
-        className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-center"
+      <div 
+        className="flex flex-col text-6xl md:text-7xl lg:text-9xl font-bold text-center"
         style={logoStyle}
       >
-        {currentLogoText}
-      </h1>
+        {/* Stacked format with vertically aligned first characters */}
+        {currentWordList.map((word, index) => (
+          <div className="flex mb-4" key={index}>
+            <span className="inline-block w-12 md:w-16 lg:w-24 text-right">[{word.charAt(0)}]</span>
+            <span className="ml-4 md:ml-6 lg:ml-8">&nbsp;&nbsp;{word.slice(1)}</span>
+          </div>
+        ))}
+      </div>
+      
       {rareViewMode && (
         <div className="absolute -top-4 -right-4 text-xs px-2 py-1 bg-[var(--accent-yellow)] text-black rounded-md">
           Rare Mode

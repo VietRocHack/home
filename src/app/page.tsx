@@ -43,17 +43,17 @@ export default function Home() {
       {/* 1. Splash / Rotating Logo Section */}
       <BackgroundCarousel>
         <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl px-4">
-          <RotatingLogo />
-          <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-8">
-            Vietnamese hackers from the University of Rochester. Some of this site is real.
-          </p>
-          <div className="flex gap-4 mt-4">
-            <Link href="/projects">
-              <Button variant="primary" size="lg">Explore Projects</Button>
-            </Link>
-            <Link href="/team">
-              <Button variant="ghost" size="lg">Meet the Team</Button>
-            </Link>
+          {/* Opaque background container */}
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-xl max-w-3xl mx-auto">
+            <RotatingLogo />
+            <div className="flex gap-4 mt-8 justify-center">
+              <Link href="/projects">
+                <Button variant="primary" size="lg">Explore Projects</Button>
+              </Link>
+              <Link href="/team">
+                <Button variant="ghost" size="lg">Meet the Team</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </BackgroundCarousel>

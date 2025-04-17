@@ -120,6 +120,11 @@ export default function HackathonTimeline() {
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
     if (!path) return '/placeholder-image.svg';
+    // If path is a URL (starts with http:// or https://), return it as is
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Otherwise, treat as local path
     return path.startsWith('/') ? path : `/${path}`;
   };
 
@@ -150,6 +155,7 @@ export default function HackathonTimeline() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized={timelineEvents[previousEvent].mainImage.startsWith('http')}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
                 {timelineEvents[previousEvent].achievement && (
@@ -173,6 +179,7 @@ export default function HackathonTimeline() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                unoptimized={timelineEvents[activeEvent].mainImage.startsWith('http')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
               {timelineEvents[activeEvent].achievement && (

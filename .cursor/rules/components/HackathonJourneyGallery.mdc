@@ -1,0 +1,152 @@
+---
+description: Styling specification for HackathonJourneyGallery component
+globs: 
+alwaysApply: false
+---
+# HackathonJourneyGallery
+
+## Overview
+The HackathonJourneyGallery component is a comprehensive, interactive gallery showcasing the team's hackathon journey through photos, memories, and experiences. It offers multiple view modes including grid, timeline, hackathon groupings, and fun meme content.
+
+## Features
+- Multiple interactive view modes with distinct layouts
+- Filterable by hackathon events
+- Sortable by date (newest/oldest)
+- Fullscreen photo/meme viewer with navigation
+- Slideshow mode for automatic playback
+- Support for both local images and remote CDN-hosted images
+
+## Component Structure
+The component uses a modular architecture with specialized sub-components:
+
+- **GalleryControls**: View mode selection, sorting, and filtering
+- **GridView**: Grid-based photo layout (responsive)
+- **TimelineView**: Chronological display with timeline indicators
+- **HackathonsView**: Event-grouped display with project details
+- **FunThingsView**: Display for fun/meme content
+- **PhotoLightbox**: Enhanced viewing experience for photos
+- **MemeLightbox**: Specialized lightbox for meme content
+
+## Integration
+All image handling supports both local paths and full CDN URLs through the `getImagePath` helper function. This allows images to be served from:
+
+- Local public directory (e.g., `/meme/image.jpg`)
+- External CDN services (e.g., `https://cdn.example.com/images/photo.jpg`)
+
+## Data Sources
+- Hackathon data from hackathons.json
+- Team member data from team.json
+- Meme content from meme.json
+- All accessible through dataUtils.ts utility functions
+
+## Responsive Behavior
+- Adapts to all screen sizes (mobile, tablet, desktop)
+- Optimized image loading with appropriate size hints
+- Touch-friendly controls for mobile devices
+
+- Visual style:
+  - Modern gallery with multiple view modes (Grid, Timeline, Hackathons)
+  - Responsive design with smooth animations
+  - Consistent dark theme with accent colors (red for active controls, yellow for achievements)
+- Behavior:
+  - Dynamic filtering by hackathon events
+  - Sorting options (newest/oldest first)
+  - Interactive photo viewing with lightbox
+  - Fullscreen and slideshow modes
+- Components:
+  - Main Gallery Component: Orchestrates state and data flow
+  - GalleryControls: UI controls for view modes, sorting, and filtering
+  - GridView: Responsive photo grid with hover effects
+  - TimelineView: Chronological display with visual timeline
+  - HackathonsView: Groups photos by hackathon with event details
+  - PhotoLightbox: Enhanced viewing experience with navigation
+- Implementation:
+  - Modular architecture with React components
+  - Framer Motion for smooth animations and transitions
+  - Next.js Image component for optimized image loading
+  - Responsive layout with Tailwind CSS
+
+## GalleryControls
+
+- Visual style:
+  - Sticky controls bar with glass morphism effect (backdrop blur)
+  - Active state indicators using accent colors
+  - Rounded buttons with hover effects
+- Behavior:
+  - Controls for switching between view modes (Grid, Timeline, Hackathons)
+  - Sorting controls (newest/oldest first)
+  - Dynamic filter buttons for each hackathon
+- Implementation:
+  - Responsive design adjusts for mobile layouts
+  - Sticky positioning for easy access while scrolling
+
+## GridView
+
+- Visual style:
+  - Responsive grid layout (1-4 columns based on screen size)
+  - Square aspect ratio for consistent appearance
+  - Hover effects revealing photo information
+  - Achievement badges for prize-winning events
+- Animation:
+  - Staggered fade-in animation on initial render
+  - Scale and overlay animations on hover
+- Implementation:
+  - CSS Grid with responsive columns
+  - Framer Motion for animations
+  - Next.js Image component with fill and object-cover
+
+## TimelineView
+
+- Visual style:
+  - Vertical timeline with alternating left/right layout
+  - Visual indicators for events (red dots, yellow for achievements)
+  - Continuous timeline line connecting all events
+- Behavior:
+  - Chronological display of photos with event details
+  - Click to view photos in lightbox
+- Animation:
+  - Staggered fade-in and slide animations
+  - Hover effects on photos and info cards
+- Implementation:
+  - Responsive layout that collapses to single column on mobile
+  - Custom positioning for timeline elements
+
+## HackathonsView
+
+- Visual style:
+  - Card-based layout for each hackathon
+  - Featured image with gradient overlay
+  - Organized sections for event info, projects, and photos
+  - Achievement badges for prize-winning events
+- Behavior:
+  - Groups photos by hackathon with comprehensive event details
+  - Project cards with links to external resources (Devpost, GitHub, Demo)
+  - Click to view photos in lightbox
+- Animation:
+  - Fade-in and slide animations on render
+  - Hover effects on photos and interactive elements
+- Implementation:
+  - Responsive grid layouts
+  - External links with proper target attributes
+  - Conditional rendering based on available data
+
+## PhotoLightbox
+
+- Visual style:
+  - Full-screen overlay with image focus
+  - Information panel with photo details
+  - Navigation controls and functional buttons
+  - Optional fullscreen mode
+- Behavior:
+  - Navigation between photos (previous/next)
+  - Slideshow functionality with 5-second interval
+  - Toggle between normal and fullscreen modes
+  - Click outside to close
+- Animation:
+  - Fade and scale animations for opening/closing
+  - Smooth transitions between photos
+- Implementation:
+  - Modal dialog with backdrop
+  - Auto-advancing slideshow with configurable timer
+  - Keyboard navigation support
+  - Framer Motion for animations

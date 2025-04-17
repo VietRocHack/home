@@ -114,6 +114,11 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
     if (!path) return '/placeholder-project.svg';
+    // If path is a URL (starts with http:// or https://), return it as is
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Otherwise, treat as local path
     return path.startsWith('/') ? path : `/${path}`;
   };
 
@@ -217,6 +222,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized={projects[previousProject].thumbnail.startsWith('http')}
                   />
                 </div>
                 
@@ -292,6 +298,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized={projects[activeProject].thumbnail.startsWith('http')}
                 />
               </div>
               

@@ -1,0 +1,68 @@
+{
+  "memes": [
+    {
+      "id": "hoang_vuong_freak",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840852/hoang_vuong_freak_fk4frl.jpg",
+      "caption": "Hoang and Vuong being freaky",
+      "context": "Caught during a late-night coding session",
+      "date": "October 2023",
+      "tags": ["coding", "hackathon", "team-bonding"]
+    },
+    {
+      "id": "duc_and_lam_fun_things",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840852/duc_and_lam_fun_things_lufk7k.jpg",
+      "caption": "Duc and Lam trying out 'fun' things",
+      "context": "Break time during our second hackathon",
+      "date": "March 2024",
+      "tags": ["break", "fun"]
+    },
+    {
+      "id": "hoang_on_mai",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840853/hoang_on_mai_ozhduv.jpg",
+      "caption": "Hoang standing on Mai",
+      "context": "Team building exercise gone wrong",
+      "date": "April 2024",
+      "tags": ["team-building", "fail"]
+    },
+    {
+      "id": "pepe_with_cross",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840851/pepe_with_cross_ftl9cq.jpg",
+      "caption": "Our team mascot",
+      "context": "Adopted during our first all-nighter",
+      "date": "November 2023",
+      "tags": ["mascot", "all-nighter"]
+    },
+    {
+      "id": "big_ahh_at_golden_gate",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840854/big_ahh_at_golden_gate_nblwne.jpg",
+      "caption": "Big Ahh at Golden Gate",
+      "context": "Team field trip to San Francisco after winning",
+      "date": "May 2024",
+      "tags": ["travel", "celebration", "san-francisco"]
+    },
+    {
+      "id": "google_bear",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840855/google_bear_jo9tha.jpg",
+      "caption": "Meeting the Google Bear",
+      "context": "Visit to Google campus after making it to finals",
+      "date": "June 2024",
+      "tags": ["google", "tech-visit", "celebration"]
+    },
+    {
+      "id": "tangerine_overload_hackumass",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840853/tangerine_overload_hackumass_u1qqsi.jpg",
+      "caption": "Tangerine Overload at HackUMass",
+      "context": "When we discovered free tangerines at the snack table",
+      "date": "April 2024",
+      "tags": ["hackumass", "food", "sleep-deprived"]
+    },
+    {
+      "id": "hoang_vuong_bonding_in_front_of_capitol_hilll",
+      "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840855/hoang_vuong_bonding_in_front_of_capitol_hilll_xfkodp.jpg",
+      "caption": "Hoang and Vuong in DC",
+      "context": "Trip to DC for the national hackathon finals",
+      "date": "July 2024",
+      "tags": ["travel", "washington-dc", "national-finals"]
+    }
+  ]
+} 

@@ -1,0 +1,65 @@
+---
+description: Styling specification for MemeLightbox component
+globs: 
+alwaysApply: false
+---
+# MemeLightbox Component
+
+## Overview
+The `MemeLightbox` component provides a fullscreen modal view for displaying and navigating through meme images when selected from the FunThingsView grid.
+
+## Component Structure
+
+```tsx
+interface MemeLightboxProps {
+  isOpen: boolean;
+  meme: Meme | null;
+  memes: Meme[];
+  isFullscreen: boolean;
+  getImagePath: (path: string) => string;
+  onClose: () => void;
+  onToggleFullscreen: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+}
+```
+
+- **isOpen**: Boolean to control visibility of the lightbox
+- **meme**: Currently selected meme to display
+- **memes**: Complete array of memes for navigation
+- **isFullscreen**: Toggle for expanded fullscreen view
+- **getImagePath**: Function to format image paths
+- **onClose**: Callback to close the lightbox
+- **onToggleFullscreen**: Callback to toggle fullscreen mode
+- **onPrevious/onNext**: Navigation callbacks
+
+## Visual Design
+
+### Layout
+- **Modal**: Fixed position overlay with semi-transparent background
+- **Container**: Centered content container with responsive sizing
+- **Image**: Large display of current meme with object-contain fitting
+- **Caption Area**: Information panel with meme details
+- **Controls**:
+  - Navigation arrows for previous/next
+  - Close button
+  - Fullscreen toggle button
+  - Count indicator showing current position
+
+### Styling
+- Dark theme with black/semi-transparent backgrounds
+- Consistent UI controls with hover effects
+- Shows photo count and position indicators
+- Tags use yellow backgrounds with black text for visibility
+- Implements Framer Motion animations for transitions
+
+## Interaction
+- Clicking outside the image area closes the lightbox
+- Support for fullscreen toggle
+- Left and right navigation between memes
+- Displays context, date, and tag information
+
+## Integration
+- Used as a companion to the `FunThingsView` component
+- Triggered when a meme is clicked in the grid view
+- Shares styling approach with `PhotoLightbox` but optimized for meme content 

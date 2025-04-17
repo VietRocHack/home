@@ -1,0 +1,48 @@
+# FunThingsView Component
+
+## Overview
+The `FunThingsView` component displays a grid of fun/meme images from the team's journey, providing a lighthearted complement to the more formal hackathon photos in the journey gallery.
+
+## Component Structure
+
+```tsx
+interface FunThingsViewProps {
+  memes: Meme[];
+  getImagePath: (path: string) => string;
+  onMemeClick: (index: number) => void;
+}
+```
+
+- **memes**: Array of meme objects from the data store
+- **getImagePath**: Function to format image paths correctly, supporting both local paths and CDN URLs
+- **onMemeClick**: Callback function when a meme is clicked
+
+## Visual Design
+
+### Layout
+- **Header**: Centered title and description
+- **Grid**: Responsive grid layout (1 column on mobile, 2 on tablet, 3 on desktop)
+- **Cards**: Each meme displayed in a card with:
+  - Square image container
+  - Caption/title area
+  - Date and context information
+  - Tag list with highlighted tags
+
+### Styling
+- Uses dark card backgrounds (`bg-gray-900`) with image hover effects
+- Image containers maintain square aspect ratio with object-cover fitting
+- Tags use yellow backgrounds with black text for visibility
+- Implements Framer Motion animations for:
+  - Initial fade-in of grid
+  - Staggered appearance of items
+  - Scale effect on hover
+
+## Integration
+- Used as one of the view modes in the `HackathonJourneyGallery` component
+- Displays when the viewMode is set to 'fun'
+- Works with the corresponding `MemeLightbox` for detailed viewing
+
+## Data Source
+- Pulls data from meme.json via dataUtils.ts
+- Supports filtering and sorting through parent component
+- Supports images hosted either locally or on a CDN (full URLs) 

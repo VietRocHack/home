@@ -1,0 +1,26 @@
+---
+description: Styling specification for HackathonTimeline component
+globs: 
+alwaysApply: false
+---
+# HackathonTimeline
+
+- Visual style: 
+  - Two-column layout with image and event details
+  - Achievement badges for prize-winning hackathons
+  - Interactive timeline with visual differentiation for achievements
+- Behavior:
+  - Auto-rotates through hackathons every 6 seconds
+  - Pauses rotation on mouse hover
+  - Navigation buttons positioned on main content card for easy access
+  - Timeline markers indicate prize-winning events with yellow color and trophy icon
+- Animation:
+  - Text content fades while sliding during transitions
+  - Images slide without fading for contrast
+  - New content slides over old content for layered effect
+  - Direction-aware animations based on navigation choice
+- Implementation:
+  - Complex z-index management for proper layering effects
+  - Conditional rendering of achievement badges
+  - Auto-scrolls timeline to keep active event centered
+  - Custom animations with opacity and transform transitions 

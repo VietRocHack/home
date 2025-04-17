@@ -1,5 +1,6 @@
 import hackathonData from '@/data/hackathons.json';
 import teamData from '@/data/team.json';
+import memeData from '@/data/meme.json';
 
 // Types
 export interface Photo {
@@ -56,6 +57,15 @@ export interface TeamMember {
     twitter?: string;
   };
   skills: string[];
+}
+
+export interface Meme {
+  id: string;
+  src: string;
+  caption: string;
+  context: string;
+  date: string;
+  tags: string[];
 }
 
 export interface Statistics {
@@ -153,6 +163,27 @@ export function getAllPhotos(): { photo: Photo; hackathon: Hackathon }[] {
 export function getFeaturedPhotos(limit?: number): { photo: Photo; hackathon: Hackathon }[] {
   const featured = getAllPhotos().filter(item => item.photo.isFeatured);
   return limit ? featured.slice(0, limit) : featured;
+}
+
+/**
+ * Get all memes
+ */
+export function getAllMemes(): Meme[] {
+  return memeData.memes;
+}
+
+/**
+ * Get a specific meme by ID
+ */
+export function getMemeById(id: string): Meme | undefined {
+  return memeData.memes.find(meme => meme.id === id);
+}
+
+/**
+ * Get memes filtered by tag
+ */
+export function getMemesByTag(tag: string): Meme[] {
+  return memeData.memes.filter(meme => meme.tags.includes(tag));
 }
 
 /**

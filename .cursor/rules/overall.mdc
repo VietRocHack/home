@@ -3,11 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
----
-description: 
-globs: 
-alwaysApply: true
----
 # VietRocHack Website – Overview
 
 This is the official website for **VietRocHack**, a Vietnamese hackathon team composed of students from the University of Rochester. The site serves as a public portfolio to showcase the team, their projects, hackathon achievements, and long-term vision.

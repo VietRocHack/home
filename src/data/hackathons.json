@@ -10,21 +10,21 @@
       "state": "NY",
       "achievement": "Most Dandy Hack",
       "description": "Our first ever hackathon as VietRocHack (the name didn't exist back then). We had only 3 members back then and we are all pretty new to what would shape all of our next adventures. If we haven't won, this website wouldn't exist. That one small catalyst snowballed into a huge journey that is #VietRocHack.",
-      "mainImage": "/team/dandyhacks_2023/people_choice_award.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840840/team_working_vwmra8.jpg",
       "website": "https://dandyhacks-2023.devpost.com",
       "photos": [
         {
-          "src": "/team/dandyhacks_2023/team_working.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840840/team_working_vwmra8.jpg",
           "caption": "Working on our project at DandyHacks",
           "isFeatured": true
         },
         {
-          "src": "/team/dandyhacks_2023/people_choice_announcement.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/people_choice_announcement_sk0ovx.jpg",
           "caption": "People's Choice Award winners",
           "isFeatured": true
         },
         {
-          "src": "/team/dandyhacks_2023/people_choice_award.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840841/people_choice_award_jbtkje.jpg",
           "caption": "People's Choice Award winners",
           "isFeatured": true
         }
@@ -65,16 +65,16 @@
       "state": "NY",
       "achievement": "",
       "description": "DandyHacks'23 boosted our ego A LOT, and we were determined to champion the next one in the city of Rochester. However, we were soon humbled by the competition, or rather lack thereof (check the winners to see how doo doo they all are), and this sparked a greater fire in us to push ourselves to the next one.",
-      "mainImage": "/team/brickhack_2024/demo_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840836/demo_pic_zsq5gr.jpg",
       "website": "https://brickhack-x.devpost.com",
       "photos": [
         {
-          "src": "/team/brickhack_2024/busy_at_work.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840834/busy_at_work_tph8jn.jpg",
           "caption": "Busy at work",
           "isFeatured": true
         },
         {
-          "src": "/team/brickhack_2024/demo_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840836/demo_pic_zsq5gr.jpg",
           "caption": "Demoing our project at BrickHack X",
           "isFeatured": true
         }
@@ -115,11 +115,11 @@
       "state": "CT",
       "achievement": "Best Education Award",
       "description": "We decided that Rochester is a small pond. We wanted to see what the world has to offer, so we hopped on a bus to New Haven. The biggest we have ever done (so far) and we really poured our hearts into it. There, we met our first ever nemesis, Bill Zhang, and he has been a recurring inside meme ever since. Albeit, we won Best Education Award, but the competition at YHACK was still a valuable motivation for us to push harder.",
-      "mainImage": "/team/yhack_2024/best_education_award_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840837/best_education_award_pic_zdro3a.jpg",
       "website": "https://yhack.devpost.com",
       "photos": [
         {
-          "src": "/team/yhack_2024/best_education_award_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840837/best_education_award_pic_zdro3a.jpg",
           "caption": "Best Education Award winners",
           "isFeatured": true
         }
@@ -161,11 +161,11 @@
       "state": "",
       "achievement": "",
       "description": "YHACK was the last hackathon of the 2024 season and summer rolled around. We were all pretty spread out (one in Vietnam, one in Rochester, one in San Jose), but we still decided to do a hackathon over the summer. This was when Lam joined us, creating a 4 person team like today. This was our first major online hackathon and we were all hyped AF for this. We organized our team just like a proper startup, with CI/CD pipelines and standup meetings. Nevertheless, yet another humbling experience!",
-      "mainImage": "/team/tiktoktechjam_2024/demo_pic.png",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840843/demo_pic_xc9yqk.png",
       "website": "https://devpost.com/software/vietrochack",
       "photos": [
         {
-          "src": "/team/tiktoktechjam_2024/demo_pic.png",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840843/demo_pic_xc9yqk.png",
           "caption": "Demoing our project at TikTok TechJam",
           "isFeatured": true
         }
@@ -210,17 +210,17 @@
       "website": "https://hophacks.com",
       "photos":  [
         {
-          "src": "/team/hophacks_2024/demo_team_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840838/demo_team_pic_opf74r.jpg",
           "caption": "Demoing our project at HopHacks 2024",
           "isFeatured": true
         },
         {
-          "src": "/team/hophacks_2024/team_find_out_we_win.png",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840843/team_find_out_we_win_xzmaa9.png",
           "caption": "The moment we found out we won!",
           "isFeatured": true
         },
         {
-          "src": "/team/hophacks_2024/team_third_prize_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840841/team_third_prize_pic_vcerwp.jpg",
           "caption": "Accepting our 3rd place prize at HopHacks",
           "isFeatured": true
         }
@@ -263,41 +263,41 @@
       "state": "CA",
       "achievement": "People's Choice Award & VAPI: Best use of Voice AI",
       "description": "Ego boosted, wallet loaded, spirit peaked. Time to fry the big fish. We set our sight to the grand city of startup, San Francisco, where the brightest of mind gathers there for hackathon glory. Unexpectedly, this trip was one of our best trip, both in hanging out and winning prizes. We were grateful to have met many amazing friends there and we will never forget the memories we made there. Also, double winners baby, which is also unexpected. By far, this is the chillest hackathon we have ever been to.",
-      "mainImage": "/team/calhacks_2024/team_people_choice_award_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840837/team_people_choice_award_pic_fzzyox.jpg",
       "website": "https://cal-hacks-11-0.devpost.com",
       "photos":  [
         {
-          "src": "/team/calhacks_2024/team_at_apple_hq.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840839/team_at_apple_hq_cofxif.jpg",
           "caption": "Visit to Apple HQ during CalHacks",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024/team_with_lananh_in_sanfrancisco.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840839/team_with_lananh_in_sanfrancisco_md7kep.jpg",
           "caption": "Team exploring San Francisco",
           "isFeatured": false
         },
         {
-          "src": "/team/calhacks_2024/team_berkeley_backdrop_with_bear.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840835/team_berkeley_backdrop_with_bear_itmfy4.jpg",
           "caption": "Posing with the Berkeley Bear",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024/demo_team_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840838/demo_team_pic_yvh2cy.jpg",
           "caption": "Team demo at CalHacks",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024/team_at_google_hq.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840838/team_at_google_hq_vwq0oq.jpg",
           "caption": "Visit to Google campus",
           "isFeatured": false
         },
         {
-          "src": "/team/calhacks_2024/team_vapi_award_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840836/team_vapi_award_pic_h8uygm.jpg",
           "caption": "Winner of the VAPI API prize",
           "isFeatured": true
         },
         {
-          "src": "/team/calhacks_2024/team_people_choice_award_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840837/team_people_choice_award_pic_fzzyox.jpg",
           "caption": "People's Choice Award winners",
           "isFeatured": true
         }
@@ -331,16 +331,16 @@
       "state": "MA",
       "achievement": "",
       "description": "When we first come to the dining hall of UMass Amherst, we realized we were not gonna win anything. The food was so GOD DAMN good we stuffed our face so full we didn't even have time to code. We pretty much reused our previous project and just make it slightly different. Funny thing is, we were the one of the only 2 projects that submitted to the AR/VR category, but we didn't win anything. It was a bit of a letdown, but we still had a good time (and food). Also, Lam didn't join us for this one, so we substituted with Duc's brother, Minh (thanks for the help, bro).",
-      "mainImage": "/team/hackumass_2024/better_demo_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840836/better_demo_pic_n4zw9j.jpg",
       "website": "https://hackumass-xii.devpost.com/",
       "photos": [
         {
-          "src": "/team/hackumass_2024/better_demo_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840836/better_demo_pic_n4zw9j.jpg",
           "caption": "Slacking our project at HackUMass",
           "isFeatured": true
         },
         {
-          "src": "/team/hackumass_2024/demo_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840835/demo_pic_q13iwm.jpg",
           "caption": "Bereal demoing our project at HackUMass",
           "isFeatured": true
         }
@@ -374,11 +374,11 @@
       "state": "TX",
       "achievement": "",
       "description": "We have gone from coast to coast, now we were heading South. We were pretty hyped for this one, since we won CalHacks, the biggest hackathon of the season, and there should be no problem for us to win this second biggest one, right? WRONG! We fumbled from the idea to the execution, but on the bright side, we met some really friendly người Việt there, and we made some good friends (one of them even joined Hoang for Meta internship). That was our steepest lost, but we had steak afterwards, so it was not that bad.",
-      "mainImage": "/team/hackutd_2024/team_at_introduction_ceremony.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/team_at_introduction_ceremony_bijbb6.jpg",
       "website": "https://hackutd.co",
       "photos": [
         {
-          "src": "/team/hackutd_2024/team_at_introduction_ceremony.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/team_at_introduction_ceremony_bijbb6.jpg",
           "caption": "At the HackUTD opening ceremony",
           "isFeatured": true
         }
@@ -412,11 +412,11 @@
       "state": "MD",
       "achievement": "People's Choice",
       "description": "We were pretty burned out from the Fall hackathons, we kind of went off the grid for a while. At this point, VietRocHack is pretty much settled, with everyone having an internship/job for the summer. However, we decided to do this one just for the good old days, so we head back to the Free State of Maryland. Surprisingly, we won an award and we got our messages delivered to one of our long-term group meme. All is good!",
-      "mainImage": "/team/bitcamp_2025/demo_team_pic.jpg",
+      "mainImage": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/demo_team_pic_zctkbd.jpg",
       "website": "https://bit.camp",
       "photos": [
         {
-          "src": "/team/bitcamp_2025/demo_team_pic.jpg",
+          "src": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1744840842/demo_team_pic_zctkbd.jpg",
           "caption": "Demoing our project at Bitcamp",
           "isFeatured": true
         }

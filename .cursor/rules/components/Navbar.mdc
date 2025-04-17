@@ -1,0 +1,12 @@
+---
+description: Styling specification for Navbar component
+globs: 
+alwaysApply: false
+---
+# Navbar
+
+- Visual style: Dark bar fixed at top of screen
+- Elements: Logo, navigation links, mobile menu button
+- States: Regular links, active link (cyan), hover (with animated underline)
+- Behavior: Highlights current page, collapses to mobile menu on small screens
+- Animation: Links lift slightly and animate underline on hover 

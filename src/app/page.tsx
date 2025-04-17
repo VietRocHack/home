@@ -4,7 +4,6 @@ import Button from '@/components/Button';
 import RotatingLogo from '@/components/RotatingLogo';
 import AnimatedStat from '@/components/AnimatedStat';
 import BackgroundCarousel from '@/components/BackgroundCarousel';
-import PhotoGallery from '@/components/PhotoGallery';
 import HackathonTimeline from '@/components/HackathonTimeline';
 import ProjectGallery from '@/components/ProjectGallery';
 import Link from 'next/link';
@@ -98,17 +97,8 @@ export default function Home() {
             Follow our journey from first-time participants to award-winning hackathon veterans.
           </p>
           <HackathonTimeline />
-        </Container>
-      </section>
-
-      {/* Photo Gallery Section */}
-      <section className="py-16">
-        <Container>
-          <h2 className="text-3xl font-bold mb-4 text-center">Our Hackathon Journey</h2>
-          <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-6">
-            Swipe through our adventures across hackathons nationwide. We&apos;ve built, broken, fixed, and celebrated from coast to coast.
-          </p>
-          <div className="flex justify-center mb-8">
+          
+          <div className="flex justify-center mt-12">
             <Link href="/journey">
               <Button variant="secondary" size="lg">
                 Explore Full Journey
@@ -118,7 +108,6 @@ export default function Home() {
               </Button>
             </Link>
           </div>
-          <PhotoGallery />
         </Container>
       </section>
 
@@ -133,10 +122,11 @@ export default function Home() {
             {teamMembers.map((member, index) => (
               <div key={member.id + index}className="group relative w-64 h-64 overflow-hidden rounded-lg">
                 <Image 
-                  src={member.image}
+                  src={member.image.startsWith('http') ? member.image : '/' + member.image.replace(/^\//, '')}
                   alt={member.name}
                   fill
                   className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  unoptimized={member.image.startsWith('http')}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-lg font-medium">{member.name}</p>

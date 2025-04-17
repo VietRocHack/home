@@ -1,0 +1,12 @@
+---
+description: Styling specification for Footer component
+globs: 
+alwaysApply: false
+---
+# Footer
+
+- Visual style: Dark background with 4-column layout
+- Sections: About, quick links, social links, contact
+- Elements: Heading, text, links, button
+- Animation: Links slide right slightly on hover with color change
+- Behavior: Collapses to single column on mobile 

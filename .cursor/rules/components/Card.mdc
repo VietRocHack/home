@@ -3,6 +3,11 @@ description: Styling specification for Card component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for Card component
+globs: 
+alwaysApply: false
+---
 # Card
 
 - Visual style: Rounded corners, subtle shadow, dark background

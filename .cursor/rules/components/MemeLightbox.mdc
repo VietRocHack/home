@@ -3,6 +3,11 @@ description: Styling specification for MemeLightbox component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for MemeLightbox component
+globs: 
+alwaysApply: false
+---
 # MemeLightbox Component
 
 ## Overview

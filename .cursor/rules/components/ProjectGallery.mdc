@@ -3,6 +3,11 @@ description: Styling specification for ProjectGallery component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for ProjectGallery component
+globs: 
+alwaysApply: false
+---
 # ProjectGallery
 
 - Visual style: 

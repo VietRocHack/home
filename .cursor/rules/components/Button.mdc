@@ -3,6 +3,11 @@ description: Styling specification for Button component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for Button component
+globs: 
+alwaysApply: false
+---
 # Button
 
 - Visual style: Rounded corners, clear hover effects

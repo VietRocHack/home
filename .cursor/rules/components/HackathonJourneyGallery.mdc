@@ -3,6 +3,11 @@ description: Styling specification for HackathonJourneyGallery component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for HackathonJourneyGallery component
+globs: 
+alwaysApply: false
+---
 # HackathonJourneyGallery
 
 ## Overview

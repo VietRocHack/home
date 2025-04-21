@@ -18,7 +18,7 @@ export default function HackathonJourneyGallery() {
   
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
   const [filter, setFilter] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
+  const [viewMode, setViewMode] = useState<ViewMode>('hackathons');
   const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
   const [hackathons, setHackathons] = useState<HackathonGrouping[]>([]);

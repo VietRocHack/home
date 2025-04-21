@@ -54,7 +54,7 @@ export default function Home() {
           <div className="flex flex-col items-center text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">We&apos;re VietRocHack.</h2>
             <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-10">
-              We build apps. Win hackathons. And sometimes get sleep.
+                Proud Vietnamese students from U of R that achieves. 
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/projects">
@@ -76,7 +76,7 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <h2 className="text-3xl font-bold mb-10 text-center">
-            A few things we&apos;re not totally embarrassed to show:
+            Built (on) Award-Winning Projects
           </h2>
           
           <ProjectGallery />
@@ -92,7 +92,7 @@ export default function Home() {
       {/* Hackathon Timeline Section */}
       <section className="py-16 bg-[var(--background-secondary)]">
         <Container>
-          <h2 className="text-3xl font-bold mb-4 text-center">Our Hacking Timeline</h2>
+          <h2 className="text-3xl font-bold mb-4 text-center">Been Everywhere, Done Everything</h2>
           <p className="text-[var(--foreground-secondary)] text-center max-w-2xl mx-auto mb-10">
             Follow our journey from first-time participants to award-winning hackathon veterans.
           </p>
@@ -115,7 +115,7 @@ export default function Home() {
       <section className="py-16 bg-[var(--background-secondary)]">
         <Container>
           <h2 className="text-3xl font-bold mb-10 text-center">
-            Four devs. Two time zones. One shared Google Doc.
+            And Always The Best Version Of Ourselves
           </h2>
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">

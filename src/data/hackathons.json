@@ -51,7 +51,7 @@
           "achievements": ["Most Dandy Hack"],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
-          "featured": true
+          "featured": false
         }
       ]
     },
@@ -101,7 +101,7 @@
           "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
-          "featured": true
+          "featured": false
         }
       ]
     },
@@ -192,7 +192,7 @@
           "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
-          "featured": true
+          "featured": false
         }
       ]
     },
@@ -360,7 +360,7 @@
           "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
-          "featured": true
+          "featured": false
         }
       ]
     },
@@ -398,7 +398,7 @@
           "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
-          "featured": true
+          "featured": false
         }
       ]
     },

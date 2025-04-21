@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
-import { getAllProjects, Project, getHackathonByProjectId } from '@/utils/dataUtils';
+import { Project, getHackathonByProjectId, getFeaturedProjects } from '@/utils/dataUtils';
 
 export default function ProjectGallery({ hackathonId }: { hackathonId?: string }) {
   const [activeProject, setActiveProject] = useState(0);
@@ -20,7 +20,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
 
   // Load projects
   useEffect(() => {
-    const allProjects = getAllProjects();
+    const allProjects = getFeaturedProjects();
     
     // Filter by hackathon if specified
     const filteredProjects = hackathonId 

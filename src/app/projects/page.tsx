@@ -132,10 +132,10 @@ export default function ProjectsPage() {
           className={`${styles.projectSection} bg-[var(--background-secondary)]`}
         >
           <ProjectBrowser projects={allProjects} />
+            <Footer />
         </section>
       </main>
       
-      <Footer />
     </div>
   );
 } 

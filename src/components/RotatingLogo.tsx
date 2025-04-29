@@ -16,7 +16,8 @@ const hackVariants = [
 // List of rare variants that will briefly appear
 const rareVariants = [
 //   ["Địt", "Mẹ", "Phúc", "Nguyên"],
-  ["Viet", "OnlyFans", "Hack"]
+//   ["Viet", "OnlyFans", "Hack"]
+    ["Viet", "Secret", "Hack"]
 ];
 
 // Chance of showing the rare variant - increase for testing

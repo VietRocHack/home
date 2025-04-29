@@ -3,6 +3,11 @@ description: Styling specification for Navbar component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for Navbar component
+globs: 
+alwaysApply: false
+---
 # Navbar
 
 - Visual style: Dark bar fixed at top of screen

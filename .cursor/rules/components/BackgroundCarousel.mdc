@@ -3,6 +3,11 @@ description: Styling specification for BackgroundCarousel component
 globs: 
 alwaysApply: false
 ---
+---
+description: Styling specification for BackgroundCarousel component
+globs: 
+alwaysApply: false
+---
 # BackgroundCarousel
 
 - Visual style: Fullscreen background with semi-transparent overlay

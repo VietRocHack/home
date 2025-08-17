@@ -120,19 +120,21 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={member.id + index}className="group relative w-64 h-64 overflow-hidden rounded-lg">
-                <Image 
-                  src={member.image.startsWith('http') ? member.image : '/' + member.image.replace(/^\//, '')}
-                  alt={member.name}
-                  fill
-                  className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  unoptimized={member.image.startsWith('http')}
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-lg font-medium">{member.name}</p>
-                  <p className="text-sm text-[var(--foreground-secondary)]">{member.caption}</p>
-                </div>
-              </div>
+              <Link key={member.id + index} href={`/team#${member.id}`} passHref legacyBehavior>
+                <a className="group relative w-64 h-64 overflow-hidden rounded-lg cursor-pointer">
+                  <Image 
+                    src={member.image.startsWith('http') ? member.image : '/' + member.image.replace(/^\/+/, '')}
+                    alt={member.name}
+                    fill
+                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    unoptimized={member.image.startsWith('http')}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-lg font-medium">{member.name}</p>
+                    <p className="text-sm text-[var(--foreground-secondary)]">{member.caption}</p>
+                  </div>
+                </a>
+              </Link>
             ))}
           </div>
         </Container>

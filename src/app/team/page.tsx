@@ -53,17 +53,19 @@ export default function TeamPage() {
             />
           </button>
         </div>
-        <nav className="flex flex-wrap justify-center gap-4 mb-12 sticky top-0 z-40 bg-[var(--background)] py-4">
-          {teamData.map((member) => (
-            <a
-              key={member.id}
-              href={`#${member.id}`}
-              className="px-6 py-2 rounded-full bg-[var(--background-secondary)] text-[var(--accent-yellow)] font-semibold shadow hover:bg-[var(--accent-yellow)] hover:text-black transition-all duration-200"
-            >
-              {member.name}
-            </a>
-          ))}
-        </nav>
+        <div className="sticky top-0 z-50 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
+          <nav className="flex flex-wrap justify-center gap-4 py-4">
+            {teamData.map((member) => (
+              <a
+                key={member.id}
+                href={`#${member.id}`}
+                className="px-6 py-2 rounded-full bg-[var(--background-secondary)] text-[var(--accent-yellow)] font-semibold shadow hover:bg-[var(--accent-yellow)] hover:text-black transition-all duration-200"
+              >
+                {member.name}
+              </a>
+            ))}
+          </nav>
+        </div>
         <div className="flex flex-col">
            {teamData.map((member, idx) => {
              const isPersonal = mode === 'personal';

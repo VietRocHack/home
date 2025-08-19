@@ -402,7 +402,6 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
           </Card>
         </div>
       </div>
-      
       {/* Navigation controls - moved to bottom */}
       <div className="flex justify-center items-center gap-4 mb-4">
         <button 
@@ -423,7 +422,6 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
           →
         </button>
       </div>
-      
       {/* Project navigation dots */}
       <div className="flex justify-center gap-2 mt-2 mb-6">
         {projects.map((_, index) => (
@@ -438,7 +436,6 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
           />
         ))}
       </div>
-
       {/* Custom scrollbar styling */}
       <style jsx global>{`
         /* Custom scrollbar styling */

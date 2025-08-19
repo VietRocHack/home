@@ -109,7 +109,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <Link 
+            <Link
               key={link.path}
               href={link.path}
               className={`${isActive(link.path) ? 'text-[var(--accent-yellow)] after:w-full after:opacity-100' : 'text-[var(--foreground)]'} hover:text-[var(--accent-yellow)] transition-all duration-300 hover:translate-y-[-2px] font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[var(--accent-yellow)] after:transition-all after:duration-300 hover:after:w-full after:opacity-70 hover:after:opacity-100`}
@@ -150,7 +150,6 @@ export default function Navbar() {
           </svg>
         </button>
       </div>
-
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -163,11 +162,11 @@ export default function Navbar() {
           >
             <div className="px-4 py-4 space-y-4">
               {navLinks.map((link) => (
-                <Link 
+                <Link
                   key={link.path}
                   href={link.path}
                   className={`block py-3 px-4 rounded-lg transition-all duration-200 ${isActive(link.path) ? 'text-[var(--accent-yellow)] bg-white/5 font-medium' : 'text-[var(--foreground)] hover:bg-white/5'}`}
-                >
+                  legacyBehavior>
                   {link.label}
                 </Link>
               ))}

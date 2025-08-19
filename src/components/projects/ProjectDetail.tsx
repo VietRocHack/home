@@ -94,7 +94,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               
               <div className="flex flex-wrap gap-4">
                 {project.devpostLink && (
-                  <Link href={project.devpostLink} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.devpostLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    legacyBehavior>
                     <button className="px-6 py-2 bg-[var(--accent-yellow)] text-black font-medium rounded-lg hover:bg-opacity-80 transition-all">
                       DevPost
                     </button>
@@ -102,7 +106,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 )}
                 
                 {project.demoLink && (
-                  <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    legacyBehavior>
                     <button className="px-6 py-2 bg-[var(--accent-red)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all">
                       Live Demo
                     </button>
@@ -110,7 +118,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 )}
                 
                 {project.githubLink && (
-                  <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    legacyBehavior>
                     <button className="px-6 py-2 bg-[var(--background-secondary)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all">
                       GitHub
                     </button>

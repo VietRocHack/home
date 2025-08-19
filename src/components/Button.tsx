@@ -22,7 +22,7 @@ export default function Button({
 }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   
-  const baseStyles = 'font-medium transition-all duration-300 rounded-lg transform cursor-pointer overflow-hidden';
+  const baseStyles = 'font-medium transition-all duration-300 rounded-lg transform cursor-pointer overflow-hidden flex items-center justify-center';
   
   const variantStyles = {
     primary: `bg-[var(--accent-red)] text-white hover:bg-[#ff2a25] hover:-translate-y-1 

@@ -9,8 +9,8 @@
       "major": "Computer Science & Applied Mathematics",
       "graduation": 2025,
       "bio": "Full-stack engineer and hackathon leader with experience at Meta and Google. Passionate about building scalable systems and leading high-performing teams.",
-      "bio-meme": "ditme phuc nguyen",
-      "hobbies": "rotting in bed",
+      "bio-meme": "I swear this stock is about to go to the moon… (famous last words)",
+      "hobbies": "financial markets (options), poker, video games, lego, traveling, skiing (soon)",
       "photo": "/people/vuong/avatar.jpg",
       "photo2": "/people/vuong/stanford-vuong.jpg",
       "socialLinks": {
@@ -28,6 +28,10 @@
         "Docker",
         "MongoDB",
         "TypeScript"
+      ],
+      "skills-meme": [
+        "Scroll-a-thon: 12-hour endurance challenge",
+        "betting"
       ]
     },
     {
@@ -38,9 +42,9 @@
       "school": "University of Rochester",
       "major": "Computer Science",
       "graduation": 2026,
-      "bio": "Curious software engineer passionate about learning and exploring new technologies. Winner of Cal Hack 11.0 and experienced in developing innovative software solutions.",
-      "bio-meme": "say something dumb here",
-      "hobbies": "rotting in bed",
+      "bio": "Curious software engineer passionate about learning and developing cool software solutions.",
+      "bio-meme": "If Earth spins at 1000 mph and a plane only goes 500 mph, why doesn’t the plane just hover and let the ground move it to the destination?",
+      "hobbies": "Soccer, chess, touching grass, socializing",
       "photo": "/people/duc/avatar.jpg",
       "photo2": "/people/duc/stanford-duc.jpg",
       "socialLinks": {
@@ -50,19 +54,20 @@
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/vu.dduc_/"
       },
-      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
+      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"],
+      "skills-meme": ["Sarcasm, making fun of Hoang"]
     },
     {
       "id": "hoang",
       "name": "Hoang Le",
       "role": "Software Engineer Intern at Meta",
-      "role-meme": "frontal lobe is still loading...",
+      "role-meme": "Frontal lobe is still loading...",
       "school": "University of Rochester",
       "major": "Computer Science",
       "graduation": 2027,
       "bio": "Incoming @ Meta | CS @ URochester | 4x Hackathons Winner",
       "bio-meme": "902",
-      "hobbies": "rotting in bed",
+      "hobbies": "Manchester United, LinkedIn Warrior",
       "photo": "/people/hoang/avatar.jpg",
       "photo2": "/people/hoang/stanford-hoang.jpg",
       "socialLinks": {
@@ -72,7 +77,8 @@
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/_hoangledo_/"
       },
-      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
+      "skills": ["Code"],
+      "skills-meme": ["On wife-soothing duty 24/7"]
     },
     {
       "id": "lam",
@@ -82,9 +88,9 @@
       "school": "University of Rochester",
       "major": "Computer Science",
       "graduation": 2026,
-      "bio": "Incoming @ Fetch | 3x Hackathon Winner | CS @ U of R",
-      "bio-meme": "something dumb here",
-      "hobbies": "rotting in bed",
+      "bio": "A creative and ambitious Software Engineer exploring multidisciplinary problems and creating novel solutions. A problem solver at heart",
+      "bio-meme": "I love French, especially the Madame part",
+      "hobbies": "Reddit Enthusiast, video games, stating unhinged facts, learning French",
       "photo": "/people/lam/avatar.jpg",
       "photo2": "/people/lam/stanford-lam.jpg",
       "socialLinks": {
@@ -94,7 +100,9 @@
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/ptlam_cn24/"
       },
-      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"]
+      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"],
+      "skills-meme": ["Deep talk, cooking"]
+
     }
   ]
 }

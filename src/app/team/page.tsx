@@ -88,7 +88,13 @@ export default function TeamPage() {
                  <div className="flex-1 flex flex-col justify-center items-center md:items-start gap-2">
                    <h2 className="text-4xl font-bold text-[var(--accent-yellow)] mb-2">{member.name}</h2>
                    <p className="text-xl text-[var(--foreground-secondary)] mb-2">{isPersonal ? member["role-meme"] : member.role}</p>
-                   <p className="text-lg text-[var(--foreground)] mb-4">{isPersonal ? member["bio-meme"] : member.bio}</p>
+                   {isPersonal ? (
+                     <blockquote className="text-lg italic text-[var(--foreground)] mb-4 px-6 py-4 border-l-4 border-[var(--accent-yellow)] bg-[var(--background-secondary)]/60 rounded-r-xl">
+                       “{member["bio-meme"]}”
+                     </blockquote>
+                   ) : (
+                     <p className="text-lg text-[var(--foreground)] mb-4">{member.bio}</p>
+                   )}
                    {isPersonal ? (
                      <div className="text-md text-gray-400 mb-2">
                        <span className="font-semibold">Hobbies:</span> {member.hobbies}
@@ -115,7 +121,7 @@ export default function TeamPage() {
                      )}
                    </div>
                    <div className="mt-2">
-                     <span className="font-semibold">Skills:</span> <span className="ml-1">{member.skills.join(', ')}</span>
+                     <span className="font-semibold">Skills:</span> <span className="ml-1">{isPersonal && member["skills-meme"] ? member["skills-meme"].join(', ') : member.skills.join(', ')}</span>
                    </div>
                    {isPersonal ? (
                      <div className="mt-6 w-full flex flex-col items-center">

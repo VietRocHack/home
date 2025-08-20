@@ -166,7 +166,7 @@ export default function Navbar() {
                   key={link.path}
                   href={link.path}
                   className={`block py-3 px-4 rounded-lg transition-all duration-200 ${isActive(link.path) ? 'text-[var(--accent-yellow)] bg-white/5 font-medium' : 'text-[var(--foreground)] hover:bg-white/5'}`}
-                  legacyBehavior>
+                >
                   {link.label}
                 </Link>
               ))}

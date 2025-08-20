@@ -59,7 +59,7 @@ export default function HackathonJourneyGallery() {
 
   // Read view from URL query parameter
   useEffect(() => {
-    const viewParam = searchParams.get('view');
+  const viewParam = searchParams?.get('view');
     if (viewParam && (viewParam === 'grid' || viewParam === 'timeline' || viewParam === 'hackathons' || viewParam === 'fun')) {
       setViewMode(viewParam as ViewMode);
     }
@@ -70,7 +70,7 @@ export default function HackathonJourneyGallery() {
     setViewMode(mode);
     
     // Create new URL with the updated view parameter
-    const params = new URLSearchParams(searchParams.toString());
+  const params = searchParams ? new URLSearchParams(searchParams.toString()) : new URLSearchParams();
     params.set('view', mode);
     
     // Update URL without refreshing the page

@@ -17,22 +17,12 @@
         "github": "https://github.com/vuongho",
         "linkedin": "https://linkedin.com/in/vuongho"
       },
+      "email": "vuong.ho@vietrochack.com",
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/vuonghoooo/"
       },
-      "skills": [
-        "React",
-        "Node.js",
-        "Python",
-        "AWS",
-        "Docker",
-        "MongoDB",
-        "TypeScript"
-      ],
-      "skills-meme": [
-        "Scroll-a-thon: 12-hour endurance challenge",
-        "betting"
-      ]
+      "skills": ["System Design", "AWS", "Architecture", "Database Design"],
+      "skills-meme": ["Scroll-a-thon: 12-hour endurance challenge", "betting"]
     },
     {
       "id": "duc",
@@ -51,10 +41,11 @@
         "github": "https://github.com/VuDuc1610",
         "linkedin": "https://linkedin.com/in/duc-vu-21766a226"
       },
+      "email": "duc.vu@vietrochack.com",
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/vu.dduc_/"
       },
-      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"],
+      "skills": ["MCP", "Java Spring Boot", "GCP", "React", "Docker"],
       "skills-meme": ["Sarcasm, making fun of Hoang"]
     },
     {
@@ -74,10 +65,12 @@
         "github": "https://github.com/hoangle",
         "linkedin": "https://linkedin.com/in/hoangle"
       },
+      "email": "hoang.le@vietrochack.com",
+
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/_hoangledo_/"
       },
-      "skills": ["Code"],
+      "skills": ["PHP", "React", "Python", "Java"],
       "skills-meme": ["On wife-soothing duty 24/7"]
     },
     {
@@ -97,12 +90,18 @@
         "github": "https://github.com/lampham",
         "linkedin": "https://linkedin.com/in/lampham"
       },
+      "email": "lam.pham@vietrochack.com",
       "socialLinks-meme": {
         "instagram": "https://www.instagram.com/ptlam_cn24/"
       },
-      "skills": ["JavaScript", "Python", "React", "Node.js", "AWS", "Docker"],
+      "skills": [
+        "System Design",
+        "Full-stack development",
+        "Go",
+        "AWS",
+        "Microservice"
+      ],
       "skills-meme": ["Deep talk, cooking"]
-
     }
   ]
 }

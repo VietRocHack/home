@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import Button from "@/components/Button";
 import Link from "next/link";
 import React from "react";
+import LinkedInQuickConnect from "./LinkedInQuickConnect";
 
 export default function Page() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -33,8 +34,7 @@ export default function Page() {
               Let&apos;s Connect
             </h1>
             <p className="text-lg text-[var(--foreground-secondary)] max-w-2xl mx-auto">
-              Whether you&apos;re a recruiter, organizer, or fellow hacker,
-              we&apos;d love to hear from you.
+             No matter who you are—recruiter, organizer, hacker, friend—drop us a line!
             </p>
           </div>
 
@@ -44,8 +44,8 @@ export default function Page() {
               <p className="text-[var(--foreground-secondary)] mb-4">
                 Reach us directly via email.
               </p>
-              <a href="mailto:vietrochack@gmail.com" className="block">
-                <Button variant="primary" size="md" className="w-full">
+              <a href="mailto:vietrochack@gmail.com" className="block w-full">
+                <Button variant="primary" size="md" className="w-full mt-6">
                   Email Us
                 </Button>
               </a>
@@ -86,20 +86,11 @@ export default function Page() {
             </Card>
 
             <Card variant="zoom">
-              <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
-              <p className="text-[var(--foreground-secondary)] mb-4">
-                Connect with us on LinkedIn.
-              </p>
-              <Link
-                href="https://www.linkedin.com/in/vuongho/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <Button variant="secondary" size="md" className="w-full">
-                  Connect on LinkedIn
-                </Button>
-              </Link>
+                <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
+                <p className="text-[var(--foreground-secondary)] mb-4">
+                  Connect with a team member on LinkedIn.
+                </p>
+                <LinkedInQuickConnect />
             </Card>
           </div>
 
@@ -205,17 +196,6 @@ export default function Page() {
                       rel="noopener noreferrer"
                     >
                       devpost.com/vietrochack
-                    </a>
-                  </li>
-                  <li>
-                    <span className="text-[var(--foreground)]">LinkedIn:</span>{" "}
-                    <a
-                      className="text-[var(--accent-yellow)] hover:underline"
-                      href="https://www.linkedin.com/in/vuongho/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      linkedin.com/company/vietrochack
                     </a>
                   </li>
                 </ul>

@@ -25,8 +25,8 @@ export default async function handler(
         },
       ],
       mode: mode || "payment",
-      success_url: "http://localhost:3000/billing/success",
-      cancel_url: "http://localhost:3000/billing",
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/billing/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/billing`,
     };
     if ((mode || "payment") === "payment") {
       sessionConfig.customer_creation = "always";

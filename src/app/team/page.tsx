@@ -80,8 +80,8 @@ export default function TeamPage() {
                    <Image
                      src={member.photo2}
                      alt={member.name}
-                     width={380}
-                     height={380}
+                     width={100}
+                     height={100}
                      className="rounded-2xl object-cover shadow-lg w-full h-full"
                    />
                  </div>

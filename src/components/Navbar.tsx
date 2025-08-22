@@ -67,7 +67,6 @@ export default function Navbar() {
     { path: '/team', label: 'Team' },
     { path: '/projects', label: 'Projects' },
     { path: '/journey', label: 'Journey' },
-    { path: '/vision', label: 'Vision' },
     { path: '/contact', label: 'Contact' },
   ];
 
@@ -120,12 +119,14 @@ export default function Navbar() {
         </nav>
         
         <div className="hidden md:block">
-          <Button 
-            variant="primary" 
-            className="px-6 py-2 shadow-lg shadow-[var(--accent-red)]/20 hover:shadow-[var(--accent-red)]/40 transition-all duration-300"
-          >
-            Join Team
-          </Button>
+          <Link href="/billing">
+            <Button 
+              variant="primary" 
+              className="px-6 py-2 shadow-lg shadow-[var(--accent-red)]/20 hover:shadow-[var(--accent-red)]/40 transition-all duration-300"
+            >
+              Join Team
+            </Button>
+          </Link>
         </div>
         
         {/* Mobile menu button */}

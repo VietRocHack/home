@@ -18,7 +18,6 @@ export default function Footer() {
               <Link href="/" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Home</Link>
               <Link href="/team" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Team</Link>
               <Link href="/projects" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Projects</Link>
-              <Link href="/vision" className="text-[var(--foreground-secondary)] hover:text-[var(--accent-yellow)] transition-all duration-200 hover:translate-x-1 inline-block">Vision</Link>
             </div>
           </div>
           

@@ -42,7 +42,6 @@ function BillingPlanWithCheckout(props: {
       buttonText={loading ? "Redirecting…" : props.buttonText || "Subscribe"}
       onClick={handleClick}
       highlight={props.highlight}
-      oneTime={props.oneTime}
     />
   );
   // End of BillingPlanWithCheckout

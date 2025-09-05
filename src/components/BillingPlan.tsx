@@ -8,11 +8,10 @@ interface BillingPlanProps {
   features: string[];
   buttonText: string;
   highlight?: boolean;
-  oneTime?: boolean;
   onClick?: () => void;
 }
 
-const BillingPlan: React.FC<BillingPlanProps> = ({ price, period, infoRows = [], features, buttonText, highlight, oneTime, onClick }) => {
+const BillingPlan: React.FC<BillingPlanProps> = ({ price, period, infoRows = [], features, buttonText, highlight, onClick }) => {
   // Highlight logic for featured plan (third option)
   const highlightStyle = highlight
     ? 'border-4 border-yellow-300 shadow-[0_8px_32px_0_rgba(255,221,51,0.12)] scale-105 relative'

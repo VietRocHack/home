@@ -142,7 +142,11 @@ function ManageSubscriptionButton() {
       if (!res.ok) throw new Error(data.error || 'Failed to create portal session');
       window.location.href = data.url;
     } catch (err) {
-      alert('Error: ' + (err.message || err));
+      if (err instanceof Error) {
+        alert('Error: ' + err.message);
+      } else {
+        alert('Error: ' + String(err));
+      }
     } finally {
       setLoading(false);
     }

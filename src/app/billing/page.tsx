@@ -49,10 +49,10 @@ function BillingPlanWithCheckout(props: {
 }
 
 export default function BillingPage() {
-  const NEXT_PUBLIC_PRICE_SUPPORT = process.env.NEXT_PUBLIC_PRICE_SUPPORT;
-  const NEXT_PUBLIC_PRICE_TIER1 = process.env.NEXT_PUBLIC_PRICE_TIER1;
-  const NEXT_PUBLIC_PRICE_TIER2 = process.env.NEXT_PUBLIC_PRICE_TIER2;
-  const NEXT_PUBLIC_PRICE_TIER3 = process.env.NEXT_PUBLIC_PRICE_TIER3;
+  // const NEXT_PUBLIC_PRICE_SUPPORT = process.env.NEXT_PUBLIC_PRICE_SUPPORT;
+const NEXT_PUBLIC_PRICE_TIER1 = process.env.NEXT_PUBLIC_VRH_PRO;
+const NEXT_PUBLIC_PRICE_TIER2 = process.env.NEXT_PUBLIC_VRH_PREMIUM;
+const NEXT_PUBLIC_PRICE_TIER3 = process.env.NEXT_PUBLIC_VRH_FOUNDER;
   return (
     <Layout>
       <Container>
@@ -61,7 +61,7 @@ export default function BillingPage() {
             Join us to unlock the secret sauce
           </h1>
           <div className="flex flex-row gap-10 justify-center mb-8">
-            <BillingPlanWithCheckout
+            {/* <BillingPlanWithCheckout
               price="$0"
               period="forever"
               features={[
@@ -72,10 +72,10 @@ export default function BillingPage() {
               mode="payment"
               priceId={NEXT_PUBLIC_PRICE_SUPPORT}
               oneTime
-            />
+            /> */}
             <BillingPlanWithCheckout
               price="$2.99"
-              period="/month (or $29/year)"
+              period="/month"
               features={[
                 "Full access to step-by-step hackathon strategies we’ve used to win.",
                 "Templates & pitch decks that impress judges.",
@@ -87,7 +87,7 @@ export default function BillingPage() {
             />
             <BillingPlanWithCheckout
               price="$5.99"
-              period="/month (or $59/year)"
+              period="/month"
               features={[
                 "Everything in Pro + personalized feedback on your resume or pitch.",
                 "Mock interview prep & insider guides to land tech internships.",

@@ -55,7 +55,12 @@ const NEXT_PUBLIC_PRICE_TIER3 = process.env.NEXT_PUBLIC_VRH_FOUNDER;
   return (
     <Layout>
       <Container>
-        <div className="py-8">
+        <div className="pt-12 pb-8">
+          <div className="mb-10 text-center pb-25">
+            <h1 className="text-7xl font-extrabold mb-3 text-center drop-shadow-lg text-yellow-400">Our Story</h1>
+            <h2 className="text-3xl text-red-500 mb-2 font-semibold">From zero to tech job</h2>
+              <p className="max-w-2xl mx-auto text-base text-justify">All four of us started from zero—just as lost and unsure as any CS student trying to figure out where to begin. What changed everything for us was discovering the hidden power of hackathons. They aren’t just about coding under pressure; they’re the easiest gateway to building real networks, gaining confidence, and finding opportunities that most students never realize exist. Through hackathons, we reshaped how we approached career-building and uncovered a unique path to break into tech. Now, we’re bringing that experience full circle to help you—step by step, from absolute beginner to hackathon winner, and eventually to landing your dream job in tech. Join us at VietRoHack, and let us guide you on the same journey that transformed our own careers.</p>
+          </div>
           <h1 className="text-3xl font-extrabold mb-6 text-center drop-shadow-lg">
             Join us to unlock the secret sauce
           </h1>
@@ -102,7 +107,7 @@ const NEXT_PUBLIC_PRICE_TIER3 = process.env.NEXT_PUBLIC_VRH_FOUNDER;
               period="one-time (limited spots)"
               features={[
                 "Pay once, get everything forever.",
-                "Includes 1 personalized resume/idea review to kickstart your journey.",
+                "Includes personalized resume/idea review to kickstart your journey.",
                 "Lock in early-adopter status and never worry about monthly fees again.",
               ]}
               buttonText="Join Founders Club"
@@ -112,51 +117,7 @@ const NEXT_PUBLIC_PRICE_TIER3 = process.env.NEXT_PUBLIC_VRH_FOUNDER;
             />
           </div>
         </div>
-        <div className="flex justify-center mt-8">
-          <ManageSubscriptionButton />
-        </div>
       </Container>
     </Layout>
-  );
-}
-
-function ManageSubscriptionButton() {
-  const [loading, setLoading] = React.useState(false);
-  async function handleManage() {
-    setLoading(true);
-    // TODO: Replace with actual customerId from user session/database
-    const customerId = window.localStorage.getItem('stripeCustomerId');
-    if (!customerId) {
-      alert('Stripe customer ID not found. Please log in.');
-      setLoading(false);
-      return;
-    }
-    try {
-      const res = await fetch('/api/stripe/portal', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ customerId }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to create portal session');
-      window.location.href = data.url;
-    } catch (err) {
-      if (err instanceof Error) {
-        alert('Error: ' + err.message);
-      } else {
-        alert('Error: ' + String(err));
-      }
-    } finally {
-      setLoading(false);
-    }
-  }
-  return (
-    <button
-      className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-md transition-all duration-200"
-      onClick={handleManage}
-      disabled={loading}
-    >
-      {loading ? 'Redirecting…' : 'Manage Subscription'}
-    </button>
   );
 }

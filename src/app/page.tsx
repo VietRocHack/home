@@ -63,17 +63,12 @@ export default function Home() {
               We&apos;re VietRocHack.
             </h2>
             <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-10">
-              Proud Vietnamese students from U of R that achieves.
+              Proud Vietnamese students at the University of Rochester, breaking into tech through hackathons
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/projects">
-                <Button variant="primary" size="lg">
-                  Explore Projects
-                </Button>
-              </Link>
               <Link href="/team">
-                <Button variant="ghost" size="lg">
-                  Meet the Team
+                <Button variant="primary" size="lg">
+                  Join team
                 </Button>
               </Link>
             </div>
@@ -84,7 +79,7 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <h2 className="text-3xl font-bold mb-10 text-center">
-            Built (on) Award-Winning Projects
+          Award-Winning Hackathon Projects
           </h2>
 
           <ProjectGallery />

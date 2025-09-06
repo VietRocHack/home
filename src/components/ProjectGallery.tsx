@@ -247,11 +247,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
                   </div>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {projects[previousProject].achievements.map((achievement, i) => (
-                      <span key={i} className="px-3 py-1 bg-[var(--accent-red)] bg-opacity-20 text-[var(--accent-red)] rounded-full text-sm">
-                        {achievement}
-                      </span>
-                    ))}
+                    {/* Achievement badges removed as requested */}
                   </div>
                   
                   <div className="flex flex-wrap gap-3">
@@ -364,11 +360,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
                 
                 {/* Achievement badges */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {projects[activeProject].achievements.map((achievement, i) => (
-                    <span key={i} className="px-3 py-1 bg-[var(--accent-red)] bg-opacity-20 text-[var(--accent-red)] rounded-full text-sm">
-                      {achievement}
-                    </span>
-                  ))}
+                  {/* Achievement badges removed as requested */}
                 </div>
                 
                 {/* Action buttons */}

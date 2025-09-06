@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const session = await stripe.billingPortal.sessions.create({
       customer: customerId,
-      return_url: 'https://vietrochack.com/billing',
+      return_url: 'https://localhost:3000/billing',
     });
     return res.status(200).json({ url: session.url });
   } catch (err: unknown) {

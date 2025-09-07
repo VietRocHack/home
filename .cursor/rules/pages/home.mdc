@@ -33,8 +33,8 @@ LAYOUT STRUCTURE
 - Title: `We're VietRocHack.`
 - Subtitle: `We build apps. Win hackathons. And sometimes get sleep.`
 - Two buttons:
-  - `Explore Projects` → link to `/projects`
-  - `Meet the Team` → link to `/team`
+  - `Who We Are` → link to `/projects`
+  - `What We Do` → link to `/team`
 - Design: centered layout, subtle fade/slide animation on load, buttons with accent colors and hover effects.
 
  3. Featured Projects Section

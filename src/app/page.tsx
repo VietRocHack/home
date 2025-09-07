@@ -43,12 +43,12 @@ export default function Home() {
             <div className="flex gap-4 mt-8 justify-center">
               <Link href="/projects">
                 <Button variant="primary" size="lg">
-                  Explore Projects
+                  What We Do
                 </Button>
               </Link>
               <Link href="/team">
                 <Button variant="ghost" size="lg">
-                  Meet the Team
+                  Who We Are
                 </Button>
               </Link>
             </div>

@@ -38,7 +38,7 @@ export default function TeamPage() {
 
   return (
     <Layout>
-      <Container>
+      <Container className="pt-32">
         <h1 className="text-6xl font-extrabold mb-12 text-center drop-shadow-lg">Meet the Team</h1>
         <div className="flex justify-center items-center mb-8">
           <span className="mr-4 text-lg font-semibold">Tuff Mode 🥀</span>

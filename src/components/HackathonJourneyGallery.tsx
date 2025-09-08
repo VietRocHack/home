@@ -128,6 +128,24 @@ export default function HackathonJourneyGallery() {
   // Slideshow timer
   useEffect(() => {}, []);
 
+  // Prevent background scroll when a lightbox is open
+  useEffect(() => {
+    const isOpen = activePhoto !== null || activeMeme !== null;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = previousHtmlOverflow || '';
+      document.body.style.overflow = previousBodyOverflow || '';
+    }
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow || '';
+      document.body.style.overflow = previousBodyOverflow || '';
+    };
+  }, [activePhoto, activeMeme]);
+
   // Helper function to get hackathon by ID
   const getHackathonName = (id: string): string => {
     const hackathonGroup = hackathons.find(h => h.hackathon.id === id);

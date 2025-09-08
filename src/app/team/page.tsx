@@ -61,7 +61,8 @@ export default function TeamPage() {
                 href={`#${member.id}`}
                 className="px-6 py-2 rounded-full bg-[var(--background-secondary)] text-[var(--accent-yellow)] font-semibold shadow hover:bg-[var(--accent-yellow)] hover:text-black transition-all duration-200"
               >
-                {member.name}
+                <span className="hidden md:inline">{member.name}</span>
+                <span className="inline md:hidden">{member.name.split(' ').map((w) => w[0]).join('')}</span>
               </a>
             ))}
           </nav>
@@ -73,10 +74,10 @@ export default function TeamPage() {
                <section
                  key={member.id}
                  id={member.id}
-                 className={`flex flex-col md:flex-row items-center justify-center min-h-screen gap-10 py-12 scroll-mt-24 transition-all duration-700 ${visibleSections[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                 className={`flex flex-col md:flex-row items-center justify-center md:min-h-screen gap-6 md:gap-10 py-8 md:py-12 scroll-mt-24 transition-all duration-700 ${visibleSections[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                  style={{ willChange: 'opacity, transform' }}
                >
-                 <div className="flex items-center justify-center w-[400px] h-[400px] md:w-[480px] md:h-[480px] bg-transparent">
+                 <div className="flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-[480px] md:h-[480px] bg-transparent">
                    <Image
                      src={member.photo2}
                      alt={member.name}

@@ -53,7 +53,7 @@ export default function TeamPage() {
             />
           </button>
         </div>
-        <div className="sticky top-0 z-50 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
+        <div className="sticky top-20 z-40 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
           <nav className="flex flex-wrap justify-center gap-4 py-4">
             {teamData.map((member) => (
               <a

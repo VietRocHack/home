@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/Button';
@@ -42,14 +42,14 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
   }, [activeProject]);
   
   // Toggle description expanded state
-  const toggleDescription = (e: React.MouseEvent) => {
+  const toggleDescription = useCallback((e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering other click handlers
     setIsDescriptionExpanded(!isDescriptionExpanded);
     setIsPaused(true); // Pause auto-rotation when expanded
-  };
+  }, [isDescriptionExpanded]);
 
   // Function to change project with direction animation
-  const changeProject = (newIndex: number) => {
+  const changeProject = useCallback((newIndex: number) => {
     if (newIndex === activeProject || isAnimating) return;
     
     // Set animating state
@@ -78,10 +78,10 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         startAutoRotation();
       }
     }, 500); // Match this to the CSS transition duration
-  };
+  }, [activeProject, isAnimating, isPaused]);
 
   // Function to start auto-rotation
-  const startAutoRotation = () => {
+  const startAutoRotation = useCallback(() => {
     // Clear any existing timer first
     if (autoRotateTimerRef.current) {
       clearInterval(autoRotateTimerRef.current);
@@ -95,7 +95,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         changeProject(nextIndex);
       }
     }, 5000);
-  };
+  }, [isAnimating, isPaused, projects.length, changeProject]);
 
   // Auto-rotate projects
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function ProjectGallery({ hackathonId }: { hackathonId?: string }
         clearInterval(autoRotateTimerRef.current);
       }
     };
-  }, [projects.length, isPaused]); // Keep isPaused dependency
+  }, [projects.length, isPaused, startAutoRotation]);
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {

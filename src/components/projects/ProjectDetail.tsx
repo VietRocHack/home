@@ -98,34 +98,28 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     href={project.devpostLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    legacyBehavior>
-                    <button className="px-6 py-2 bg-[var(--accent-yellow)] text-black font-medium rounded-lg hover:bg-opacity-80 transition-all">
-                      DevPost
-                    </button>
+                    className="px-6 py-2 bg-[var(--accent-yellow)] text-black font-medium rounded-lg hover:bg-opacity-80 transition-all inline-flex items-center justify-center">
+                    Devpost
                   </Link>
                 )}
-                
+
                 {project.demoLink && (
                   <Link
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    legacyBehavior>
-                    <button className="px-6 py-2 bg-[var(--accent-red)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all">
-                      Live Demo
-                    </button>
+                    className="px-6 py-2 bg-[var(--accent-red)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all inline-flex items-center justify-center">
+                    Live Demo
                   </Link>
                 )}
-                
+
                 {project.githubLink && (
                   <Link
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    legacyBehavior>
-                    <button className="px-6 py-2 bg-[var(--background-secondary)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all">
-                      GitHub
-                    </button>
+                    className="px-6 py-2 bg-[var(--background-secondary)] text-white font-medium rounded-lg hover:bg-opacity-80 transition-all inline-flex items-center justify-center">
+                    GitHub
                   </Link>
                 )}
               </div>

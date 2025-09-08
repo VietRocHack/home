@@ -24,10 +24,10 @@ export default function HackathonJourneyGallery() {
   const [hackathons, setHackathons] = useState<HackathonGrouping[]>([]);
   const [memes, setMemes] = useState<Meme[]>([]);
   const [activeMeme, setActiveMeme] = useState<number | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSlideshow, setIsSlideshow] = useState(false);
-  const slideshowTimerRef = useRef<NodeJS.Timeout | null>(null);
+  // Simplified viewer – no fullscreen or slideshow
   const scrollRef = useRef<HTMLDivElement>(null);
+  
+  // (unused placeholder removed)
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
@@ -63,6 +63,35 @@ export default function HackathonJourneyGallery() {
     if (viewParam && (viewParam === 'grid' || viewParam === 'timeline' || viewParam === 'hackathons' || viewParam === 'fun')) {
       setViewMode(viewParam as ViewMode);
     }
+    
+    // Deep-linking: open photo by src or meme by id
+    const photoParam = searchParams?.get('photo');
+    const memeParam = searchParams?.get('meme');
+    
+    if (photoParam && galleryPhotos.length > 0) {
+      // Find index across filtered set first, fallback to all photos
+      const indexInFiltered = filteredPhotos.findIndex(p => p.photo.src === photoParam);
+      if (indexInFiltered >= 0) {
+        setActivePhoto(indexInFiltered);
+      } else {
+        const indexInAll = galleryPhotos.findIndex(p => p.photo.src === photoParam);
+        if (indexInAll >= 0) {
+          // Ensure filter includes this photo's hackathon
+          setFilter(galleryPhotos[indexInAll].hackathon.id);
+          // After filter applies, try to open the first matching photo in filtered set
+          const toOpen = filteredPhotos.findIndex(p => p.photo.src === photoParam);
+          setActivePhoto(toOpen >= 0 ? toOpen : 0);
+        }
+      }
+    }
+    
+    if (memeParam && memes.length > 0) {
+      const idx = memes.findIndex(m => m.id === memeParam);
+      if (idx >= 0) {
+        setViewMode('fun');
+        setActiveMeme(idx);
+      }
+    }
   }, [searchParams]);
 
   // Update URL when view mode changes
@@ -93,22 +122,26 @@ export default function HackathonJourneyGallery() {
     return sortOrder === 'newest' ? yearB - yearA : yearA - yearB;
   });
 
-  // Slideshow timer
+  // Slideshow timer (removed)
+  useEffect(() => {}, []);
+
+  // Prevent background scroll when a lightbox is open
   useEffect(() => {
-    if (isSlideshow && activePhoto !== null && filteredPhotos.length > 0) {
-      slideshowTimerRef.current = setTimeout(() => {
-        setActivePhoto((prev) => 
-          prev !== null ? (prev + 1) % filteredPhotos.length : 0
-        );
-      }, 5000);
+    const isOpen = activePhoto !== null || activeMeme !== null;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = previousHtmlOverflow || '';
+      document.body.style.overflow = previousBodyOverflow || '';
     }
-    
     return () => {
-      if (slideshowTimerRef.current) {
-        clearTimeout(slideshowTimerRef.current);
-      }
+      document.documentElement.style.overflow = previousHtmlOverflow || '';
+      document.body.style.overflow = previousBodyOverflow || '';
     };
-  }, [isSlideshow, activePhoto, filteredPhotos]);
+  }, [activePhoto, activeMeme]);
 
   // Helper function to get hackathon by ID
   const getHackathonName = (id: string): string => {
@@ -116,31 +149,12 @@ export default function HackathonJourneyGallery() {
     return hackathonGroup ? hackathonGroup.hackathon.name : id;
   };
 
-  // Toggle slideshow
-  const toggleSlideshow = () => {
-    setIsSlideshow(prev => {
-      if (prev) {
-        if (slideshowTimerRef.current) {
-          clearTimeout(slideshowTimerRef.current);
-        }
-        return false;
-      } else {
-        if (activePhoto === null && filteredPhotos.length > 0) {
-          setActivePhoto(0);
-        }
-        return true;
-      }
-    });
-  };
-
-  // Toggle fullscreen
-  const toggleFullscreen = () => {
-    setIsFullscreen(prev => !prev);
-  };
+  // Removed slideshow/fullscreen controls
 
   // Event handlers
   const handlePhotoClick = (index: number) => {
     setActivePhoto(index);
+    // Minimal viewer: no deep link
   };
 
   const handleHackathonPhotoClick = (hackathonId: string, index: number) => {
@@ -150,40 +164,27 @@ export default function HackathonJourneyGallery() {
 
   const handleMemeClick = (index: number) => {
     setActiveMeme(index);
+    // Minimal viewer: no deep link
   };
 
-  const handlePreviousPhoto = () => {
-    setActivePhoto((prev) => 
-      prev !== null ? (prev - 1 + filteredPhotos.length) % filteredPhotos.length : 0
-    );
-  };
-
-  const handleNextPhoto = () => {
-    setActivePhoto((prev) => 
-      prev !== null ? (prev + 1) % filteredPhotos.length : 0
-    );
-  };
-
-  const handlePreviousMeme = () => {
-    setActiveMeme((prev) => 
-      prev !== null ? (prev - 1 + sortedMemes.length) % sortedMemes.length : 0
-    );
-  };
-
-  const handleNextMeme = () => {
-    setActiveMeme((prev) => 
-      prev !== null ? (prev + 1) % sortedMemes.length : 0
-    );
-  };
+  // Removed previous/next handlers for minimal viewer
 
   const handleCloseLightbox = () => {
-    if (isSlideshow) {
-      toggleSlideshow();
-    }
     setActivePhoto(null);
     setActiveMeme(null);
-    setIsFullscreen(false);
+    
   };
+
+  // Keyboard navigation and ESC to close
+  useEffect(() => {}, []);
+
+  // Scroll lock when any lightbox is open
+  useEffect(() => {}, []);
+
+  // Preload neighboring images for smoother navigation
+  useEffect(() => {}, []);
+
+  useEffect(() => {}, []);
 
   if (galleryPhotos.length === 0) {
     return <div className="text-center py-8">Loading photo gallery...</div>;
@@ -241,28 +242,16 @@ export default function HackathonJourneyGallery() {
       <PhotoLightbox 
         isOpen={activePhoto !== null}
         photo={activePhoto !== null ? filteredPhotos[activePhoto] : null}
-        photos={filteredPhotos}
-        isFullscreen={isFullscreen}
-        isSlideshow={isSlideshow}
         getImagePath={getImagePath}
         onClose={handleCloseLightbox}
-        onToggleFullscreen={toggleFullscreen}
-        onToggleSlideshow={toggleSlideshow}
-        onPrevious={handlePreviousPhoto}
-        onNext={handleNextPhoto}
       />
 
       {/* Meme Lightbox */}
       <MemeLightbox 
         isOpen={activeMeme !== null}
         meme={activeMeme !== null ? sortedMemes[activeMeme] : null}
-        memes={sortedMemes}
-        isFullscreen={isFullscreen}
         getImagePath={getImagePath}
         onClose={handleCloseLightbox}
-        onToggleFullscreen={toggleFullscreen}
-        onPrevious={handlePreviousMeme}
-        onNext={handleNextMeme}
       />
     </div>
   );

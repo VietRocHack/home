@@ -3,11 +3,6 @@ import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import { Suspense } from 'react';
 
-export const metadata = {
-  title: 'Hackathon Journey | VietRocHack',
-  description: 'Follow VietRocHack\'s journey through hackathons, victories, and growth as a team.',
-};
-
 export default function JourneyPage() {
   return (
     <Layout>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { LOGO_CHANGE_EVENT } from './BackgroundCarousel';
 
 // List of main variant phrases with words to be stacked
@@ -33,10 +33,10 @@ export default function RotatingLogo() {
   const previousRareRef = useRef(showRare);
 
   // Function to trigger background change
-  const triggerBackgroundChange = () => {
+  const triggerBackgroundChange = useCallback(() => {
     // Dispatch custom event for background to listen to
     window.dispatchEvent(new Event(LOGO_CHANGE_EVENT));
-  };
+  }, []);
 
   // Monitor logo changes to sync with background
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function RotatingLogo() {
   }, [currentVariant, showRare]);
 
   // Function to trigger the rare variant
-  const triggerRareVariant = () => {
+  const triggerRareVariant = useCallback(() => {
     // Randomly select a rare variant
     const randomRareIndex = Math.floor(Math.random() * rareVariants.length);
     setCurrentRareVariant(randomRareIndex);
@@ -60,10 +60,10 @@ export default function RotatingLogo() {
         setShowRare(false);
       }, 1000);
     }
-  };
+  }, [rareViewMode]);
 
   // Function to toggle rare view mode
-  const toggleRareViewMode = () => {
+  const toggleRareViewMode = useCallback(() => {
     if (!rareViewMode) {
       // Entering rare view mode - show a random rare variant
       const randomRareIndex = Math.floor(Math.random() * rareVariants.length);
@@ -74,7 +74,7 @@ export default function RotatingLogo() {
       setShowRare(false);
     }
     setRareViewMode(!rareViewMode);
-  };
+  }, [rareViewMode]);
 
   useEffect(() => {
     const normalRotation = () => {
@@ -110,7 +110,7 @@ export default function RotatingLogo() {
       }
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [rareViewMode, showRare]);
+  }, [rareViewMode, showRare, triggerRareVariant, toggleRareViewMode]);
 
   // Create special styles for the rare variant
   const logoStyle = showRare ? {

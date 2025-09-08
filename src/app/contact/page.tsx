@@ -15,7 +15,7 @@ export default function Page() {
     const email = String(formData.get("email") || "");
     const message = String(formData.get("message") || "");
 
-    const toAddress = "vietrochack@gmail.com";
+    const toAddress = "contact@vietrochack.com";
     const subject = encodeURIComponent(
       `Contact from ${name || "VietRocHack website"}`
     );
@@ -44,7 +44,7 @@ export default function Page() {
               <p className="text-[var(--foreground-secondary)] mb-4">
                 Reach us directly via email.
               </p>
-              <a href="mailto:vietrochack@gmail.com" className="block w-full">
+              <a href="mailto:contact@vietrochack.com" className="block w-full">
                 <Button variant="primary" size="md" className="w-full mt-6">
                   Email Us
                 </Button>
@@ -171,9 +171,9 @@ export default function Page() {
                     <span className="text-[var(--foreground)]">Email:</span>{" "}
                     <a
                       className="text-[var(--accent-yellow)] hover:underline"
-                      href="mailto:vietrochack@gmail.com"
+                      href="mailto:contact@vietrochack.com"
                     >
-                      vietrochack@gmail.com
+                      contact@vietrochack.com
                     </a>
                   </li>
                   <li>

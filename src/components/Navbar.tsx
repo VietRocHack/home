@@ -90,7 +90,8 @@ export default function Navbar() {
               {isExpanded ? (
                 <>
                   <span className="text-[var(--accent-red)]">{"{"}</span>
-                  <span>VietRocHack</span>
+                  <span className="hidden md:inline">VietRocHack</span>
+                  <span className="inline md:hidden">VRH</span>
                   <VietnamFlag />
                   <span className="text-[var(--accent-red)]">{"}"}</span>
                 </>
@@ -119,7 +120,7 @@ export default function Navbar() {
         </nav>
         
         <div className="hidden md:block">
-          <Link href="/billing">
+          <Link href="/rsvp">
             <Button 
               variant="primary" 
               className="px-6 py-2 shadow-lg shadow-[var(--accent-red)]/20 hover:shadow-[var(--accent-red)]/40 transition-all duration-300"
@@ -172,15 +173,17 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="pt-2 pb-4">
-                <Button 
-                  variant="primary" 
-                  className="w-full py-3 mt-2 flex justify-center items-center"
-                >
-                  Join Team
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ml-2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
-                </Button>
+                <Link href="/rsvp">
+                  <Button 
+                    variant="primary" 
+                    className="w-full py-3 mt-2 flex justify-center items-center"
+                  >
+                    Join Team
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ml-2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>

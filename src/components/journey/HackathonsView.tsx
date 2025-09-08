@@ -38,11 +38,6 @@ export default function HackathonsView({
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
               <h2 className="text-2xl font-bold">{hackathon.name}</h2>
               <p className="text-[var(--foreground-secondary)]">{hackathon.date} • {hackathon.location}</p>
-              {hackathon.achievement && (
-                <div className="mt-2 inline-block bg-[var(--accent-yellow)] text-black px-2 py-1 rounded-md text-xs font-medium">
-                  🏆 {hackathon.achievement}
-                </div>
-              )}
             </div>
           </div>
           

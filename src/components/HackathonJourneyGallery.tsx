@@ -26,11 +26,9 @@ export default function HackathonJourneyGallery() {
   const [activeMeme, setActiveMeme] = useState<number | null>(null);
   const [isFullscreen] = useState(false);
   const [isSlideshow] = useState(false);
-  const slideshowTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   
-  // Helper: update a single query param in URL without full reload
-  const updateQueryParam = () => {};
+  // Deep linking disabled in minimal viewer
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
@@ -275,28 +273,16 @@ export default function HackathonJourneyGallery() {
       <PhotoLightbox 
         isOpen={activePhoto !== null}
         photo={activePhoto !== null ? filteredPhotos[activePhoto] : null}
-        photos={filteredPhotos}
-        isFullscreen={isFullscreen}
-        isSlideshow={isSlideshow}
         getImagePath={getImagePath}
         onClose={handleCloseLightbox}
-        onToggleFullscreen={toggleFullscreen}
-        onToggleSlideshow={toggleSlideshow}
-        onPrevious={handlePreviousPhoto}
-        onNext={handleNextPhoto}
       />
 
       {/* Meme Lightbox */}
       <MemeLightbox 
         isOpen={activeMeme !== null}
         meme={activeMeme !== null ? sortedMemes[activeMeme] : null}
-        memes={sortedMemes}
-        isFullscreen={isFullscreen}
         getImagePath={getImagePath}
         onClose={handleCloseLightbox}
-        onToggleFullscreen={toggleFullscreen}
-        onPrevious={handlePreviousMeme}
-        onNext={handleNextMeme}
       />
     </div>
   );

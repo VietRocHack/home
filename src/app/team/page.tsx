@@ -82,6 +82,7 @@ export default function TeamPage() {
                      alt={member.name}
                      width={100}
                      height={100}
+                     unoptimized
                      className="rounded-2xl object-cover shadow-lg w-full h-full"
                    />
                  </div>

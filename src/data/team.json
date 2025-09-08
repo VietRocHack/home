@@ -12,7 +12,7 @@
       "bio-meme": "I swear this stock is about to go to the moon… (famous last words)",
       "hobbies": "financial markets (options), poker, video games, lego, traveling, skiing (soon)",
       "photo": "/people/vuong/avatar.jpg",
-      "photo2": "/people/vuong/stanford-vuong.jpg",
+      "photo2": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1757308554/stanford_faceshot_vuong_cm5jwv.jpg",
       "socialLinks": {
         "github": "https://github.com/vuongho",
         "linkedin": "https://linkedin.com/in/vuongho"
@@ -36,7 +36,7 @@
       "bio-meme": "If Earth spins at 1000 mph and a plane only goes 500 mph, why doesn’t the plane just hover and let the ground move it to the destination?",
       "hobbies": "Soccer, chess, touching grass, socializing",
       "photo": "/people/duc/avatar.jpg",
-      "photo2": "/people/duc/stanford-duc.jpg",
+      "photo2": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1757308531/stanford_faceshot_duc_z5odjj.jpg",
       "socialLinks": {
         "github": "https://github.com/VuDuc1610",
         "linkedin": "https://linkedin.com/in/duc-vu-21766a226"
@@ -60,7 +60,7 @@
       "bio-meme": "902",
       "hobbies": "Manchester United, LinkedIn Warrior",
       "photo": "/people/hoang/avatar.jpg",
-      "photo2": "/people/hoang/stanford-hoang.jpg",
+      "photo2": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1757308541/stanford_faceshot_hoang_zpmlsy.jpg",
       "socialLinks": {
         "github": "https://github.com/hoangle",
         "linkedin": "https://linkedin.com/in/hoangle"
@@ -85,7 +85,7 @@
       "bio-meme": "I love French, especially the Madame part",
       "hobbies": "Reddit Enthusiast, video games, stating unhinged facts, learning French",
       "photo": "/people/lam/avatar.jpg",
-      "photo2": "/people/lam/stanford-lam.jpg",
+      "photo2": "https://res.cloudinary.com/dkc4okwwp/image/upload/v1757308548/stanford_faceshot_lam_fih0af.jpg",
       "socialLinks": {
         "github": "https://github.com/lampham",
         "linkedin": "https://linkedin.com/in/lampham"

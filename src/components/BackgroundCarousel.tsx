@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { getAllPhotos } from '@/utils/dataUtils';
 
@@ -26,7 +26,7 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
   const prevImageIndex = useRef<number | null>(null);
 
   // Clear all active timers
-  const clearAllTimers = () => {
+  const clearAllTimers = useCallback(() => {
     if (fadeTimerRef.current) {
       clearTimeout(fadeTimerRef.current);
       fadeTimerRef.current = null;
@@ -35,10 +35,10 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
       clearInterval(carouselTimerRef.current);
       carouselTimerRef.current = null;
     }
-  };
+  }, []);
 
   // Get a random image index that's different from the current one
-  const getRandomImageIndex = (): number => {
+  const getRandomImageIndex = useCallback((): number => {
     if (allPhotos.length <= 1) return 0;
     
     let randomIndex;
@@ -47,10 +47,10 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     } while (randomIndex === activeImageIndex || randomIndex === prevImageIndex.current);
     
     return randomIndex;
-  };
+  }, [allPhotos.length, activeImageIndex]);
 
   // Function to advance to the next image
-  const advanceToNextImage = () => {
+  const advanceToNextImage = useCallback(() => {
     if (isBusy.current || allPhotos.length === 0) return;
     isBusy.current = true;
     
@@ -69,9 +69,24 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
         isBusy.current = false;
       }, 50);
     }, 500); // Half the transition time for fade-out
-  };
+  }, [allPhotos.length, getRandomImageIndex, activeImageIndex]);
 
-  // Handle logo change event
+  
+
+  // Start carousel timer
+  const startCarouselTimer = useCallback(() => {
+    // Clear any existing timer first
+    if (carouselTimerRef.current) {
+      clearInterval(carouselTimerRef.current);
+    }
+    
+    // Start a new timer
+    carouselTimerRef.current = setInterval(() => {
+      advanceToNextImage();
+    }, 8000);
+  }, [advanceToNextImage]);
+
+  // Handle logo change event (placed after startCarouselTimer to avoid TDZ)
   useEffect(() => {
     const handleLogoChange = () => {
       // Cancel any existing timers
@@ -88,20 +103,7 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     return () => {
       window.removeEventListener(LOGO_CHANGE_EVENT, handleLogoChange);
     };
-  }, []);
-
-  // Start carousel timer
-  const startCarouselTimer = () => {
-    // Clear any existing timer first
-    if (carouselTimerRef.current) {
-      clearInterval(carouselTimerRef.current);
-    }
-    
-    // Start a new timer
-    carouselTimerRef.current = setInterval(() => {
-      advanceToNextImage();
-    }, 8000);
-  };
+  }, [advanceToNextImage, clearAllTimers, startCarouselTimer]);
 
   // Start carousel on mount and handle cleanup
   useEffect(() => {
@@ -113,7 +115,7 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
     
     // Cleanup on unmount
     return clearAllTimers;
-  }, []);
+  }, [startCarouselTimer, clearAllTimers]);
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { getAllHackathons, Hackathon } from '@/utils/dataUtils';
 
@@ -32,14 +32,14 @@ export default function HackathonTimeline() {
   }, [activeEvent]);
   
   // Toggle description expanded state
-  const toggleDescription = (e: React.MouseEvent) => {
+  const toggleDescription = useCallback((e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering other click handlers
     setIsDescriptionExpanded(!isDescriptionExpanded);
     setIsPaused(true); // Pause auto-rotation when expanded
-  };
+  }, [isDescriptionExpanded]);
 
   // Function to change event with direction animation
-  const changeEvent = (newIndex: number) => {
+  const changeEvent = useCallback((newIndex: number) => {
     if (newIndex === activeEvent || isAnimating) return;
     
     // Set animating state
@@ -68,10 +68,10 @@ export default function HackathonTimeline() {
         startAutoRotation();
       }
     }, 500); // Match this to the CSS transition duration
-  };
+  }, [activeEvent, isAnimating, isPaused]);
 
   // Function to start auto-rotation
-  const startAutoRotation = () => {
+  const startAutoRotation = useCallback(() => {
     // Clear any existing timer first
     if (autoRotateTimerRef.current) {
       clearInterval(autoRotateTimerRef.current);
@@ -85,7 +85,7 @@ export default function HackathonTimeline() {
         changeEvent(nextIndex);
       }
     }, 6000);
-  };
+  }, [isAnimating, isPaused, timelineEvents.length, changeEvent]);
 
   // Auto-rotate hackathons
   useEffect(() => {
@@ -99,7 +99,7 @@ export default function HackathonTimeline() {
         clearInterval(autoRotateTimerRef.current);
       }
     };
-  }, [timelineEvents.length, isPaused]); // Keep isPaused dependency
+  }, [timelineEvents.length, isPaused, startAutoRotation]);
   
   // Auto-scroll the timeline to active event
   useEffect(() => {

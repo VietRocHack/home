@@ -5,48 +5,48 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-function BillingPlanWithCheckout(props: {
-  price: string;
-  period: string;
-  features: string[];
-  buttonText?: string;
-  highlight?: boolean;
-  oneTime?: boolean;
-  mode: "payment" | "subscription";
-  priceId?: string;
-}) {
-  const [loading, setLoading] = React.useState(false);
-  async function handleClick() {
-    if (!props.priceId) {
-      alert("Support price ID is not configured.");
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ mode: props.mode, priceId: props.priceId }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Checkout failed");
-      window.location.href = data.url;
-    } finally {
-      setLoading(false);
-    }
-  }
-  return (
-    <BillingPlan
-      price={props.price}
-      period={props.period}
-      features={props.features}
-      buttonText={loading ? "Redirecting…" : props.buttonText || "Subscribe"}
-      onClick={handleClick}
-      highlight={props.highlight}
-    />
-  );
-  // End of BillingPlanWithCheckout
-}
+// Billing plan UI is disabled; commenting out legacy code to avoid unused errors.
+// function BillingPlanWithCheckout(props: {
+//   price: string;
+//   period: string;
+//   features: string[];
+//   buttonText?: string;
+//   highlight?: boolean;
+//   oneTime?: boolean;
+//   mode: "payment" | "subscription";
+//   priceId?: string;
+// }) {
+//   const [loading, setLoading] = React.useState(false);
+//   async function handleClick() {
+//     if (!props.priceId) {
+//       alert("Support price ID is not configured.");
+//       return;
+//     }
+//     setLoading(true);
+//     try {
+//       const res = await fetch("/api/stripe/checkout", {
+//         method: "POST",
+//         headers: { "content-type": "application/json" },
+//         body: JSON.stringify({ mode: props.mode, priceId: props.priceId }),
+//       });
+//       const data = await res.json();
+//       if (!res.ok) throw new Error(data.error || "Checkout failed");
+//       window.location.href = data.url;
+//     } finally {
+//       setLoading(false);
+//     }
+//   }
+//   return (
+//     <BillingPlan
+//       price={props.price}
+//       period={props.period}
+//       features={props.features}
+//       buttonText={loading ? "Redirecting…" : props.buttonText || "Subscribe"}
+//       onClick={handleClick}
+//       highlight={props.highlight}
+//     />
+//   );
+// }
 
 export default function BillingPage() {
   const router = useRouter();

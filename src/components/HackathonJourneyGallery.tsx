@@ -24,11 +24,10 @@ export default function HackathonJourneyGallery() {
   const [hackathons, setHackathons] = useState<HackathonGrouping[]>([]);
   const [memes, setMemes] = useState<Meme[]>([]);
   const [activeMeme, setActiveMeme] = useState<number | null>(null);
-  const [isFullscreen] = useState(false);
-  const [isSlideshow] = useState(false);
+  // Simplified viewer – no fullscreen or slideshow
   const scrollRef = useRef<HTMLDivElement>(null);
   
-  // Deep linking disabled in minimal viewer
+  // (unused placeholder removed)
 
   // Helper to format the image path correctly
   const getImagePath = (path: string) => {
@@ -123,7 +122,7 @@ export default function HackathonJourneyGallery() {
     return sortOrder === 'newest' ? yearB - yearA : yearA - yearB;
   });
 
-  // Slideshow timer
+  // Slideshow timer (removed)
   useEffect(() => {}, []);
 
   // Prevent background scroll when a lightbox is open
@@ -150,11 +149,7 @@ export default function HackathonJourneyGallery() {
     return hackathonGroup ? hackathonGroup.hackathon.name : id;
   };
 
-  // Toggle slideshow
-  const toggleSlideshow = () => {};
-
-  // Toggle fullscreen
-  const toggleFullscreen = () => {};
+  // Removed slideshow/fullscreen controls
 
   // Event handlers
   const handlePhotoClick = (index: number) => {
@@ -172,33 +167,7 @@ export default function HackathonJourneyGallery() {
     // Minimal viewer: no deep link
   };
 
-  const handlePreviousPhoto = () => {
-    setActivePhoto((prev) => 
-      prev !== null ? (prev - 1 + filteredPhotos.length) % filteredPhotos.length : 0
-    );
-    // Minimal viewer: no deep link
-  };
-
-  const handleNextPhoto = () => {
-    setActivePhoto((prev) => 
-      prev !== null ? (prev + 1) % filteredPhotos.length : 0
-    );
-    // Minimal viewer: no deep link
-  };
-
-  const handlePreviousMeme = () => {
-    setActiveMeme((prev) => 
-      prev !== null ? (prev - 1 + sortedMemes.length) % sortedMemes.length : 0
-    );
-    // Minimal viewer: no deep link
-  };
-
-  const handleNextMeme = () => {
-    setActiveMeme((prev) => 
-      prev !== null ? (prev + 1) % sortedMemes.length : 0
-    );
-    // Minimal viewer: no deep link
-  };
+  // Removed previous/next handlers for minimal viewer
 
   const handleCloseLightbox = () => {
     setActivePhoto(null);

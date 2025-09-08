@@ -21,10 +21,10 @@ const teamMembers = teamData.map((member) => ({
     member.id === "vuong"
       ? "Vuong debugging via prayer"
       : member.id === "duc"
-      ? "One hour before the demo crash"
-      : member.id === "hoang"
-      ? "Trying to center a div at 3 AM"
-      : "When the code works but you don't know why",
+        ? "One hour before the demo crash"
+        : member.id === "hoang"
+          ? "Trying to center a div at 3 AM"
+          : "When the code works but you don't know why",
   image: member.photo, // Use photo path from team.json
 }));
 
@@ -79,7 +79,7 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <h2 className="text-3xl font-bold mb-10 text-center">
-          Award-Winning Hackathon Projects
+            Award-Winning Hackathon Projects
           </h2>
 
           <ProjectGallery />

@@ -90,7 +90,8 @@ export default function Navbar() {
               {isExpanded ? (
                 <>
                   <span className="text-[var(--accent-red)]">{"{"}</span>
-                  <span>VietRocHack</span>
+                  <span className="hidden md:inline">VietRocHack</span>
+                  <span className="inline md:hidden">VRH</span>
                   <VietnamFlag />
                   <span className="text-[var(--accent-red)]">{"}"}</span>
                 </>

@@ -39,37 +39,39 @@ export default function TeamPage() {
   return (
     <Layout>
       <Container className="pt-32">
-        <h1 className="text-6xl font-extrabold mb-12 text-center drop-shadow-lg">Meet the Team</h1>
-        {/* <div className="flex justify-center items-center mb-8">
-          <span className="mr-4 text-lg font-semibold">Tuff Mode 🥀</span>
-          <button
-            className={`relative w-16 h-8 rounded-full transition-colors duration-300 ${mode === 'professional' ? 'bg-yellow-500' : 'bg-gray-400'}`}
-            onClick={() => setMode(mode === 'professional' ? 'personal' : 'professional')}
-            aria-label="Toggle Tough Mode"
-          >
-            <span
-              className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform duration-300"
-              style={{ transform: mode === 'professional' ? 'translateX(32px)' : 'translateX(0)' }}
-            />
-          </button>
-        </div> */}
-        <div className="sticky top-20 z-40 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
-          <nav className="flex flex-wrap justify-center gap-4 py-4">
-            {teamData.map((member) => (
-              <a
-                key={member.id}
-                href={`#${member.id}`}
-                className="px-6 py-2 rounded-full bg-[var(--background-secondary)] text-[var(--accent-yellow)] font-semibold shadow hover:bg-[var(--accent-yellow)] hover:text-black transition-all duration-200"
-              >
-                <span className="hidden md:inline">{member.name}</span>
-                <span className="inline md:hidden">{member.name.split(' ').map((w) => w[0]).join('')}</span>
-              </a>
-            ))}
-          </nav>
-        </div>
+        <section className="min-h-[calc(100vh-8rem)] flex flex-col justify-center">
+          <h1 className="text-6xl font-extrabold mb-12 text-center drop-shadow-lg">Meet the Team</h1>
+          {/* <div className="flex justify-center items-center mb-8">
+            <span className="mr-4 text-lg font-semibold">Tuff Mode 🥀</span>
+            <button
+              className={`relative w-16 h-8 rounded-full transition-colors duration-300 ${mode === 'professional' ? 'bg-yellow-500' : 'bg-gray-400'}`}
+              onClick={() => setMode(mode === 'professional' ? 'personal' : 'professional')}
+              aria-label="Toggle Tough Mode"
+            >
+              <span
+                className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform duration-300"
+                style={{ transform: mode === 'professional' ? 'translateX(32px)' : 'translateX(0)' }}
+              />
+            </button>
+          </div> */}
+          <div className="sticky top-20 z-40 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
+            <nav className="flex flex-wrap justify-center gap-4 py-4">
+              {teamData.map((member) => (
+                <a
+                  key={member.id}
+                  href={`#${member.id}`}
+                  className="px-6 py-2 rounded-full bg-[var(--background-secondary)] text-[var(--accent-yellow)] font-semibold shadow hover:bg-[var(--accent-yellow)] hover:text-black transition-all duration-200"
+                >
+                  <span className="hidden md:inline">{member.name}</span>
+                  <span className="inline md:hidden">{member.name.split(' ').map((w) => w[0]).join('')}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </section>
         <div className="flex flex-col">
            {teamData.map((member, idx) => {
-             const isPersonal = 1;
+             const isPersonal = 0;
              return (
                <section
                  key={member.id}

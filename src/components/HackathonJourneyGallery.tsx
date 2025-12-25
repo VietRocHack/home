@@ -7,7 +7,7 @@ import GalleryControls from './journey/GalleryControls';
 import GridView from './journey/GridView';
 import TimelineView from './journey/TimelineView';
 import HackathonsView from './journey/HackathonsView';
-import FunThingsView from './journey/FunThingsView';
+// import FunThingsView from './journey/FunThingsView';
 import PhotoLightbox from './journey/PhotoLightbox';
 import MemeLightbox from './journey/MemeLightbox';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -60,13 +60,13 @@ export default function HackathonJourneyGallery() {
   // Read view from URL query parameter
   useEffect(() => {
   const viewParam = searchParams?.get('view');
-    if (viewParam && (viewParam === 'grid' || viewParam === 'timeline' || viewParam === 'hackathons' || viewParam === 'fun')) {
+    if (viewParam && (viewParam === 'grid' || viewParam === 'timeline' || viewParam === 'hackathons')) {
       setViewMode(viewParam as ViewMode);
     }
     
     // Deep-linking: open photo by src or meme by id
     const photoParam = searchParams?.get('photo');
-    const memeParam = searchParams?.get('meme');
+    // const memeParam = searchParams?.get('meme');
     
     if (photoParam && galleryPhotos.length > 0) {
       // Find index across filtered set first, fallback to all photos
@@ -85,13 +85,13 @@ export default function HackathonJourneyGallery() {
       }
     }
     
-    if (memeParam && memes.length > 0) {
-      const idx = memes.findIndex(m => m.id === memeParam);
-      if (idx >= 0) {
-        setViewMode('fun');
-        setActiveMeme(idx);
-      }
-    }
+    // if (memeParam && memes.length > 0) {
+    //   const idx = memes.findIndex(m => m.id === memeParam);
+    //   if (idx >= 0) {
+    //     setViewMode('fun');
+    //     setActiveMeme(idx);
+    //   }
+    // }
   }, [searchParams]);
 
   // Update URL when view mode changes
@@ -162,10 +162,10 @@ export default function HackathonJourneyGallery() {
     setActivePhoto(index);
   };
 
-  const handleMemeClick = (index: number) => {
-    setActiveMeme(index);
-    // Minimal viewer: no deep link
-  };
+  // const handleMemeClick = (index: number) => {
+  //   setActiveMeme(index);
+  //   // Minimal viewer: no deep link
+  // };
 
   // Removed previous/next handlers for minimal viewer
 
@@ -230,13 +230,13 @@ export default function HackathonJourneyGallery() {
         />
       )}
 
-      {viewMode === 'fun' && (
+      {/* {viewMode === 'fun' && (
         <FunThingsView 
           memes={sortedMemes}
           getImagePath={getImagePath}
           onMemeClick={handleMemeClick}
         />
-      )}
+      )} */}
       
       {/* Photo Lightbox */}
       <PhotoLightbox 

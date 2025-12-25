@@ -14,7 +14,7 @@ export default function TeamPage() {
   // Animation state for each profile (true = visible, false = hidden)
   const [visibleSections, setVisibleSections] = useState(Array(teamData.length).fill(false));
   // Mode state
-  const [mode, setMode] = useState<'professional' | 'personal'>('professional');
+  // const [mode, setMode] = useState<'professional' | 'personal'>('professional');
   // Ratings for each member (personal mode)
   const [ratings, setRatings] = useState<number[]>(Array(teamData.length).fill(5));
 
@@ -40,7 +40,7 @@ export default function TeamPage() {
     <Layout>
       <Container className="pt-32">
         <h1 className="text-6xl font-extrabold mb-12 text-center drop-shadow-lg">Meet the Team</h1>
-        <div className="flex justify-center items-center mb-8">
+        {/* <div className="flex justify-center items-center mb-8">
           <span className="mr-4 text-lg font-semibold">Tuff Mode 🥀</span>
           <button
             className={`relative w-16 h-8 rounded-full transition-colors duration-300 ${mode === 'professional' ? 'bg-yellow-500' : 'bg-gray-400'}`}
@@ -52,7 +52,7 @@ export default function TeamPage() {
               style={{ transform: mode === 'professional' ? 'translateX(32px)' : 'translateX(0)' }}
             />
           </button>
-        </div>
+        </div> */}
         <div className="sticky top-20 z-40 bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
           <nav className="flex flex-wrap justify-center gap-4 py-4">
             {teamData.map((member) => (
@@ -69,7 +69,7 @@ export default function TeamPage() {
         </div>
         <div className="flex flex-col">
            {teamData.map((member, idx) => {
-             const isPersonal = mode === 'personal';
+             const isPersonal = 1;
              return (
                <section
                  key={member.id}

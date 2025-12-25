@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Button from '@/components/Button';
+// import Button from '@/components/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Vietnam Flag component using the SVG from public directory
@@ -119,7 +119,7 @@ export default function Navbar() {
           ))}
         </nav>
         
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <Link href="/rsvp">
             <Button 
               variant="primary" 
@@ -128,7 +128,7 @@ export default function Navbar() {
               Join Team
             </Button>
           </Link>
-        </div>
+        </div> */}
         
         {/* Mobile menu button */}
         <button 
@@ -172,7 +172,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-2 pb-4">
+              {/* <div className="pt-2 pb-4">
                 <Link href="/rsvp">
                   <Button 
                     variant="primary" 
@@ -184,7 +184,7 @@ export default function Navbar() {
                     </svg>
                   </Button>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         )}

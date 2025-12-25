@@ -68,12 +68,12 @@ export default function GalleryControls({
             >
               Hackathons
             </button>
-            <button 
+            {/* <button 
               className={`px-3 py-1 rounded-md text-sm ${viewMode === 'fun' ? 'bg-[var(--accent-red)] text-white' : 'hover:bg-gray-700 text-gray-300'}`}
               onClick={() => setViewMode('fun')}
             >
               Fun
-            </button>
+            </button> */}
           </div>
         </div>
         

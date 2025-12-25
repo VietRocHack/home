@@ -65,13 +65,13 @@ export default function Home() {
             <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl mb-10">
               Proud Vietnamese students at the University of Rochester, breaking into tech through hackathons
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            {/* <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/team">
                 <Button variant="primary" size="lg">
                   Join team
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </Container>
       </section>

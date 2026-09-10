@@ -177,10 +177,10 @@
           "tagline": "Plan your next memories, with TikTok",
           "description": "SwipeAndFly analyzes TikTok videos to extract travel inspiration and uses AI to generate personalized itineraries, making trip planning engaging and efficient.",
           "thumbnail": "projects/tiktoktechjam_2024/swipeandfly_thumbnail.png",
-          "demoLink": "https://www.youtube.com/watch?v=gAvCory9rqE",
-          "githubLink": "",
+          "demoLink": "https://swipeandfly.vietrochack.com",
+          "githubLink": "https://github.com/VietRocHack/SwipeAndFly",
           "devpostLink": "https://devpost.com/software/vietrochack",
-          "youtubeDemo": "",
+          "youtubeDemo": "https://www.youtube.com/watch?v=gAvCory9rqE",
           "techStack": [
             "Vite",
             "TypeScript",
@@ -189,7 +189,11 @@
             "DynamoDB",
             "GPT-4"
           ],
-          "achievements": [],
+          "achievements": [
+            "Processes a 1-minute TikTok video in under 2 seconds",
+            "Reduced AI costs by 90%",
+            "Handles unlimited input videos with a scalable architecture"
+          ],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
           "screenshots": [],
           "featured": false

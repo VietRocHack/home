@@ -36,8 +36,8 @@
           "tagline": "U of R's very own map navigator, tunnels and weather included!",
           "description": "RocMap takes data of the starting and ending points from user's input and creates the most optimal route map, with images and instructions included, to navigate users to their desired destinations. It also calculates the distance and time depending on the weather conditions, thereby suggesting the shortest and most efficient path to get there.",
           "thumbnail": "projects/dandyhacks_2023/rocmap_thumbnail.png",
-          "demoLink": "",
-          "githubLink": "",
+          "demoLink": "https://rocmap.vietrochack.com",
+          "githubLink": "https://github.com/VietRocHack/RocMap",
           "devpostLink": "https://devpost.com/software/rocmap",
           "youtubeDemo": "",
           "techStack": [

@@ -236,8 +236,8 @@
           "tagline": "Safe & Accessible 911 call simulation platform for kids.",
           "description": "Young Heroes is a mobile app designed to create a safe and accessible space for children aged 4 to 12. It empowers kids to recognize critical situations and communicate effectively with 911 when needed. The app offers an end-to-end simulation where kids can interactively communicate with a 911 dispatcher in real-time using generative AI, providing realistic practice and learning experiences unmatched by other platforms.",
           "thumbnail": "projects/hophacks_2024/youngheroes_thumbnail.png",
-          "demoLink": "",
-          "githubLink": "",
+          "demoLink": "https://youngheroes.vietrochack.com",
+          "githubLink": "https://github.com/VietRocHack/YoungHeroes",
           "devpostLink": "https://devpost.com/software/young-heroes-hmi2vl",
           "youtubeDemo": "",
           "techStack": [

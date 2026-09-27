@@ -86,17 +86,16 @@
           "tagline": "Dining halls meet AI, at RIT!",
           "description": "dAIningRIT is an AI-powered mobile web app that aims to make college dining more enjoyable. By combining already made ingredients in the dining hall, students can create virtually any dish they desire, increasing enjoyment and reducing food waste.",
           "thumbnail": "projects/brickhack_2024/dainingrit_thumbnail.jpg",
-          "demoLink": "",
-          "githubLink": "",
+          "demoLink": "https://dainingrit.vietrochack.com",
+          "githubLink": "https://github.com/VietRocHack/dAIningRIT",
           "devpostLink": "https://devpost.com/software/dainingrit",
           "youtubeDemo": "",
           "techStack": [
             "React",
-            "Node.js",
+            "Python",
             "Firebase",
             "Google Cloud Functions",
-            "GPT-4",
-            "DALL·E 3"
+            "Gemini"
           ],
           "achievements": [],
           "teamMembers": ["vuong", "duc", "hoang", "lam"],
